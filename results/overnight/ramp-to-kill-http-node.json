@@ -1,0 +1,831 @@
+Ramp-to-Kill over Streamable HTTP — Node.js ZeroMCP
+
+[zeromcp] Loaded: create_invoice
+[zeromcp] Loaded: hello
+[zeromcp] Loaded: pipeline
+[zeromcp] Loaded: process_data
+[zeromcp] 4 tool(s) loaded
+  concurrency=1
+    t=5s rps=462 p50=500μs p99=2188μs errors=0 (0%) mem=131.6MB
+    t=10s rps=451 p50=518μs p99=1989μs errors=0 (0%) mem=132.7MB
+    t=15s rps=398 p50=527μs p99=1778μs errors=0 (0%) mem=133.5MB
+    t=20s rps=387 p50=516μs p99=2300μs errors=0 (0%) mem=134.9MB
+    t=25s rps=384 p50=527μs p99=1274μs errors=0 (0%) mem=134.9MB
+    t=30s rps=392 p50=506μs p99=1536μs errors=0 (0%) mem=135.3MB
+  concurrency=5
+    t=5s rps=1805 p50=715μs p99=4159μs errors=0 (0%) mem=158MB
+    t=10s rps=1804 p50=735μs p99=4740μs errors=0 (0%) mem=160MB
+    t=15s rps=2141 p50=643μs p99=3606μs errors=0 (0%) mem=160.3MB
+    t=20s rps=2296 p50=613μs p99=3181μs errors=0 (0%) mem=160.8MB
+    t=25s rps=2321 p50=609μs p99=3850μs errors=0 (0%) mem=160.8MB
+    t=30s rps=2362 p50=573μs p99=3147μs errors=0 (0%) mem=160.8MB
+  concurrency=10
+    t=5s rps=4339 p50=707μs p99=2441μs errors=0 (0%) mem=165MB
+    t=10s rps=3904 p50=804μs p99=2822μs errors=0 (0%) mem=166MB
+    t=15s rps=4282 p50=712μs p99=2491μs errors=0 (0%) mem=166.4MB
+    t=20s rps=4240 p50=719μs p99=2530μs errors=0 (0%) mem=167.6MB
+    t=25s rps=4134 p50=756μs p99=2841μs errors=0 (0%) mem=167.7MB
+    t=30s rps=4172 p50=735μs p99=2695μs errors=0 (0%) mem=163.4MB
+  concurrency=25
+    t=5s rps=9092 p50=1143μs p99=3295μs errors=0 (0%) mem=171.8MB
+    t=10s rps=9158 p50=1139μs p99=3192μs errors=0 (0%) mem=175.5MB
+    t=15s rps=9039 p50=1145μs p99=3441μs errors=0 (0%) mem=175.6MB
+    t=20s rps=9197 p50=1137μs p99=3150μs errors=0 (0%) mem=175.1MB
+    t=25s rps=9080 p50=1141μs p99=3168μs errors=0 (0%) mem=175.1MB
+    t=30s rps=9122 p50=1145μs p99=3242μs errors=0 (0%) mem=175.1MB
+  concurrency=50
+    t=5s rps=15134 p50=2070μs p99=5650μs errors=0 (0%) mem=182.7MB
+    t=10s rps=15196 p50=2103μs p99=5463μs errors=0 (0%) mem=182.8MB
+    t=15s rps=14705 p50=2140μs p99=5945μs errors=0 (0%) mem=182.9MB
+    t=20s rps=15004 p50=2113μs p99=5603μs errors=0 (0%) mem=182.9MB
+    t=25s rps=14958 p50=2137μs p99=5688μs errors=0 (0%) mem=184.1MB
+    t=30s rps=14643 p50=2138μs p99=6365μs errors=0 (0%) mem=184.2MB
+  concurrency=100
+    t=5s rps=14807 p50=4541μs p99=11271μs errors=0 (0%) mem=193.5MB
+    t=10s rps=14714 p50=4628μs p99=11301μs errors=0 (0%) mem=193.3MB
+    t=15s rps=14681 p50=4601μs p99=11389μs errors=0 (0%) mem=195.2MB
+    t=20s rps=14711 p50=4575μs p99=11427μs errors=0 (0%) mem=195.1MB
+    t=25s rps=14578 p50=4681μs p99=11416μs errors=0 (0%) mem=195MB
+    t=30s rps=14070 p50=4770μs p99=12390μs errors=0 (0%) mem=194.8MB
+  concurrency=200
+    t=5s rps=13349 p50=10101μs p99=26269μs errors=0 (0%) mem=219.3MB
+    t=10s rps=13426 p50=10194μs p99=26414μs errors=0 (0%) mem=219.4MB
+    t=15s rps=12681 p50=10770μs p99=28969μs errors=0 (0%) mem=219.4MB
+    t=20s rps=13290 p50=10222μs p99=26722μs errors=0 (0%) mem=222.9MB
+    t=25s rps=13314 p50=10261μs p99=26353μs errors=0 (0%) mem=223MB
+    t=30s rps=13473 p50=10120μs p99=25681μs errors=0 (0%) mem=223.1MB
+  concurrency=500
+    t=5s rps=11764 p50=24004μs p99=72514μs errors=0 (0%) mem=283.1MB
+    t=10s rps=11587 p50=28866μs p99=76597μs errors=0 (0%) mem=290MB
+    t=15s rps=11595 p50=28938μs p99=76876μs errors=0 (0%) mem=290.7MB
+    t=20s rps=11430 p50=29301μs p99=77032μs errors=0 (0%) mem=290.6MB
+    t=25s rps=11464 p50=29359μs p99=76058μs errors=0 (0%) mem=291MB
+    t=30s rps=11198 p50=29489μs p99=80667μs errors=0 (0%) mem=290.9MB
+  concurrency=1000
+    t=5s rps=11041 p50=37239μs p99=100246μs errors=0 (0%) mem=362.6MB
+    t=10s rps=10736 p50=49370μs p99=124783μs errors=0 (0%) mem=368.5MB
+    t=15s rps=10368 p50=61511μs p99=153024μs errors=0 (0%) mem=368.6MB
+    t=20s rps=10438 p50=66044μs p99=162086μs errors=0 (0%) mem=368.8MB
+    t=25s rps=10440 p50=66319μs p99=162984μs errors=0 (0%) mem=369.2MB
+    t=30s rps=10477 p50=66181μs p99=166138μs errors=0 (0%) mem=368.8MB
+{
+  "language": "node",
+  "transport": "streamable-http",
+  "error_threshold_pct": 0.5,
+  "max_sustained_concurrency": 1000,
+  "broke_at_concurrency": "never",
+  "levels": [
+    {
+      "concurrency": 1,
+      "mix": {
+        "hello": 100
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 1,
+          "requests": 2308,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 462,
+          "p50_us": 500,
+          "p95_us": 1116,
+          "p99_us": 2188,
+          "memory_mb": 131.6
+        },
+        {
+          "t": 10,
+          "concurrency": 1,
+          "requests": 2255,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 451,
+          "p50_us": 518,
+          "p95_us": 977,
+          "p99_us": 1989,
+          "memory_mb": 132.7
+        },
+        {
+          "t": 15,
+          "concurrency": 1,
+          "requests": 1990,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 398,
+          "p50_us": 527,
+          "p95_us": 870,
+          "p99_us": 1778,
+          "memory_mb": 133.5
+        },
+        {
+          "t": 20,
+          "concurrency": 1,
+          "requests": 1933,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 387,
+          "p50_us": 516,
+          "p95_us": 989,
+          "p99_us": 2300,
+          "memory_mb": 134.9
+        },
+        {
+          "t": 25,
+          "concurrency": 1,
+          "requests": 1918,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 384,
+          "p50_us": 527,
+          "p95_us": 823,
+          "p99_us": 1274,
+          "memory_mb": 134.9
+        },
+        {
+          "t": 30,
+          "concurrency": 1,
+          "requests": 1962,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 392,
+          "p50_us": 506,
+          "p95_us": 816,
+          "p99_us": 1536,
+          "memory_mb": 135.3
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 5,
+      "mix": {
+        "hello": 70,
+        "create_invoice": 20,
+        "process_data": 10
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 5,
+          "requests": 9026,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 1805,
+          "p50_us": 715,
+          "p95_us": 1645,
+          "p99_us": 4159,
+          "memory_mb": 158
+        },
+        {
+          "t": 10,
+          "concurrency": 5,
+          "requests": 9020,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 1804,
+          "p50_us": 735,
+          "p95_us": 1738,
+          "p99_us": 4740,
+          "memory_mb": 160
+        },
+        {
+          "t": 15,
+          "concurrency": 5,
+          "requests": 10705,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 2141,
+          "p50_us": 643,
+          "p95_us": 1648,
+          "p99_us": 3606,
+          "memory_mb": 160.3
+        },
+        {
+          "t": 20,
+          "concurrency": 5,
+          "requests": 11480,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 2296,
+          "p50_us": 613,
+          "p95_us": 1447,
+          "p99_us": 3181,
+          "memory_mb": 160.8
+        },
+        {
+          "t": 25,
+          "concurrency": 5,
+          "requests": 11605,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 2321,
+          "p50_us": 609,
+          "p95_us": 1515,
+          "p99_us": 3850,
+          "memory_mb": 160.8
+        },
+        {
+          "t": 30,
+          "concurrency": 5,
+          "requests": 11810,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 2362,
+          "p50_us": 573,
+          "p95_us": 1549,
+          "p99_us": 3147,
+          "memory_mb": 160.8
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 10,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 10,
+          "requests": 21693,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4339,
+          "p50_us": 707,
+          "p95_us": 1645,
+          "p99_us": 2441,
+          "memory_mb": 165
+        },
+        {
+          "t": 10,
+          "concurrency": 10,
+          "requests": 19518,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 3904,
+          "p50_us": 804,
+          "p95_us": 1799,
+          "p99_us": 2822,
+          "memory_mb": 166
+        },
+        {
+          "t": 15,
+          "concurrency": 10,
+          "requests": 21411,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4282,
+          "p50_us": 712,
+          "p95_us": 1602,
+          "p99_us": 2491,
+          "memory_mb": 166.4
+        },
+        {
+          "t": 20,
+          "concurrency": 10,
+          "requests": 21202,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4240,
+          "p50_us": 719,
+          "p95_us": 1642,
+          "p99_us": 2530,
+          "memory_mb": 167.6
+        },
+        {
+          "t": 25,
+          "concurrency": 10,
+          "requests": 20670,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4134,
+          "p50_us": 756,
+          "p95_us": 1751,
+          "p99_us": 2841,
+          "memory_mb": 167.7
+        },
+        {
+          "t": 30,
+          "concurrency": 10,
+          "requests": 20861,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4172,
+          "p50_us": 735,
+          "p95_us": 1772,
+          "p99_us": 2695,
+          "memory_mb": 163.4
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 25,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 25,
+          "requests": 45461,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9092,
+          "p50_us": 1143,
+          "p95_us": 2396,
+          "p99_us": 3295,
+          "memory_mb": 171.8
+        },
+        {
+          "t": 10,
+          "concurrency": 25,
+          "requests": 45789,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9158,
+          "p50_us": 1139,
+          "p95_us": 2271,
+          "p99_us": 3192,
+          "memory_mb": 175.5
+        },
+        {
+          "t": 15,
+          "concurrency": 25,
+          "requests": 45193,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9039,
+          "p50_us": 1145,
+          "p95_us": 2472,
+          "p99_us": 3441,
+          "memory_mb": 175.6
+        },
+        {
+          "t": 20,
+          "concurrency": 25,
+          "requests": 45983,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9197,
+          "p50_us": 1137,
+          "p95_us": 2282,
+          "p99_us": 3150,
+          "memory_mb": 175.1
+        },
+        {
+          "t": 25,
+          "concurrency": 25,
+          "requests": 45399,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9080,
+          "p50_us": 1141,
+          "p95_us": 2323,
+          "p99_us": 3168,
+          "memory_mb": 175.1
+        },
+        {
+          "t": 30,
+          "concurrency": 25,
+          "requests": 45610,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9122,
+          "p50_us": 1145,
+          "p95_us": 2349,
+          "p99_us": 3242,
+          "memory_mb": 175.1
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 50,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 50,
+          "requests": 75671,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 15134,
+          "p50_us": 2070,
+          "p95_us": 4344,
+          "p99_us": 5650,
+          "memory_mb": 182.7
+        },
+        {
+          "t": 10,
+          "concurrency": 50,
+          "requests": 75981,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 15196,
+          "p50_us": 2103,
+          "p95_us": 4395,
+          "p99_us": 5463,
+          "memory_mb": 182.8
+        },
+        {
+          "t": 15,
+          "concurrency": 50,
+          "requests": 73525,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14705,
+          "p50_us": 2140,
+          "p95_us": 4579,
+          "p99_us": 5945,
+          "memory_mb": 182.9
+        },
+        {
+          "t": 20,
+          "concurrency": 50,
+          "requests": 75019,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 15004,
+          "p50_us": 2113,
+          "p95_us": 4410,
+          "p99_us": 5603,
+          "memory_mb": 182.9
+        },
+        {
+          "t": 25,
+          "concurrency": 50,
+          "requests": 74788,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14958,
+          "p50_us": 2137,
+          "p95_us": 4489,
+          "p99_us": 5688,
+          "memory_mb": 184.1
+        },
+        {
+          "t": 30,
+          "concurrency": 50,
+          "requests": 73217,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14643,
+          "p50_us": 2138,
+          "p95_us": 4639,
+          "p99_us": 6365,
+          "memory_mb": 184.2
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 100,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 100,
+          "requests": 74037,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14807,
+          "p50_us": 4541,
+          "p95_us": 9416,
+          "p99_us": 11271,
+          "memory_mb": 193.5
+        },
+        {
+          "t": 10,
+          "concurrency": 100,
+          "requests": 73568,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14714,
+          "p50_us": 4628,
+          "p95_us": 9438,
+          "p99_us": 11301,
+          "memory_mb": 193.3
+        },
+        {
+          "t": 15,
+          "concurrency": 100,
+          "requests": 73406,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14681,
+          "p50_us": 4601,
+          "p95_us": 9415,
+          "p99_us": 11389,
+          "memory_mb": 195.2
+        },
+        {
+          "t": 20,
+          "concurrency": 100,
+          "requests": 73557,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14711,
+          "p50_us": 4575,
+          "p95_us": 9548,
+          "p99_us": 11427,
+          "memory_mb": 195.1
+        },
+        {
+          "t": 25,
+          "concurrency": 100,
+          "requests": 72892,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14578,
+          "p50_us": 4681,
+          "p95_us": 9582,
+          "p99_us": 11416,
+          "memory_mb": 195
+        },
+        {
+          "t": 30,
+          "concurrency": 100,
+          "requests": 70351,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14070,
+          "p50_us": 4770,
+          "p95_us": 9765,
+          "p99_us": 12390,
+          "memory_mb": 194.8
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 200,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 200,
+          "requests": 66743,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13349,
+          "p50_us": 10101,
+          "p95_us": 20405,
+          "p99_us": 26269,
+          "memory_mb": 219.3
+        },
+        {
+          "t": 10,
+          "concurrency": 200,
+          "requests": 67131,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13426,
+          "p50_us": 10194,
+          "p95_us": 20737,
+          "p99_us": 26414,
+          "memory_mb": 219.4
+        },
+        {
+          "t": 15,
+          "concurrency": 200,
+          "requests": 63404,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12681,
+          "p50_us": 10770,
+          "p95_us": 21215,
+          "p99_us": 28969,
+          "memory_mb": 219.4
+        },
+        {
+          "t": 20,
+          "concurrency": 200,
+          "requests": 66451,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13290,
+          "p50_us": 10222,
+          "p95_us": 20733,
+          "p99_us": 26722,
+          "memory_mb": 222.9
+        },
+        {
+          "t": 25,
+          "concurrency": 200,
+          "requests": 66571,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13314,
+          "p50_us": 10261,
+          "p95_us": 20660,
+          "p99_us": 26353,
+          "memory_mb": 223
+        },
+        {
+          "t": 30,
+          "concurrency": 200,
+          "requests": 67363,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13473,
+          "p50_us": 10120,
+          "p95_us": 20624,
+          "p99_us": 25681,
+          "memory_mb": 223.1
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 500,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 500,
+          "requests": 58819,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11764,
+          "p50_us": 24004,
+          "p95_us": 43692,
+          "p99_us": 72514,
+          "memory_mb": 283.1
+        },
+        {
+          "t": 10,
+          "concurrency": 500,
+          "requests": 57934,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11587,
+          "p50_us": 28866,
+          "p95_us": 59279,
+          "p99_us": 76597,
+          "memory_mb": 290
+        },
+        {
+          "t": 15,
+          "concurrency": 500,
+          "requests": 57975,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11595,
+          "p50_us": 28938,
+          "p95_us": 57077,
+          "p99_us": 76876,
+          "memory_mb": 290.7
+        },
+        {
+          "t": 20,
+          "concurrency": 500,
+          "requests": 57149,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11430,
+          "p50_us": 29301,
+          "p95_us": 57832,
+          "p99_us": 77032,
+          "memory_mb": 290.6
+        },
+        {
+          "t": 25,
+          "concurrency": 500,
+          "requests": 57318,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11464,
+          "p50_us": 29359,
+          "p95_us": 53574,
+          "p99_us": 76058,
+          "memory_mb": 291
+        },
+        {
+          "t": 30,
+          "concurrency": 500,
+          "requests": 55989,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11198,
+          "p50_us": 29489,
+          "p95_us": 61152,
+          "p99_us": 80667,
+          "memory_mb": 290.9
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 1000,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 1000,
+          "requests": 55207,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11041,
+          "p50_us": 37239,
+          "p95_us": 72681,
+          "p99_us": 100246,
+          "memory_mb": 362.6
+        },
+        {
+          "t": 10,
+          "concurrency": 1000,
+          "requests": 53678,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10736,
+          "p50_us": 49370,
+          "p95_us": 90324,
+          "p99_us": 124783,
+          "memory_mb": 368.5
+        },
+        {
+          "t": 15,
+          "concurrency": 1000,
+          "requests": 51840,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10368,
+          "p50_us": 61511,
+          "p95_us": 109203,
+          "p99_us": 153024,
+          "memory_mb": 368.6
+        },
+        {
+          "t": 20,
+          "concurrency": 1000,
+          "requests": 52190,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10438,
+          "p50_us": 66044,
+          "p95_us": 93928,
+          "p99_us": 162086,
+          "memory_mb": 368.8
+        },
+        {
+          "t": 25,
+          "concurrency": 1000,
+          "requests": 52199,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10440,
+          "p50_us": 66319,
+          "p95_us": 93318,
+          "p99_us": 162984,
+          "memory_mb": 369.2
+        },
+        {
+          "t": 30,
+          "concurrency": 1000,
+          "requests": 52383,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10477,
+          "p50_us": 66181,
+          "p95_us": 99040,
+          "p99_us": 166138,
+          "memory_mb": 368.8
+        }
+      ],
+      "broke": false
+    }
+  ]
+}
