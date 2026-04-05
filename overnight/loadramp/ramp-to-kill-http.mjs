@@ -24,6 +24,11 @@ const LEVELS = [
   { concurrency: 200, mix: { hello: 50, create_invoice: 30, process_data: 15, pipeline: 5 } },
   { concurrency: 500, mix: { hello: 50, create_invoice: 30, process_data: 15, pipeline: 5 } },
   { concurrency: 1000, mix: { hello: 50, create_invoice: 30, process_data: 15, pipeline: 5 } },
+  { concurrency: 2000, mix: { hello: 50, create_invoice: 30, process_data: 15, pipeline: 5 } },
+  { concurrency: 5000, mix: { hello: 50, create_invoice: 30, process_data: 15, pipeline: 5 } },
+  { concurrency: 10000, mix: { hello: 50, create_invoice: 30, process_data: 15, pipeline: 5 } },
+  { concurrency: 20000, mix: { hello: 50, create_invoice: 30, process_data: 15, pipeline: 5 } },
+  { concurrency: 50000, mix: { hello: 50, create_invoice: 30, process_data: 15, pipeline: 5 } },
 ];
 
 const TOOL_ARGS = {

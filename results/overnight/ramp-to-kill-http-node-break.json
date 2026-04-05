@@ -1,0 +1,1768 @@
+Ramp-to-Kill over Streamable HTTP — Node.js ZeroMCP
+
+[zeromcp] Loaded: create_invoice
+[zeromcp] Loaded: hello
+[zeromcp] Loaded: pipeline
+[zeromcp] Loaded: process_data
+[zeromcp] 4 tool(s) loaded
+  concurrency=1
+    t=5s rps=427 p50=506μs p99=3207μs errors=0 (0%) rss=130.26MB heap=13.11/50.52MB cpu=2335.58ms lag=20.96μs
+    t=10s rps=439 p50=505μs p99=2494μs errors=0 (0%) rss=131.71MB heap=26.07/52.02MB cpu=2254.61ms lag=9.37μs
+    t=15s rps=375 p50=605μs p99=2983μs errors=0 (0%) rss=132.84MB heap=25.11/52.02MB cpu=4245.27ms lag=15.92μs
+    t=20s rps=379 p50=545μs p99=2304μs errors=0 (0%) rss=133.09MB heap=24.78/52.77MB cpu=3881.3ms lag=28.08μs
+    t=25s rps=403 p50=488μs p99=1534μs errors=0 (0%) rss=134.09MB heap=13.5/53.02MB cpu=5861.72ms lag=17.71μs
+    t=30s rps=399 p50=489μs p99=1574μs errors=0 (0%) rss=136.59MB heap=38.5/61.52MB cpu=5400.66ms lag=23.04μs
+  concurrency=5
+    t=5s rps=1805 p50=688μs p99=3666μs errors=0 (0%) rss=159.63MB heap=35.29/76.02MB cpu=2868.52ms lag=25.17μs
+    t=10s rps=1770 p50=679μs p99=4293μs errors=0 (0%) rss=160.51MB heap=18.18/76.27MB cpu=14009.18ms lag=356.08μs
+    t=15s rps=1733 p50=777μs p99=4520μs errors=0 (0%) rss=161.13MB heap=36.74/76.77MB cpu=5743.26ms lag=25.54μs
+    t=20s rps=1746 p50=734μs p99=4256μs errors=0 (0%) rss=164.38MB heap=17.46/76.52MB cpu=16786.05ms lag=13.04μs
+    t=25s rps=1742 p50=760μs p99=4800μs errors=0 (0%) rss=160.72MB heap=30.58/74.27MB cpu=8537.02ms lag=10.25μs
+    t=30s rps=1802 p50=693μs p99=4421μs errors=0 (0%) rss=160.72MB heap=16.76/75.77MB cpu=19486.95ms lag=17.25μs
+  concurrency=10
+    t=5s rps=3687 p50=825μs p99=2937μs errors=0 (0%) rss=160.32MB heap=29.56/80.65MB cpu=3244.81ms lag=14.13μs
+    t=10s rps=3695 p50=839μs p99=2960μs errors=0 (0%) rss=163.6MB heap=37.03/79.8MB cpu=31271.5ms lag=9.13μs
+    t=15s rps=4058 p50=765μs p99=2758μs errors=0 (0%) rss=164.23MB heap=41.64/80.08MB cpu=6488.66ms lag=355.58μs
+    t=20s rps=4087 p50=743μs p99=2725μs errors=0 (0%) rss=164.52MB heap=43.6/80.93MB cpu=34523.03ms lag=16.88μs
+    t=25s rps=4159 p50=746μs p99=2615μs errors=0 (0%) rss=164.93MB heap=23.59/82.11MB cpu=9762.43ms lag=11.54μs
+    t=30s rps=4282 p50=721μs p99=2755μs errors=0 (0%) rss=165.52MB heap=51.3/81.62MB cpu=37797.5ms lag=381.42μs
+  concurrency=25
+    t=5s rps=9105 p50=1136μs p99=3264μs errors=0 (0%) rss=172.47MB heap=33.94/85.46MB cpu=4557.1ms lag=687.46μs
+    t=10s rps=9097 p50=1147μs p99=3341μs errors=0 (0%) rss=175.77MB heap=33.05/87.75MB cpu=52103.51ms lag=716.25μs
+    t=15s rps=8996 p50=1145μs p99=3545μs errors=0 (0%) rss=175.81MB heap=65.16/87.49MB cpu=9177.25ms lag=70.71μs
+    t=20s rps=9103 p50=1142μs p99=3414μs errors=0 (0%) rss=175.49MB heap=19.22/87.14MB cpu=56666.04ms lag=20.08μs
+    t=25s rps=9011 p50=1151μs p99=3297μs errors=0 (0%) rss=175.11MB heap=41.56/92.15MB cpu=13695.54ms lag=13.58μs
+    t=30s rps=9095 p50=1147μs p99=3314μs errors=0 (0%) rss=175.04MB heap=50.98/88.65MB cpu=61248.84ms lag=17.29μs
+  concurrency=50
+    t=5s rps=14708 p50=2144μs p99=6123μs errors=0 (0%) rss=183.25MB heap=34.46/96.51MB cpu=6967.22ms lag=854.12μs
+    t=10s rps=14806 p50=2126μs p99=5977μs errors=0 (0%) rss=185.05MB heap=30.51/97.5MB cpu=81858.5ms lag=357.12μs
+    t=15s rps=14860 p50=2125μs p99=5791μs errors=0 (0%) rss=184.93MB heap=52.78/97.72MB cpu=13875.86ms lag=889.96μs
+    t=20s rps=15082 p50=2106μs p99=5545μs errors=0 (0%) rss=185.09MB heap=69.56/98.52MB cpu=88732.75ms lag=397.96μs
+    t=25s rps=14931 p50=2128μs p99=5635μs errors=0 (0%) rss=185.1MB heap=58.4/97.5MB cpu=20785.28ms lag=2476.5μs
+    t=30s rps=13659 p50=2244μs p99=7679μs errors=0 (0%) rss=184.88MB heap=52.37/96.11MB cpu=95678.86ms lag=110.08μs
+  concurrency=100
+    t=5s rps=14632 p50=4583μs p99=11726μs errors=0 (0%) rss=194.01MB heap=86.93/106.67MB cpu=7060.55ms lag=3347.96μs
+    t=10s rps=14639 p50=4487μs p99=11440μs errors=0 (0%) rss=194.5MB heap=56.42/109.19MB cpu=123577.53ms lag=1403.79μs
+    t=15s rps=14525 p50=4561μs p99=11632μs errors=0 (0%) rss=195.21MB heap=51/96.45MB cpu=14133.36ms lag=1295.71μs
+    t=20s rps=14641 p50=4539μs p99=11524μs errors=0 (0%) rss=195.85MB heap=44.36/107.7MB cpu=130626.45ms lag=2046.12μs
+    t=25s rps=14584 p50=4516μs p99=11231μs errors=0 (0%) rss=202.43MB heap=64.91/102.54MB cpu=21182.44ms lag=1445.04μs
+    t=30s rps=14496 p50=4712μs p99=11942μs errors=0 (0%) rss=202.66MB heap=40.27/107.19MB cpu=137645.88ms lag=803.29μs
+  concurrency=200
+    t=5s rps=13452 p50=9963μs p99=26607μs errors=0 (0%) rss=215.41MB heap=38.16/122.27MB cpu=7207.71ms lag=1979.08μs
+    t=10s rps=13335 p50=10121μs p99=26310μs errors=0 (0%) rss=227.09MB heap=64.23/137.6MB cpu=165964.05ms lag=3681.04μs
+    t=15s rps=11874 p50=11074μs p99=32133μs errors=0 (0%) rss=226.98MB heap=98.26/137.25MB cpu=14384.18ms lag=2211.67μs
+    t=20s rps=13129 p50=10230μs p99=27849μs errors=0 (0%) rss=230.12MB heap=39.49/129.78MB cpu=173121.68ms lag=3122.79μs
+    t=25s rps=12049 p50=11389μs p99=28019μs errors=0 (0%) rss=229.35MB heap=44.51/128.75MB cpu=21510.39ms lag=1595.54μs
+    t=30s rps=12826 p50=10544μs p99=27199μs errors=0 (0%) rss=230.96MB heap=66.68/120.68MB cpu=180232.26ms lag=3001.21μs
+  concurrency=500
+    t=5s rps=12008 p50=24542μs p99=71343μs errors=0 (0%) rss=286.92MB heap=47.24/186.78MB cpu=7328.88ms lag=9025.62μs
+    t=10s rps=11989 p50=23116μs p99=69587μs errors=0 (0%) rss=296.34MB heap=128.66/192.75MB cpu=209024.35ms lag=4094.87μs
+    t=15s rps=11362 p50=28321μs p99=74432μs errors=0 (0%) rss=311.36MB heap=66.81/173.2MB cpu=14621.84ms lag=2865.04μs
+    t=20s rps=11512 p50=29172μs p99=76173μs errors=0 (0%) rss=312.09MB heap=155.59/205.56MB cpu=216266.62ms lag=9164.83μs
+    t=25s rps=12052 p50=21684μs p99=64898μs errors=0 (0%) rss=311.54MB heap=164.48/193.98MB cpu=21941.46ms lag=12508.33μs
+    t=30s rps=10996 p50=23123μs p99=80806μs errors=0 (0%) rss=312.05MB heap=138.56/190.34MB cpu=223577.06ms lag=8573.62μs
+  concurrency=1000
+    t=5s rps=10012 p50=49139μs p99=125674μs errors=0 (0%) rss=363.91MB heap=92.92/260.7MB cpu=7348.13ms lag=16911.46μs
+    t=10s rps=11311 p50=22395μs p99=70406μs errors=0 (0%) rss=364.94MB heap=145.58/240.48MB cpu=252803.33ms lag=6769.12μs
+    t=15s rps=11431 p50=23640μs p99=65445μs errors=0 (0%) rss=365.11MB heap=119.01/240.35MB cpu=14789.21ms lag=2855.21μs
+    t=20s rps=11104 p50=30678μs p99=84231μs errors=0 (0%) rss=365.1MB heap=139.59/241.08MB cpu=260130.63ms lag=4956.62μs
+    t=25s rps=10718 p50=35383μs p99=91828μs errors=0 (0%) rss=365MB heap=94.04/227.7MB cpu=22158.29ms lag=5034.25μs
+    t=30s rps=10281 p50=43025μs p99=109559μs errors=0 (0%) rss=365.79MB heap=110.15/249.43MB cpu=267425.61ms lag=16889.71μs
+  concurrency=2000
+    t=5s rps=9259 p50=84534μs p99=189131μs errors=0 (0%) rss=436.23MB heap=85.81/312.83MB cpu=7325.58ms lag=2208.88μs
+    t=10s rps=9195 p50=94969μs p99=210304μs errors=0 (0%) rss=453.81MB heap=246.57/292.32MB cpu=297010.53ms lag=2563.33μs
+    t=15s rps=8504 p50=105171μs p99=237331μs errors=0 (0%) rss=456.14MB heap=308.92/350.61MB cpu=14657.05ms lag=9391μs
+    t=20s rps=9333 p50=104656μs p99=238789μs errors=0 (0%) rss=456.14MB heap=97.24/331.91MB cpu=304393.13ms lag=2036.21μs
+    t=25s rps=9449 p50=112757μs p99=255509μs errors=0 (0%) rss=462.43MB heap=252.36/352.18MB cpu=22071.78ms lag=4383.17μs
+    t=30s rps=8910 p50=123779μs p99=266287μs errors=0 (0%) rss=466.51MB heap=189.67/269.29MB cpu=311642.25ms lag=2354.13μs
+  concurrency=5000
+    t=5s rps=7919 p50=181535μs p99=524457μs errors=0 (0%) rss=773.55MB heap=176.83/524.79MB cpu=7688.43ms lag=3088.62μs
+    t=10s rps=7947 p50=180930μs p99=420669μs errors=243 (0.61%) rss=775.4MB heap=253.47/568.34MB cpu=340964.96ms lag=3658.92μs
+    *** BROKE at concurrency=5000 — 0.61% error rate ***
+{
+  "language": "node",
+  "transport": "streamable-http",
+  "error_threshold_pct": 0.5,
+  "max_sustained_concurrency": 2000,
+  "broke_at_concurrency": 5000,
+  "levels": [
+    {
+      "concurrency": 1,
+      "mix": {
+        "hello": 100
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 1,
+          "requests": 2136,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 427,
+          "p50_us": 506,
+          "p95_us": 1549,
+          "p99_us": 3207,
+          "memory": {
+            "rss_mb": 130.26,
+            "heap_used_mb": 13.11,
+            "heap_total_mb": 50.52,
+            "external_mb": 3.52,
+            "array_buffers_mb": 0.1
+          },
+          "cpu": {
+            "user_ms": 2177.66,
+            "system_ms": 157.92,
+            "total_ms": 2335.58
+          },
+          "event_loop_lag_us": 20.96,
+          "in_flight": 0
+        },
+        {
+          "t": 10,
+          "concurrency": 1,
+          "requests": 2197,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 439,
+          "p50_us": 505,
+          "p95_us": 1451,
+          "p99_us": 2494,
+          "memory": {
+            "rss_mb": 131.71,
+            "heap_used_mb": 26.07,
+            "heap_total_mb": 52.02,
+            "external_mb": 3.6,
+            "array_buffers_mb": 0.18
+          },
+          "cpu": {
+            "user_ms": 2109.38,
+            "system_ms": 145.23,
+            "total_ms": 2254.61
+          },
+          "event_loop_lag_us": 9.37,
+          "in_flight": 0
+        },
+        {
+          "t": 15,
+          "concurrency": 1,
+          "requests": 1876,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 375,
+          "p50_us": 605,
+          "p95_us": 1390,
+          "p99_us": 2983,
+          "memory": {
+            "rss_mb": 132.84,
+            "heap_used_mb": 25.11,
+            "heap_total_mb": 52.02,
+            "external_mb": 3.61,
+            "array_buffers_mb": 0.19
+          },
+          "cpu": {
+            "user_ms": 3940.58,
+            "system_ms": 304.69,
+            "total_ms": 4245.27
+          },
+          "event_loop_lag_us": 15.92,
+          "in_flight": 0
+        },
+        {
+          "t": 20,
+          "concurrency": 1,
+          "requests": 1894,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 379,
+          "p50_us": 545,
+          "p95_us": 1081,
+          "p99_us": 2304,
+          "memory": {
+            "rss_mb": 133.09,
+            "heap_used_mb": 24.78,
+            "heap_total_mb": 52.77,
+            "external_mb": 3.6,
+            "array_buffers_mb": 0.18
+          },
+          "cpu": {
+            "user_ms": 3640.12,
+            "system_ms": 241.18,
+            "total_ms": 3881.3
+          },
+          "event_loop_lag_us": 28.08,
+          "in_flight": 0
+        },
+        {
+          "t": 25,
+          "concurrency": 1,
+          "requests": 2013,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 403,
+          "p50_us": 488,
+          "p95_us": 951,
+          "p99_us": 1534,
+          "memory": {
+            "rss_mb": 134.09,
+            "heap_used_mb": 13.5,
+            "heap_total_mb": 53.02,
+            "external_mb": 3.52,
+            "array_buffers_mb": 0.11
+          },
+          "cpu": {
+            "user_ms": 5459.9,
+            "system_ms": 401.81,
+            "total_ms": 5861.72
+          },
+          "event_loop_lag_us": 17.71,
+          "in_flight": 0
+        },
+        {
+          "t": 30,
+          "concurrency": 1,
+          "requests": 1995,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 399,
+          "p50_us": 489,
+          "p95_us": 949,
+          "p99_us": 1574,
+          "memory": {
+            "rss_mb": 136.59,
+            "heap_used_mb": 38.5,
+            "heap_total_mb": 61.52,
+            "external_mb": 3.67,
+            "array_buffers_mb": 0.25
+          },
+          "cpu": {
+            "user_ms": 5062.86,
+            "system_ms": 337.79,
+            "total_ms": 5400.66
+          },
+          "event_loop_lag_us": 23.04,
+          "in_flight": 0
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 5,
+      "mix": {
+        "hello": 70,
+        "create_invoice": 20,
+        "process_data": 10
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 5,
+          "requests": 9023,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 1805,
+          "p50_us": 688,
+          "p95_us": 1725,
+          "p99_us": 3666,
+          "memory": {
+            "rss_mb": 159.63,
+            "heap_used_mb": 35.29,
+            "heap_total_mb": 76.02,
+            "external_mb": 3.93,
+            "array_buffers_mb": 0.52
+          },
+          "cpu": {
+            "user_ms": 2694.01,
+            "system_ms": 174.51,
+            "total_ms": 2868.52
+          },
+          "event_loop_lag_us": 25.17,
+          "in_flight": 0
+        },
+        {
+          "t": 10,
+          "concurrency": 5,
+          "requests": 8850,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 1770,
+          "p50_us": 679,
+          "p95_us": 2068,
+          "p99_us": 4293,
+          "memory": {
+            "rss_mb": 160.51,
+            "heap_used_mb": 18.18,
+            "heap_total_mb": 76.27,
+            "external_mb": 3.63,
+            "array_buffers_mb": 0.21
+          },
+          "cpu": {
+            "user_ms": 13084.66,
+            "system_ms": 924.52,
+            "total_ms": 14009.18
+          },
+          "event_loop_lag_us": 356.08,
+          "in_flight": 0
+        },
+        {
+          "t": 15,
+          "concurrency": 5,
+          "requests": 8667,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 1733,
+          "p50_us": 777,
+          "p95_us": 1936,
+          "p99_us": 4520,
+          "memory": {
+            "rss_mb": 161.13,
+            "heap_used_mb": 36.74,
+            "heap_total_mb": 76.77,
+            "external_mb": 3.96,
+            "array_buffers_mb": 0.55
+          },
+          "cpu": {
+            "user_ms": 5346.8,
+            "system_ms": 396.46,
+            "total_ms": 5743.26
+          },
+          "event_loop_lag_us": 25.54,
+          "in_flight": 0
+        },
+        {
+          "t": 20,
+          "concurrency": 5,
+          "requests": 8730,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 1746,
+          "p50_us": 734,
+          "p95_us": 1949,
+          "p99_us": 4256,
+          "memory": {
+            "rss_mb": 164.38,
+            "heap_used_mb": 17.46,
+            "heap_total_mb": 76.52,
+            "external_mb": 3.66,
+            "array_buffers_mb": 0.24
+          },
+          "cpu": {
+            "user_ms": 15652.45,
+            "system_ms": 1133.6,
+            "total_ms": 16786.05
+          },
+          "event_loop_lag_us": 13.04,
+          "in_flight": 0
+        },
+        {
+          "t": 25,
+          "concurrency": 5,
+          "requests": 8710,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 1742,
+          "p50_us": 760,
+          "p95_us": 1871,
+          "p99_us": 4800,
+          "memory": {
+            "rss_mb": 160.72,
+            "heap_used_mb": 30.58,
+            "heap_total_mb": 74.27,
+            "external_mb": 3.87,
+            "array_buffers_mb": 0.45
+          },
+          "cpu": {
+            "user_ms": 7966.67,
+            "system_ms": 570.34,
+            "total_ms": 8537.02
+          },
+          "event_loop_lag_us": 10.25,
+          "in_flight": 0
+        },
+        {
+          "t": 30,
+          "concurrency": 5,
+          "requests": 9010,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 1802,
+          "p50_us": 693,
+          "p95_us": 1783,
+          "p99_us": 4421,
+          "memory": {
+            "rss_mb": 160.72,
+            "heap_used_mb": 16.76,
+            "heap_total_mb": 75.77,
+            "external_mb": 3.66,
+            "array_buffers_mb": 0.25
+          },
+          "cpu": {
+            "user_ms": 18177.51,
+            "system_ms": 1309.44,
+            "total_ms": 19486.95
+          },
+          "event_loop_lag_us": 17.25,
+          "in_flight": 0
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 10,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 10,
+          "requests": 18436,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 3687,
+          "p50_us": 825,
+          "p95_us": 1785,
+          "p99_us": 2937,
+          "memory": {
+            "rss_mb": 160.32,
+            "heap_used_mb": 29.56,
+            "heap_total_mb": 80.65,
+            "external_mb": 3.93,
+            "array_buffers_mb": 0.51
+          },
+          "cpu": {
+            "user_ms": 3046.81,
+            "system_ms": 198,
+            "total_ms": 3244.81
+          },
+          "event_loop_lag_us": 14.13,
+          "in_flight": 0
+        },
+        {
+          "t": 10,
+          "concurrency": 10,
+          "requests": 18476,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 3695,
+          "p50_us": 839,
+          "p95_us": 1796,
+          "p99_us": 2960,
+          "memory": {
+            "rss_mb": 163.6,
+            "heap_used_mb": 37.03,
+            "heap_total_mb": 79.8,
+            "external_mb": 4.15,
+            "array_buffers_mb": 0.73
+          },
+          "cpu": {
+            "user_ms": 29159.18,
+            "system_ms": 2112.32,
+            "total_ms": 31271.5
+          },
+          "event_loop_lag_us": 9.13,
+          "in_flight": 0
+        },
+        {
+          "t": 15,
+          "concurrency": 10,
+          "requests": 20288,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4058,
+          "p50_us": 765,
+          "p95_us": 1761,
+          "p99_us": 2758,
+          "memory": {
+            "rss_mb": 164.23,
+            "heap_used_mb": 41.64,
+            "heap_total_mb": 80.08,
+            "external_mb": 4.15,
+            "array_buffers_mb": 0.73
+          },
+          "cpu": {
+            "user_ms": 6080.9,
+            "system_ms": 407.76,
+            "total_ms": 6488.66
+          },
+          "event_loop_lag_us": 355.58,
+          "in_flight": 0
+        },
+        {
+          "t": 20,
+          "concurrency": 10,
+          "requests": 20437,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4087,
+          "p50_us": 743,
+          "p95_us": 1664,
+          "p99_us": 2725,
+          "memory": {
+            "rss_mb": 164.52,
+            "heap_used_mb": 43.6,
+            "heap_total_mb": 80.93,
+            "external_mb": 4.53,
+            "array_buffers_mb": 0.86
+          },
+          "cpu": {
+            "user_ms": 32218.99,
+            "system_ms": 2304.03,
+            "total_ms": 34523.03
+          },
+          "event_loop_lag_us": 16.88,
+          "in_flight": 0
+        },
+        {
+          "t": 25,
+          "concurrency": 10,
+          "requests": 20797,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4159,
+          "p50_us": 746,
+          "p95_us": 1731,
+          "p99_us": 2615,
+          "memory": {
+            "rss_mb": 164.93,
+            "heap_used_mb": 23.59,
+            "heap_total_mb": 82.11,
+            "external_mb": 3.71,
+            "array_buffers_mb": 0.29
+          },
+          "cpu": {
+            "user_ms": 9162.36,
+            "system_ms": 600.08,
+            "total_ms": 9762.43
+          },
+          "event_loop_lag_us": 11.54,
+          "in_flight": 0
+        },
+        {
+          "t": 30,
+          "concurrency": 10,
+          "requests": 21409,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4282,
+          "p50_us": 721,
+          "p95_us": 1714,
+          "p99_us": 2755,
+          "memory": {
+            "rss_mb": 165.52,
+            "heap_used_mb": 51.3,
+            "heap_total_mb": 81.62,
+            "external_mb": 4.34,
+            "array_buffers_mb": 0.92
+          },
+          "cpu": {
+            "user_ms": 35289.83,
+            "system_ms": 2507.68,
+            "total_ms": 37797.5
+          },
+          "event_loop_lag_us": 381.42,
+          "in_flight": 0
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 25,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 25,
+          "requests": 45523,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9105,
+          "p50_us": 1136,
+          "p95_us": 2368,
+          "p99_us": 3264,
+          "memory": {
+            "rss_mb": 172.47,
+            "heap_used_mb": 33.94,
+            "heap_total_mb": 85.46,
+            "external_mb": 4.15,
+            "array_buffers_mb": 0.42
+          },
+          "cpu": {
+            "user_ms": 4264.9,
+            "system_ms": 292.2,
+            "total_ms": 4557.1
+          },
+          "event_loop_lag_us": 687.46,
+          "in_flight": 2
+        },
+        {
+          "t": 10,
+          "concurrency": 25,
+          "requests": 45484,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9097,
+          "p50_us": 1147,
+          "p95_us": 2350,
+          "p99_us": 3341,
+          "memory": {
+            "rss_mb": 175.77,
+            "heap_used_mb": 33.05,
+            "heap_total_mb": 87.75,
+            "external_mb": 3.77,
+            "array_buffers_mb": 0.35
+          },
+          "cpu": {
+            "user_ms": 48682.35,
+            "system_ms": 3421.16,
+            "total_ms": 52103.51
+          },
+          "event_loop_lag_us": 716.25,
+          "in_flight": 0
+        },
+        {
+          "t": 15,
+          "concurrency": 25,
+          "requests": 44978,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 8996,
+          "p50_us": 1145,
+          "p95_us": 2451,
+          "p99_us": 3545,
+          "memory": {
+            "rss_mb": 175.81,
+            "heap_used_mb": 65.16,
+            "heap_total_mb": 87.49,
+            "external_mb": 4.78,
+            "array_buffers_mb": 1.09
+          },
+          "cpu": {
+            "user_ms": 8609.41,
+            "system_ms": 567.83,
+            "total_ms": 9177.25
+          },
+          "event_loop_lag_us": 70.71,
+          "in_flight": 0
+        },
+        {
+          "t": 20,
+          "concurrency": 25,
+          "requests": 45516,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9103,
+          "p50_us": 1142,
+          "p95_us": 2392,
+          "p99_us": 3414,
+          "memory": {
+            "rss_mb": 175.49,
+            "heap_used_mb": 19.22,
+            "heap_total_mb": 87.14,
+            "external_mb": 3.81,
+            "array_buffers_mb": 0.2
+          },
+          "cpu": {
+            "user_ms": 52978.54,
+            "system_ms": 3687.5,
+            "total_ms": 56666.04
+          },
+          "event_loop_lag_us": 20.08,
+          "in_flight": 0
+        },
+        {
+          "t": 25,
+          "concurrency": 25,
+          "requests": 45055,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9011,
+          "p50_us": 1151,
+          "p95_us": 2334,
+          "p99_us": 3297,
+          "memory": {
+            "rss_mb": 175.11,
+            "heap_used_mb": 41.56,
+            "heap_total_mb": 92.15,
+            "external_mb": 4.34,
+            "array_buffers_mb": 0.82
+          },
+          "cpu": {
+            "user_ms": 12840.75,
+            "system_ms": 854.79,
+            "total_ms": 13695.54
+          },
+          "event_loop_lag_us": 13.58,
+          "in_flight": 0
+        },
+        {
+          "t": 30,
+          "concurrency": 25,
+          "requests": 45473,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9095,
+          "p50_us": 1147,
+          "p95_us": 2393,
+          "p99_us": 3314,
+          "memory": {
+            "rss_mb": 175.04,
+            "heap_used_mb": 50.98,
+            "heap_total_mb": 88.65,
+            "external_mb": 4.57,
+            "array_buffers_mb": 0.9
+          },
+          "cpu": {
+            "user_ms": 57268.62,
+            "system_ms": 3980.22,
+            "total_ms": 61248.84
+          },
+          "event_loop_lag_us": 17.29,
+          "in_flight": 0
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 50,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 50,
+          "requests": 73542,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14708,
+          "p50_us": 2144,
+          "p95_us": 4655,
+          "p99_us": 6123,
+          "memory": {
+            "rss_mb": 183.25,
+            "heap_used_mb": 34.46,
+            "heap_total_mb": 96.51,
+            "external_mb": 4.01,
+            "array_buffers_mb": 0.44
+          },
+          "cpu": {
+            "user_ms": 6614.89,
+            "system_ms": 352.34,
+            "total_ms": 6967.22
+          },
+          "event_loop_lag_us": 854.12,
+          "in_flight": 1
+        },
+        {
+          "t": 10,
+          "concurrency": 50,
+          "requests": 74031,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14806,
+          "p50_us": 2126,
+          "p95_us": 4526,
+          "p99_us": 5977,
+          "memory": {
+            "rss_mb": 185.05,
+            "heap_used_mb": 30.51,
+            "heap_total_mb": 97.5,
+            "external_mb": 3.89,
+            "array_buffers_mb": 0.4
+          },
+          "cpu": {
+            "user_ms": 76666.41,
+            "system_ms": 5192.09,
+            "total_ms": 81858.5
+          },
+          "event_loop_lag_us": 357.12,
+          "in_flight": 2
+        },
+        {
+          "t": 15,
+          "concurrency": 50,
+          "requests": 74298,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14860,
+          "p50_us": 2125,
+          "p95_us": 4500,
+          "p99_us": 5791,
+          "memory": {
+            "rss_mb": 184.93,
+            "heap_used_mb": 52.78,
+            "heap_total_mb": 97.72,
+            "external_mb": 4.39,
+            "array_buffers_mb": 0.95
+          },
+          "cpu": {
+            "user_ms": 13169.14,
+            "system_ms": 706.72,
+            "total_ms": 13875.86
+          },
+          "event_loop_lag_us": 889.96,
+          "in_flight": 1
+        },
+        {
+          "t": 20,
+          "concurrency": 50,
+          "requests": 75408,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 15082,
+          "p50_us": 2106,
+          "p95_us": 4429,
+          "p99_us": 5545,
+          "memory": {
+            "rss_mb": 185.09,
+            "heap_used_mb": 69.56,
+            "heap_total_mb": 98.52,
+            "external_mb": 4.79,
+            "array_buffers_mb": 1.3
+          },
+          "cpu": {
+            "user_ms": 83215.21,
+            "system_ms": 5517.55,
+            "total_ms": 88732.75
+          },
+          "event_loop_lag_us": 397.96,
+          "in_flight": 2
+        },
+        {
+          "t": 25,
+          "concurrency": 50,
+          "requests": 74653,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14931,
+          "p50_us": 2128,
+          "p95_us": 4484,
+          "p99_us": 5635,
+          "memory": {
+            "rss_mb": 185.1,
+            "heap_used_mb": 58.4,
+            "heap_total_mb": 97.5,
+            "external_mb": 4.6,
+            "array_buffers_mb": 1
+          },
+          "cpu": {
+            "user_ms": 19661.5,
+            "system_ms": 1123.79,
+            "total_ms": 20785.28
+          },
+          "event_loop_lag_us": 2476.5,
+          "in_flight": 5
+        },
+        {
+          "t": 30,
+          "concurrency": 50,
+          "requests": 68296,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13659,
+          "p50_us": 2244,
+          "p95_us": 5121,
+          "p99_us": 7679,
+          "memory": {
+            "rss_mb": 184.88,
+            "heap_used_mb": 52.37,
+            "heap_total_mb": 96.11,
+            "external_mb": 4.43,
+            "array_buffers_mb": 0.83
+          },
+          "cpu": {
+            "user_ms": 89758.24,
+            "system_ms": 5920.62,
+            "total_ms": 95678.86
+          },
+          "event_loop_lag_us": 110.08,
+          "in_flight": 0
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 100,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 100,
+          "requests": 73158,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14632,
+          "p50_us": 4583,
+          "p95_us": 9548,
+          "p99_us": 11726,
+          "memory": {
+            "rss_mb": 194.01,
+            "heap_used_mb": 86.93,
+            "heap_total_mb": 106.67,
+            "external_mb": 5.29,
+            "array_buffers_mb": 1.66
+          },
+          "cpu": {
+            "user_ms": 6711.11,
+            "system_ms": 349.44,
+            "total_ms": 7060.55
+          },
+          "event_loop_lag_us": 3347.96,
+          "in_flight": 4
+        },
+        {
+          "t": 10,
+          "concurrency": 100,
+          "requests": 73193,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14639,
+          "p50_us": 4487,
+          "p95_us": 9496,
+          "p99_us": 11440,
+          "memory": {
+            "rss_mb": 194.5,
+            "heap_used_mb": 56.42,
+            "heap_total_mb": 109.19,
+            "external_mb": 4.52,
+            "array_buffers_mb": 1.04
+          },
+          "cpu": {
+            "user_ms": 116168.63,
+            "system_ms": 7408.89,
+            "total_ms": 123577.53
+          },
+          "event_loop_lag_us": 1403.79,
+          "in_flight": 10
+        },
+        {
+          "t": 15,
+          "concurrency": 100,
+          "requests": 72624,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14525,
+          "p50_us": 4561,
+          "p95_us": 9595,
+          "p99_us": 11632,
+          "memory": {
+            "rss_mb": 195.21,
+            "heap_used_mb": 51,
+            "heap_total_mb": 96.45,
+            "external_mb": 4.37,
+            "array_buffers_mb": 0.91
+          },
+          "cpu": {
+            "user_ms": 13404.95,
+            "system_ms": 728.41,
+            "total_ms": 14133.36
+          },
+          "event_loop_lag_us": 1295.71,
+          "in_flight": 4
+        },
+        {
+          "t": 20,
+          "concurrency": 100,
+          "requests": 73204,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14641,
+          "p50_us": 4539,
+          "p95_us": 9409,
+          "p99_us": 11524,
+          "memory": {
+            "rss_mb": 195.85,
+            "heap_used_mb": 44.36,
+            "heap_total_mb": 107.7,
+            "external_mb": 4.24,
+            "array_buffers_mb": 0.61
+          },
+          "cpu": {
+            "user_ms": 122832.24,
+            "system_ms": 7794.21,
+            "total_ms": 130626.45
+          },
+          "event_loop_lag_us": 2046.12,
+          "in_flight": 8
+        },
+        {
+          "t": 25,
+          "concurrency": 100,
+          "requests": 72921,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14584,
+          "p50_us": 4516,
+          "p95_us": 9510,
+          "p99_us": 11231,
+          "memory": {
+            "rss_mb": 202.43,
+            "heap_used_mb": 64.91,
+            "heap_total_mb": 102.54,
+            "external_mb": 4.86,
+            "array_buffers_mb": 1.44
+          },
+          "cpu": {
+            "user_ms": 20084.07,
+            "system_ms": 1098.37,
+            "total_ms": 21182.44
+          },
+          "event_loop_lag_us": 1445.04,
+          "in_flight": 7
+        },
+        {
+          "t": 30,
+          "concurrency": 100,
+          "requests": 72482,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14496,
+          "p50_us": 4712,
+          "p95_us": 9673,
+          "p99_us": 11942,
+          "memory": {
+            "rss_mb": 202.66,
+            "heap_used_mb": 40.27,
+            "heap_total_mb": 107.19,
+            "external_mb": 4.2,
+            "array_buffers_mb": 0.66
+          },
+          "cpu": {
+            "user_ms": 129500.25,
+            "system_ms": 8145.63,
+            "total_ms": 137645.88
+          },
+          "event_loop_lag_us": 803.29,
+          "in_flight": 7
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 200,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 200,
+          "requests": 67260,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13452,
+          "p50_us": 9963,
+          "p95_us": 20175,
+          "p99_us": 26607,
+          "memory": {
+            "rss_mb": 215.41,
+            "heap_used_mb": 38.16,
+            "heap_total_mb": 122.27,
+            "external_mb": 4.28,
+            "array_buffers_mb": 0.64
+          },
+          "cpu": {
+            "user_ms": 6800.38,
+            "system_ms": 407.33,
+            "total_ms": 7207.71
+          },
+          "event_loop_lag_us": 1979.08,
+          "in_flight": 10
+        },
+        {
+          "t": 10,
+          "concurrency": 200,
+          "requests": 66676,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13335,
+          "p50_us": 10121,
+          "p95_us": 20209,
+          "p99_us": 26310,
+          "memory": {
+            "rss_mb": 227.09,
+            "heap_used_mb": 64.23,
+            "heap_total_mb": 137.6,
+            "external_mb": 5.01,
+            "array_buffers_mb": 1.49
+          },
+          "cpu": {
+            "user_ms": 156321.7,
+            "system_ms": 9642.34,
+            "total_ms": 165964.05
+          },
+          "event_loop_lag_us": 3681.04,
+          "in_flight": 10
+        },
+        {
+          "t": 15,
+          "concurrency": 200,
+          "requests": 59370,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11874,
+          "p50_us": 11074,
+          "p95_us": 22242,
+          "p99_us": 32133,
+          "memory": {
+            "rss_mb": 226.98,
+            "heap_used_mb": 98.26,
+            "heap_total_mb": 137.25,
+            "external_mb": 6.19,
+            "array_buffers_mb": 2.52
+          },
+          "cpu": {
+            "user_ms": 13568.99,
+            "system_ms": 815.19,
+            "total_ms": 14384.18
+          },
+          "event_loop_lag_us": 2211.67,
+          "in_flight": 9
+        },
+        {
+          "t": 20,
+          "concurrency": 200,
+          "requests": 65646,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13129,
+          "p50_us": 10230,
+          "p95_us": 20380,
+          "p99_us": 27849,
+          "memory": {
+            "rss_mb": 230.12,
+            "heap_used_mb": 39.49,
+            "heap_total_mb": 129.78,
+            "external_mb": 4.22,
+            "array_buffers_mb": 0.68
+          },
+          "cpu": {
+            "user_ms": 163093.34,
+            "system_ms": 10028.34,
+            "total_ms": 173121.68
+          },
+          "event_loop_lag_us": 3122.79,
+          "in_flight": 6
+        },
+        {
+          "t": 25,
+          "concurrency": 200,
+          "requests": 60246,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12049,
+          "p50_us": 11389,
+          "p95_us": 22050,
+          "p99_us": 28019,
+          "memory": {
+            "rss_mb": 229.35,
+            "heap_used_mb": 44.51,
+            "heap_total_mb": 128.75,
+            "external_mb": 4.47,
+            "array_buffers_mb": 0.94
+          },
+          "cpu": {
+            "user_ms": 20246.08,
+            "system_ms": 1264.31,
+            "total_ms": 21510.39
+          },
+          "event_loop_lag_us": 1595.54,
+          "in_flight": 7
+        },
+        {
+          "t": 30,
+          "concurrency": 200,
+          "requests": 64129,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12826,
+          "p50_us": 10544,
+          "p95_us": 20532,
+          "p99_us": 27199,
+          "memory": {
+            "rss_mb": 230.96,
+            "heap_used_mb": 66.68,
+            "heap_total_mb": 120.68,
+            "external_mb": 5.19,
+            "array_buffers_mb": 1.65
+          },
+          "cpu": {
+            "user_ms": 169846.78,
+            "system_ms": 10385.48,
+            "total_ms": 180232.26
+          },
+          "event_loop_lag_us": 3001.21,
+          "in_flight": 12
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 500,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 500,
+          "requests": 60042,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12008,
+          "p50_us": 24542,
+          "p95_us": 44957,
+          "p99_us": 71343,
+          "memory": {
+            "rss_mb": 286.92,
+            "heap_used_mb": 47.24,
+            "heap_total_mb": 186.78,
+            "external_mb": 4.6,
+            "array_buffers_mb": 0.88
+          },
+          "cpu": {
+            "user_ms": 6900.17,
+            "system_ms": 428.72,
+            "total_ms": 7328.88
+          },
+          "event_loop_lag_us": 9025.62,
+          "in_flight": 28
+        },
+        {
+          "t": 10,
+          "concurrency": 500,
+          "requests": 59943,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11989,
+          "p50_us": 23116,
+          "p95_us": 42198,
+          "p99_us": 69587,
+          "memory": {
+            "rss_mb": 296.34,
+            "heap_used_mb": 128.66,
+            "heap_total_mb": 192.75,
+            "external_mb": 7.6,
+            "array_buffers_mb": 4.08
+          },
+          "cpu": {
+            "user_ms": 196999.17,
+            "system_ms": 12025.18,
+            "total_ms": 209024.35
+          },
+          "event_loop_lag_us": 4094.87,
+          "in_flight": 45
+        },
+        {
+          "t": 15,
+          "concurrency": 500,
+          "requests": 56809,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11362,
+          "p50_us": 28321,
+          "p95_us": 52086,
+          "p99_us": 74432,
+          "memory": {
+            "rss_mb": 311.36,
+            "heap_used_mb": 66.81,
+            "heap_total_mb": 173.2,
+            "external_mb": 5.32,
+            "array_buffers_mb": 1.73
+          },
+          "cpu": {
+            "user_ms": 13784.37,
+            "system_ms": 837.47,
+            "total_ms": 14621.84
+          },
+          "event_loop_lag_us": 2865.04,
+          "in_flight": 24
+        },
+        {
+          "t": 20,
+          "concurrency": 500,
+          "requests": 57560,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11512,
+          "p50_us": 29172,
+          "p95_us": 51144,
+          "p99_us": 76173,
+          "memory": {
+            "rss_mb": 312.09,
+            "heap_used_mb": 155.59,
+            "heap_total_mb": 205.56,
+            "external_mb": 8.19,
+            "array_buffers_mb": 4.71
+          },
+          "cpu": {
+            "user_ms": 203836.3,
+            "system_ms": 12430.32,
+            "total_ms": 216266.62
+          },
+          "event_loop_lag_us": 9164.83,
+          "in_flight": 21
+        },
+        {
+          "t": 25,
+          "concurrency": 500,
+          "requests": 60262,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12052,
+          "p50_us": 21684,
+          "p95_us": 37748,
+          "p99_us": 64898,
+          "memory": {
+            "rss_mb": 311.54,
+            "heap_used_mb": 164.48,
+            "heap_total_mb": 193.98,
+            "external_mb": 8.78,
+            "array_buffers_mb": 5.03
+          },
+          "cpu": {
+            "user_ms": 20668.24,
+            "system_ms": 1273.22,
+            "total_ms": 21941.46
+          },
+          "event_loop_lag_us": 12508.33,
+          "in_flight": 93
+        },
+        {
+          "t": 30,
+          "concurrency": 500,
+          "requests": 54980,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10996,
+          "p50_us": 23123,
+          "p95_us": 48449,
+          "p99_us": 80806,
+          "memory": {
+            "rss_mb": 312.05,
+            "heap_used_mb": 138.56,
+            "heap_total_mb": 190.34,
+            "external_mb": 7.66,
+            "array_buffers_mb": 4.18
+          },
+          "cpu": {
+            "user_ms": 210742.34,
+            "system_ms": 12834.72,
+            "total_ms": 223577.06
+          },
+          "event_loop_lag_us": 8573.62,
+          "in_flight": 65
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 1000,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 1000,
+          "requests": 50060,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10012,
+          "p50_us": 49139,
+          "p95_us": 91290,
+          "p99_us": 125674,
+          "memory": {
+            "rss_mb": 363.91,
+            "heap_used_mb": 92.92,
+            "heap_total_mb": 260.7,
+            "external_mb": 6.09,
+            "array_buffers_mb": 2.44
+          },
+          "cpu": {
+            "user_ms": 6922.6,
+            "system_ms": 425.53,
+            "total_ms": 7348.13
+          },
+          "event_loop_lag_us": 16911.46,
+          "in_flight": 263
+        },
+        {
+          "t": 10,
+          "concurrency": 1000,
+          "requests": 56554,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11311,
+          "p50_us": 22395,
+          "p95_us": 41430,
+          "p99_us": 70406,
+          "memory": {
+            "rss_mb": 364.94,
+            "heap_used_mb": 145.58,
+            "heap_total_mb": 240.48,
+            "external_mb": 7.99,
+            "array_buffers_mb": 4.11
+          },
+          "cpu": {
+            "user_ms": 238282.37,
+            "system_ms": 14520.95,
+            "total_ms": 252803.33
+          },
+          "event_loop_lag_us": 6769.12,
+          "in_flight": 606
+        },
+        {
+          "t": 15,
+          "concurrency": 1000,
+          "requests": 57155,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11431,
+          "p50_us": 23640,
+          "p95_us": 42357,
+          "p99_us": 65445,
+          "memory": {
+            "rss_mb": 365.11,
+            "heap_used_mb": 119.01,
+            "heap_total_mb": 240.35,
+            "external_mb": 7.1,
+            "array_buffers_mb": 3.41
+          },
+          "cpu": {
+            "user_ms": 13956.62,
+            "system_ms": 832.59,
+            "total_ms": 14789.21
+          },
+          "event_loop_lag_us": 2855.21,
+          "in_flight": 607
+        },
+        {
+          "t": 20,
+          "concurrency": 1000,
+          "requests": 55521,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11104,
+          "p50_us": 30678,
+          "p95_us": 54414,
+          "p99_us": 84231,
+          "memory": {
+            "rss_mb": 365.1,
+            "heap_used_mb": 139.59,
+            "heap_total_mb": 241.08,
+            "external_mb": 7.8,
+            "array_buffers_mb": 4.11
+          },
+          "cpu": {
+            "user_ms": 245222.65,
+            "system_ms": 14907.98,
+            "total_ms": 260130.63
+          },
+          "event_loop_lag_us": 4956.62,
+          "in_flight": 441
+        },
+        {
+          "t": 25,
+          "concurrency": 1000,
+          "requests": 53589,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10718,
+          "p50_us": 35383,
+          "p95_us": 62322,
+          "p99_us": 91828,
+          "memory": {
+            "rss_mb": 365,
+            "heap_used_mb": 94.04,
+            "heap_total_mb": 227.7,
+            "external_mb": 5.71,
+            "array_buffers_mb": 2.17
+          },
+          "cpu": {
+            "user_ms": 20901.6,
+            "system_ms": 1256.69,
+            "total_ms": 22158.29
+          },
+          "event_loop_lag_us": 5034.25,
+          "in_flight": 449
+        },
+        {
+          "t": 30,
+          "concurrency": 1000,
+          "requests": 51405,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10281,
+          "p50_us": 43025,
+          "p95_us": 76717,
+          "p99_us": 109559,
+          "memory": {
+            "rss_mb": 365.79,
+            "heap_used_mb": 110.15,
+            "heap_total_mb": 249.43,
+            "external_mb": 6.44,
+            "array_buffers_mb": 2.9
+          },
+          "cpu": {
+            "user_ms": 252085.74,
+            "system_ms": 15339.87,
+            "total_ms": 267425.61
+          },
+          "event_loop_lag_us": 16889.71,
+          "in_flight": 381
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 2000,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 2000,
+          "requests": 46296,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9259,
+          "p50_us": 84534,
+          "p95_us": 154665,
+          "p99_us": 189131,
+          "memory": {
+            "rss_mb": 436.23,
+            "heap_used_mb": 85.81,
+            "heap_total_mb": 312.83,
+            "external_mb": 5.73,
+            "array_buffers_mb": 1.97
+          },
+          "cpu": {
+            "user_ms": 6907.31,
+            "system_ms": 418.27,
+            "total_ms": 7325.58
+          },
+          "event_loop_lag_us": 2208.88,
+          "in_flight": 799
+        },
+        {
+          "t": 10,
+          "concurrency": 2000,
+          "requests": 45973,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9195,
+          "p50_us": 94969,
+          "p95_us": 150785,
+          "p99_us": 210304,
+          "memory": {
+            "rss_mb": 453.81,
+            "heap_used_mb": 246.57,
+            "heap_total_mb": 292.32,
+            "external_mb": 11.28,
+            "array_buffers_mb": 7.48
+          },
+          "cpu": {
+            "user_ms": 280023.52,
+            "system_ms": 16987.02,
+            "total_ms": 297010.53
+          },
+          "event_loop_lag_us": 2563.33,
+          "in_flight": 731
+        },
+        {
+          "t": 15,
+          "concurrency": 2000,
+          "requests": 42518,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 8504,
+          "p50_us": 105171,
+          "p95_us": 181290,
+          "p99_us": 237331,
+          "memory": {
+            "rss_mb": 456.14,
+            "heap_used_mb": 308.92,
+            "heap_total_mb": 350.61,
+            "external_mb": 13.69,
+            "array_buffers_mb": 10.15
+          },
+          "cpu": {
+            "user_ms": 13886.61,
+            "system_ms": 770.44,
+            "total_ms": 14657.05
+          },
+          "event_loop_lag_us": 9391,
+          "in_flight": 678
+        },
+        {
+          "t": 20,
+          "concurrency": 2000,
+          "requests": 46666,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9333,
+          "p50_us": 104656,
+          "p95_us": 190579,
+          "p99_us": 238789,
+          "memory": {
+            "rss_mb": 456.14,
+            "heap_used_mb": 97.24,
+            "heap_total_mb": 331.91,
+            "external_mb": 6.26,
+            "array_buffers_mb": 2.4
+          },
+          "cpu": {
+            "user_ms": 287030.8,
+            "system_ms": 17362.33,
+            "total_ms": 304393.13
+          },
+          "event_loop_lag_us": 2036.21,
+          "in_flight": 586
+        },
+        {
+          "t": 25,
+          "concurrency": 2000,
+          "requests": 47244,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9449,
+          "p50_us": 112757,
+          "p95_us": 201646,
+          "p99_us": 255509,
+          "memory": {
+            "rss_mb": 462.43,
+            "heap_used_mb": 252.36,
+            "heap_total_mb": 352.18,
+            "external_mb": 11.26,
+            "array_buffers_mb": 7.72
+          },
+          "cpu": {
+            "user_ms": 20956.54,
+            "system_ms": 1115.24,
+            "total_ms": 22071.78
+          },
+          "event_loop_lag_us": 4383.17,
+          "in_flight": 496
+        },
+        {
+          "t": 30,
+          "concurrency": 2000,
+          "requests": 44549,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 8910,
+          "p50_us": 123779,
+          "p95_us": 189245,
+          "p99_us": 266287,
+          "memory": {
+            "rss_mb": 466.51,
+            "heap_used_mb": 189.67,
+            "heap_total_mb": 269.29,
+            "external_mb": 9.17,
+            "array_buffers_mb": 5.37
+          },
+          "cpu": {
+            "user_ms": 293932.13,
+            "system_ms": 17710.12,
+            "total_ms": 311642.25
+          },
+          "event_loop_lag_us": 2354.13,
+          "in_flight": 381
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 5000,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 5000,
+          "requests": 39597,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 7919,
+          "p50_us": 181535,
+          "p95_us": 506017,
+          "p99_us": 524457,
+          "memory": {
+            "rss_mb": 773.55,
+            "heap_used_mb": 176.83,
+            "heap_total_mb": 524.79,
+            "external_mb": 8.05,
+            "array_buffers_mb": 4.26
+          },
+          "cpu": {
+            "user_ms": 7121.13,
+            "system_ms": 567.3,
+            "total_ms": 7688.43
+          },
+          "event_loop_lag_us": 3088.62,
+          "in_flight": 2885
+        },
+        {
+          "t": 10,
+          "concurrency": 5000,
+          "requests": 39733,
+          "errors": 243,
+          "error_rate_pct": 0.61,
+          "rps": 7947,
+          "p50_us": 180930,
+          "p95_us": 281986,
+          "p99_us": 420669,
+          "memory": {
+            "rss_mb": 775.4,
+            "heap_used_mb": 253.47,
+            "heap_total_mb": 568.34,
+            "external_mb": 11.73,
+            "array_buffers_mb": 7.57
+          },
+          "cpu": {
+            "user_ms": 321783.58,
+            "system_ms": 19181.38,
+            "total_ms": 340964.96
+          },
+          "event_loop_lag_us": 3658.92,
+          "in_flight": 2876
+        }
+      ],
+      "broke": true
+    }
+  ]
+}
