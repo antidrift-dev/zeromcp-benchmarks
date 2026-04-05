@@ -1,0 +1,8 @@
+{
+  "name": "chaos/php-official",
+  "description": "Chaos test server using official MCP PHP SDK",
+  "require": {
+    "php": ">=8.3",
+    "mcp/sdk": "*"
+  }
+}

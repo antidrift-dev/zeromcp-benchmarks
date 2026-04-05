@@ -46,14 +46,18 @@ echo ""
 # --- Phase 1: Chaos test official SDKs ---
 echo "=== Phase 1: Chaos Monkey — Official SDKs ==="
 
-# Node.js official
-echo "Building official Node.js chaos server..."
-docker build -t zeromcp-chaos-official-node \
-  -f "$BENCH_ROOT/overnight/chaos-official/node/Dockerfile" "$PARENT" 2>&1 | tail -3
-
-echo "Running chaos against official Node.js SDK..."
-docker run --rm zeromcp-chaos-official-node 2>/dev/null > "$RESULTS/chaos-official-node.json" || true
-echo "  Done."
+for lang in node python go java ruby php rust kotlin swift csharp; do
+  DF="$BENCH_ROOT/overnight/chaos-official/$lang/Dockerfile"
+  if [ ! -f "$DF" ]; then
+    echo "  $lang: skipped (no Dockerfile)"
+    continue
+  fi
+  echo "  Building official $lang chaos server..."
+  docker build -t "zeromcp-chaos-official-$lang" -f "$DF" "$PARENT" 2>&1 | tail -2
+  echo "  Running chaos against official $lang SDK..."
+  docker run --rm "zeromcp-chaos-official-$lang" 2>/dev/null > "$RESULTS/chaos-official-$lang.json" || true
+  echo "  Done."
+done
 
 echo ""
 
