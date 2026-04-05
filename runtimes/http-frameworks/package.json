@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "express": "^4.21.0",
+    "fastify": "^5.2.0",
+    "hono": "^4.6.0",
+    "@hono/node-server": "^1.13.0"
+  }
+}
