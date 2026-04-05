@@ -58,12 +58,32 @@ function percentile(sorted, p) {
 
 function round(v) { return Math.round(v * 100) / 100; }
 
-function getMemoryMB(pid) {
-  try {
-    const s = readFileSync(`/proc/${pid}/status`, 'utf8');
-    const m = s.match(/VmRSS:\s+(\d+)\s+kB/);
-    return m ? Math.round(parseInt(m[1]) / 1024 * 10) / 10 : null;
-  } catch { return null; }
+function getMemory() {
+  const mem = process.memoryUsage();
+  return {
+    rss_mb: round(mem.rss / 1024 / 1024),
+    heap_used_mb: round(mem.heapUsed / 1024 / 1024),
+    heap_total_mb: round(mem.heapTotal / 1024 / 1024),
+    external_mb: round(mem.external / 1024 / 1024),
+    array_buffers_mb: round(mem.arrayBuffers / 1024 / 1024),
+  };
+}
+
+function getCpuUsage(prev) {
+  const cpu = process.cpuUsage(prev);
+  return {
+    user_ms: round(cpu.user / 1000),
+    system_ms: round(cpu.system / 1000),
+    total_ms: round((cpu.user + cpu.system) / 1000),
+    raw: cpu,
+  };
+}
+
+function measureEventLoopLag() {
+  return new Promise(resolve => {
+    const start = performance.now();
+    setImmediate(() => resolve(round((performance.now() - start) * 1000))); // microseconds
+  });
 }
 
 async function mcpRequest(id, tool, args) {
@@ -137,6 +157,7 @@ async function main() {
     const snapshots = [];
     let latencies = [];
     let errors = 0;
+    let cpuPrev = process.cpuUsage();
     const levelStart = performance.now();
     let nextSnapshot = INTERVAL * 1000;
 
@@ -165,6 +186,9 @@ async function main() {
       if (elapsed >= nextSnapshot) {
         const allMs = latencies.map(l => l).sort((a, b) => a - b);
         const errorRate = latencies.length > 0 ? round(errors / latencies.length * 100) : 0;
+        const mem = getMemory();
+        const cpu = getCpuUsage(cpuPrev);
+        const eventLoopLag = await measureEventLoopLag();
 
         const snap = {
           t: Math.round(elapsed / 1000),
@@ -176,11 +200,19 @@ async function main() {
           p50_us: Math.round(percentile(allMs, 50) * 1000),
           p95_us: Math.round(percentile(allMs, 95) * 1000),
           p99_us: Math.round(percentile(allMs, 99) * 1000),
-          memory_mb: getMemoryMB(process.pid),
+          memory: mem,
+          cpu: {
+            user_ms: cpu.user_ms,
+            system_ms: cpu.system_ms,
+            total_ms: cpu.total_ms,
+          },
+          event_loop_lag_us: eventLoopLag,
+          in_flight: inFlight.size,
         };
         snapshots.push(snap);
+        cpuPrev = cpu.raw;
 
-        console.error(`    t=${snap.t}s rps=${snap.rps} p50=${snap.p50_us}μs p99=${snap.p99_us}μs errors=${errors} (${errorRate}%) mem=${snap.memory_mb}MB`);
+        console.error(`    t=${snap.t}s rps=${snap.rps} p50=${snap.p50_us}μs p99=${snap.p99_us}μs errors=${errors} (${errorRate}%) rss=${mem.rss_mb}MB heap=${mem.heap_used_mb}/${mem.heap_total_mb}MB cpu=${cpu.total_ms}ms lag=${eventLoopLag}μs`);
 
         if (errorRate > ERROR_THRESHOLD) {
           console.error(`    *** BROKE at concurrency=${concurrency} — ${errorRate}% error rate ***`);
