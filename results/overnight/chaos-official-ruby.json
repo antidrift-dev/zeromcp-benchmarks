@@ -2,67 +2,67 @@
   "sdk": "official",
   "language": "ruby",
   "total": 21,
-  "survived": 1,
+  "survived": 19,
   "degraded": 0,
-  "crashed": 2,
-  "corrupted": 18,
-  "score": "1/21",
+  "crashed": 1,
+  "corrupted": 1,
+  "score": "19/21",
   "results": [
     {
       "attack": "malformed_json",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "truncated_json",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "empty_line",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "missing_id",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "missing_method",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "null_id",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "negative_id",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "duplicate_id",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "double_initialize",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "unknown_method",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "giant_string",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "deeply_nested",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "empty_tool_name",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "null_arguments",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "binary_garbage",
@@ -70,7 +70,7 @@
     },
     {
       "attack": "tool_throws",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "tool_hangs",
@@ -82,15 +82,15 @@
     },
     {
       "attack": "tool_leak_memory",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "tool_stdout_corrupt",
-      "score": "corrupted"
+      "score": "survived"
     },
     {
       "attack": "rapid_fire_100",
-      "score": "crashed"
+      "score": "survived"
     }
   ]
 }
