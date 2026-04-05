@@ -1,0 +1,7 @@
+bun install v1.3.11 (af24e281)
+
++ @modelcontextprotocol/sdk@1.29.0
++ zod@4.3.6
+
+91 packages installed [681.00ms]
+{"result":{"protocolVersion":"2024-11-05","capabilities":{"tools":{"listChanged":true}},"serverInfo":{"name":"test","version":"1.0.0"}},"jsonrpc":"2.0","id":1}

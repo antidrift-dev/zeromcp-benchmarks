@@ -1,0 +1,8 @@
+
+added 91 packages, and audited 92 packages in 2s
+
+28 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+{"result":{"protocolVersion":"2024-11-05","capabilities":{"tools":{"listChanged":true}},"serverInfo":{"name":"test","version":"1.0.0"}},"jsonrpc":"2.0","id":1}
