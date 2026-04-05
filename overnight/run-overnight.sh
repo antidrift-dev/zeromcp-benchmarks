@@ -153,6 +153,54 @@ for lang in $ALL_LANGS; do
 done
 
 echo ""
+
+# --- Phase 6: JS Runtime compatibility (~15 min) ---
+echo "=== Phase 6: JS Runtimes (Node versions + Bun + Deno) ==="
+
+# Bun — ZeroMCP vs Node on Bun
+echo "  [bun] Building..."
+docker build -t zeromcp-bench-bun \
+  -f "$BENCH_ROOT/runtimes/bun/Dockerfile" "$PARENT" 2>&1 | tail -2
+echo "  [bun] Running ZeroMCP on Bun vs Node..."
+docker run --rm zeromcp-bench-bun 2>/dev/null > "$RESULTS/runtime-bun.json" || true
+echo "  [bun] Done."
+
+# Deno — ZeroMCP vs Node on Deno
+echo "  [deno] Building..."
+docker build -t zeromcp-bench-deno \
+  -f "$BENCH_ROOT/runtimes/deno/Dockerfile" "$PARENT" 2>&1 | tail -2
+echo "  [deno] Running ZeroMCP on Deno vs Node..."
+docker run --rm zeromcp-bench-deno 2>/dev/null > "$RESULTS/runtime-deno.json" || true
+echo "  [deno] Done."
+
+# Test official SDK on Bun and Deno too
+echo "  [official-bun] Testing if official SDK runs on Bun..."
+docker run --rm zeromcp-bench-bun bash -c \
+  'echo "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"ping\"}" | timeout 5 bun run official/server.mjs 2>/dev/null | head -1' \
+  > "$RESULTS/runtime-official-bun.txt" 2>/dev/null || echo "FAIL" > "$RESULTS/runtime-official-bun.txt"
+result=$(cat "$RESULTS/runtime-official-bun.txt" | head -c 20)
+if echo "$result" | grep -q "jsonrpc"; then echo "  [official-bun] OK"; else echo "  [official-bun] FAIL"; fi
+
+echo "  [official-deno] Testing if official SDK runs on Deno..."
+docker run --rm zeromcp-bench-deno bash -c \
+  'echo "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"ping\"}" | timeout 5 deno run --allow-all /zeromcp/nodejs/node_modules/@modelcontextprotocol/sdk/dist/esm/server/stdio.js 2>/dev/null | head -1' \
+  > "$RESULTS/runtime-official-deno.txt" 2>/dev/null || echo "FAIL" > "$RESULTS/runtime-official-deno.txt"
+result=$(cat "$RESULTS/runtime-official-deno.txt" | head -c 20)
+if echo "$result" | grep -q "jsonrpc"; then echo "  [official-deno] OK"; else echo "  [official-deno] FAIL"; fi
+
+# Node versions
+for v in 14 16 18 20 22 23; do
+  echo "  [node-$v] Testing compatibility..."
+  docker run --rm -v "$ZEROMCP/nodejs:/app" -w /app "node:$v" bash -c \
+    'npm install --silent 2>/dev/null && npm run build 2>/dev/null && \
+    echo "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2024-11-05\",\"capabilities\":{},\"clientInfo\":{\"name\":\"t\",\"version\":\"1\"}}}" | \
+    timeout 5 node bin/mcp.js serve examples/tools 2>/dev/null | head -1' \
+    > "$RESULTS/runtime-node-$v.txt" 2>/dev/null || echo "FAIL" > "$RESULTS/runtime-node-$v.txt"
+  result=$(cat "$RESULTS/runtime-node-$v.txt" | head -c 20)
+  if echo "$result" | grep -q "jsonrpc"; then echo "  [node-$v] OK"; else echo "  [node-$v] FAIL"; fi
+done
+
+echo ""
 echo "================================================"
 echo "Overnight suite complete: $(date)"
 echo "Results in: $RESULTS"
