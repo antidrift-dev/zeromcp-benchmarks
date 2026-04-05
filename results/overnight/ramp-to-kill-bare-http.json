@@ -1,0 +1,396 @@
+Ramp-to-Kill — Bare HTTP echo (no ZeroMCP)
+
+  concurrency=1000
+    t=5s rps=15125 p50=17817μs p99=39542μs errors=0 (0%) rss=304.58MB
+    t=10s rps=14136 p50=34641μs p99=60189μs errors=0 (0%) rss=332.55MB
+    t=15s rps=13705 p50=45588μs p99=79117μs errors=0 (0%) rss=350.26MB
+    t=20s rps=12934 p50=55478μs p99=90719μs errors=0 (0%) rss=356.55MB
+    t=25s rps=12800 p50=55540μs p99=92803μs errors=0 (0%) rss=356.93MB
+    t=30s rps=13301 p50=54838μs p99=83943μs errors=0 (0%) rss=357.06MB
+  concurrency=2000
+    t=5s rps=13776 p50=30914μs p99=127304μs errors=0 (0%) rss=480.69MB
+    t=10s rps=13240 p50=35674μs p99=53127μs errors=0 (0%) rss=481.36MB
+    t=15s rps=13128 p50=35846μs p99=54092μs errors=138 (0.21%) rss=482.38MB
+    t=20s rps=13358 p50=38940μs p99=62863μs errors=0 (0%) rss=482.41MB
+    t=25s rps=12819 p50=50536μs p99=75290μs errors=0 (0%) rss=482.54MB
+    t=30s rps=12406 p50=58254μs p99=87614μs errors=0 (0%) rss=482.7MB
+  concurrency=3000
+    t=5s rps=12110 p50=33700μs p99=123059μs errors=0 (0%) rss=552.17MB
+    t=10s rps=12480 p50=43284μs p99=71732μs errors=0 (0%) rss=553.08MB
+    t=15s rps=12622 p50=51851μs p99=73839μs errors=0 (0%) rss=554.36MB
+    t=20s rps=11964 p50=61300μs p99=88437μs errors=0 (0%) rss=554.4MB
+    t=25s rps=12152 p50=61104μs p99=86979μs errors=0 (0%) rss=554.15MB
+    t=30s rps=11950 p50=62444μs p99=90315μs errors=0 (0%) rss=554.29MB
+  concurrency=5000
+    t=5s rps=13151 p50=18524μs p99=52309μs errors=0 (0%) rss=712.42MB
+    t=10s rps=12531 p50=36306μs p99=65717μs errors=0 (0%) rss=757.02MB
+    t=15s rps=11752 p50=47626μs p99=74804μs errors=0 (0%) rss=758.14MB
+    t=20s rps=11027 p50=56695μs p99=93112μs errors=195 (0.35%) rss=758.7MB
+    t=25s rps=10207 p50=75569μs p99=116128μs errors=0 (0%) rss=758.53MB
+    t=30s rps=10600 p50=79433μs p99=118327μs errors=0 (0%) rss=757.73MB
+  concurrency=10000
+    t=5s rps=11313 p50=17800μs p99=65818μs errors=0 (0%) rss=1127.5MB
+    t=10s rps=12266 p50=35830μs p99=80212μs errors=0 (0%) rss=1235.18MB
+    t=15s rps=10729 p50=48486μs p99=10896560μs errors=1577 (2.94%) rss=1235.89MB
+    *** BROKE at concurrency=10000 — 2.94% ***
+{
+  "type": "bare-http-echo",
+  "error_threshold_pct": 0.5,
+  "broke_at_concurrency": 10000,
+  "levels": [
+    {
+      "concurrency": 1000,
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 1000,
+          "requests": 75625,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 15125,
+          "p50_us": 17817,
+          "p99_us": 39542,
+          "rss_mb": 304.58,
+          "heap_mb": 120.13
+        },
+        {
+          "t": 10,
+          "concurrency": 1000,
+          "requests": 70678,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 14136,
+          "p50_us": 34641,
+          "p99_us": 60189,
+          "rss_mb": 332.55,
+          "heap_mb": 62.92
+        },
+        {
+          "t": 15,
+          "concurrency": 1000,
+          "requests": 68526,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13705,
+          "p50_us": 45588,
+          "p99_us": 79117,
+          "rss_mb": 350.26,
+          "heap_mb": 113
+        },
+        {
+          "t": 20,
+          "concurrency": 1000,
+          "requests": 64668,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12934,
+          "p50_us": 55478,
+          "p99_us": 90719,
+          "rss_mb": 356.55,
+          "heap_mb": 167.77
+        },
+        {
+          "t": 25,
+          "concurrency": 1000,
+          "requests": 64000,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12800,
+          "p50_us": 55540,
+          "p99_us": 92803,
+          "rss_mb": 356.93,
+          "heap_mb": 177.77
+        },
+        {
+          "t": 30,
+          "concurrency": 1000,
+          "requests": 66503,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13301,
+          "p50_us": 54838,
+          "p99_us": 83943,
+          "rss_mb": 357.06,
+          "heap_mb": 235.89
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 2000,
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 2000,
+          "requests": 68878,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13776,
+          "p50_us": 30914,
+          "p99_us": 127304,
+          "rss_mb": 480.69,
+          "heap_mb": 208.65
+        },
+        {
+          "t": 10,
+          "concurrency": 2000,
+          "requests": 66199,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13240,
+          "p50_us": 35674,
+          "p99_us": 53127,
+          "rss_mb": 481.36,
+          "heap_mb": 267.06
+        },
+        {
+          "t": 15,
+          "concurrency": 2000,
+          "requests": 65638,
+          "errors": 138,
+          "error_rate_pct": 0.21,
+          "rps": 13128,
+          "p50_us": 35846,
+          "p99_us": 54092,
+          "rss_mb": 482.38,
+          "heap_mb": 168.67
+        },
+        {
+          "t": 20,
+          "concurrency": 2000,
+          "requests": 66788,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13358,
+          "p50_us": 38940,
+          "p99_us": 62863,
+          "rss_mb": 482.41,
+          "heap_mb": 264.75
+        },
+        {
+          "t": 25,
+          "concurrency": 2000,
+          "requests": 64094,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12819,
+          "p50_us": 50536,
+          "p99_us": 75290,
+          "rss_mb": 482.54,
+          "heap_mb": 106.06
+        },
+        {
+          "t": 30,
+          "concurrency": 2000,
+          "requests": 62032,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12406,
+          "p50_us": 58254,
+          "p99_us": 87614,
+          "rss_mb": 482.7,
+          "heap_mb": 114.76
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 3000,
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 3000,
+          "requests": 60552,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12110,
+          "p50_us": 33700,
+          "p99_us": 123059,
+          "rss_mb": 552.17,
+          "heap_mb": 328.5
+        },
+        {
+          "t": 10,
+          "concurrency": 3000,
+          "requests": 62402,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12480,
+          "p50_us": 43284,
+          "p99_us": 71732,
+          "rss_mb": 553.08,
+          "heap_mb": 353.43
+        },
+        {
+          "t": 15,
+          "concurrency": 3000,
+          "requests": 63108,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12622,
+          "p50_us": 51851,
+          "p99_us": 73839,
+          "rss_mb": 554.36,
+          "heap_mb": 101.33
+        },
+        {
+          "t": 20,
+          "concurrency": 3000,
+          "requests": 59818,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11964,
+          "p50_us": 61300,
+          "p99_us": 88437,
+          "rss_mb": 554.4,
+          "heap_mb": 140.35
+        },
+        {
+          "t": 25,
+          "concurrency": 3000,
+          "requests": 60762,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12152,
+          "p50_us": 61104,
+          "p99_us": 86979,
+          "rss_mb": 554.15,
+          "heap_mb": 242.3
+        },
+        {
+          "t": 30,
+          "concurrency": 3000,
+          "requests": 59752,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11950,
+          "p50_us": 62444,
+          "p99_us": 90315,
+          "rss_mb": 554.29,
+          "heap_mb": 270.89
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 5000,
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 5000,
+          "requests": 65756,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 13151,
+          "p50_us": 18524,
+          "p99_us": 52309,
+          "rss_mb": 712.42,
+          "heap_mb": 324.96
+        },
+        {
+          "t": 10,
+          "concurrency": 5000,
+          "requests": 62656,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12531,
+          "p50_us": 36306,
+          "p99_us": 65717,
+          "rss_mb": 757.02,
+          "heap_mb": 309.75
+        },
+        {
+          "t": 15,
+          "concurrency": 5000,
+          "requests": 58758,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11752,
+          "p50_us": 47626,
+          "p99_us": 74804,
+          "rss_mb": 758.14,
+          "heap_mb": 233.94
+        },
+        {
+          "t": 20,
+          "concurrency": 5000,
+          "requests": 55133,
+          "errors": 195,
+          "error_rate_pct": 0.35,
+          "rps": 11027,
+          "p50_us": 56695,
+          "p99_us": 93112,
+          "rss_mb": 758.7,
+          "heap_mb": 480.68
+        },
+        {
+          "t": 25,
+          "concurrency": 5000,
+          "requests": 51037,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10207,
+          "p50_us": 75569,
+          "p99_us": 116128,
+          "rss_mb": 758.53,
+          "heap_mb": 265.85
+        },
+        {
+          "t": 30,
+          "concurrency": 5000,
+          "requests": 52998,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10600,
+          "p50_us": 79433,
+          "p99_us": 118327,
+          "rss_mb": 757.73,
+          "heap_mb": 159.29
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 10000,
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 10000,
+          "requests": 56566,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 11313,
+          "p50_us": 17800,
+          "p99_us": 65818,
+          "rss_mb": 1127.5,
+          "heap_mb": 381.12
+        },
+        {
+          "t": 10,
+          "concurrency": 10000,
+          "requests": 61332,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 12266,
+          "p50_us": 35830,
+          "p99_us": 80212,
+          "rss_mb": 1235.18,
+          "heap_mb": 578.09
+        },
+        {
+          "t": 15,
+          "concurrency": 10000,
+          "requests": 53646,
+          "errors": 1577,
+          "error_rate_pct": 2.94,
+          "rps": 10729,
+          "p50_us": 48486,
+          "p99_us": 10896560,
+          "rss_mb": 1235.89,
+          "heap_mb": 578.64
+        }
+      ],
+      "broke": true
+    }
+  ]
+}
