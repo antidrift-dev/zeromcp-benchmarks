@@ -1,0 +1,15 @@
+{
+  "language": "node-bun",
+  "servers": [
+    {
+      "label": "node",
+      "command": "node",
+      "args": ["/zeromcp/nodejs/bin/mcp.js", "serve", "/zeromcp/nodejs/examples/tools"]
+    },
+    {
+      "label": "bun",
+      "command": "bun",
+      "args": ["run", "/zeromcp/nodejs/bin/mcp.js", "serve", "/zeromcp/nodejs/examples/tools"]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "language": "node-deno",
+  "servers": [
+    {
+      "label": "node",
+      "command": "node",
+      "args": ["/zeromcp/nodejs/bin/mcp.js", "serve", "/zeromcp/nodejs/examples/tools"]
+    },
+    {
+      "label": "deno",
+      "command": "deno",
+      "args": ["run", "--allow-all", "/zeromcp/nodejs/bin/mcp.js", "serve", "/zeromcp/nodejs/examples/tools"]
+    }
+  ]
+}
