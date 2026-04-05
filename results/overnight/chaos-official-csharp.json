@@ -1,0 +1,96 @@
+{
+  "sdk": "official",
+  "language": "csharp",
+  "total": 21,
+  "survived": 20,
+  "degraded": 1,
+  "crashed": 0,
+  "corrupted": 0,
+  "score": "20/21",
+  "results": [
+    {
+      "attack": "malformed_json",
+      "score": "survived"
+    },
+    {
+      "attack": "truncated_json",
+      "score": "survived"
+    },
+    {
+      "attack": "empty_line",
+      "score": "survived"
+    },
+    {
+      "attack": "missing_id",
+      "score": "survived"
+    },
+    {
+      "attack": "missing_method",
+      "score": "survived"
+    },
+    {
+      "attack": "null_id",
+      "score": "survived"
+    },
+    {
+      "attack": "negative_id",
+      "score": "survived"
+    },
+    {
+      "attack": "duplicate_id",
+      "score": "survived"
+    },
+    {
+      "attack": "double_initialize",
+      "score": "survived"
+    },
+    {
+      "attack": "unknown_method",
+      "score": "survived"
+    },
+    {
+      "attack": "giant_string",
+      "score": "survived"
+    },
+    {
+      "attack": "deeply_nested",
+      "score": "survived"
+    },
+    {
+      "attack": "empty_tool_name",
+      "score": "survived"
+    },
+    {
+      "attack": "null_arguments",
+      "score": "survived"
+    },
+    {
+      "attack": "binary_garbage",
+      "score": "survived"
+    },
+    {
+      "attack": "tool_throws",
+      "score": "survived"
+    },
+    {
+      "attack": "tool_hangs",
+      "score": "degraded"
+    },
+    {
+      "attack": "tool_slow",
+      "score": "survived"
+    },
+    {
+      "attack": "tool_leak_memory",
+      "score": "survived"
+    },
+    {
+      "attack": "tool_stdout_corrupt",
+      "score": "survived"
+    },
+    {
+      "attack": "rapid_fire_100",
+      "score": "survived"
+    }
+  ]
+}

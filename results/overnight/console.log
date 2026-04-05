@@ -1,6 +1,6 @@
 ================================================
 ZeroMCP Overnight Benchmark Suite
-Started: Sat Apr  4 23:05:48 PDT 2026
+Started: Sat Apr  4 23:48:30 PDT 2026
 Results: /Users/chriswelker/Projects/antidrift/zeromcp-benchmarks/results/overnight
 Languages: node python go rust java kotlin swift csharp ruby php
 ================================================
@@ -8,8 +8,8 @@ Languages: node python go rust java kotlin swift csharp ruby php
 === Phase 0: Re-validate ZeroMCP ===
 Building ZeroMCP Docker image (all 10 languages)...
 #32 unpacking to docker.io/library/zeromcp:latest
-#32 unpacking to docker.io/library/zeromcp:latest 4.1s done
-#32 DONE 13.9s
+#32 unpacking to docker.io/library/zeromcp:latest 3.8s done
+#32 DONE 14.1s
 Running conformance tests (10 suites, 39 implementations)...
 
   ZeroMCP Cross-Language Conformance Suite
@@ -134,45 +134,45 @@ Running chaos monkey (22 attacks × 10 languages)...
 === Phase 1: Chaos Monkey — All 10 Official SDKs ===
   [node] Building official SDK chaos server...
 #13 unpacking to docker.io/library/zeromcp-chaos-official-node:latest 0.2s done
-#13 DONE 0.7s
+#13 DONE 0.8s
   [node] Running 21 chaos attacks...
   [node] Done.
   [python] Building official SDK chaos server...
-#13 unpacking to docker.io/library/zeromcp-chaos-official-python:latest 3.8s done
+#13 unpacking to docker.io/library/zeromcp-chaos-official-python:latest 3.7s done
 #13 DONE 19.2s
   [python] Running 21 chaos attacks...
   [python] Done.
   [go] Building official SDK chaos server...
---------------------
-ERROR: failed to build: failed to solve: process "/bin/sh -c go mod init chaos-go &&     go get github.com/modelcontextprotocol/go-sdk@latest &&     go mod tidy &&     CGO_ENABLED=0 go build -o /chaos-server server.go" did not complete successfully: exit code: 1
+#14 unpacking to docker.io/library/zeromcp-chaos-official-go:latest done
+#14 DONE 0.0s
   [go] Running 21 chaos attacks...
   [go] Done.
   [rust] Building official SDK chaos server...
---------------------
-ERROR: failed to build: failed to solve: process "/bin/sh -c cargo build --release 2>&1 && cp target/release/chaos-server /chaos-server" did not complete successfully: exit code: 101
+#15 unpacking to docker.io/library/zeromcp-chaos-official-rust:latest done
+#15 DONE 0.0s
   [rust] Running 21 chaos attacks...
   [rust] Done.
   [java] Building official SDK chaos server...
---------------------
-ERROR: failed to build: failed to solve: process "/bin/sh -c mvn package -q -DskipTests" did not complete successfully: exit code: 1
+#18 unpacking to docker.io/library/zeromcp-chaos-official-java:latest done
+#18 DONE 0.0s
   [java] Running 21 chaos attacks...
   [java] Done.
   [kotlin] Building official SDK chaos server...
---------------------
-ERROR: failed to build: failed to solve: process "/bin/sh -c gradle jar --no-daemon -q" did not complete successfully: exit code: 1
+#18 unpacking to docker.io/library/zeromcp-chaos-official-kotlin:latest done
+#18 DONE 0.0s
   [kotlin] Running 21 chaos attacks...
   [kotlin] Done.
   [swift] Building official SDK chaos server...
---------------------
-ERROR: failed to build: failed to solve: process "/bin/sh -c swift build -c release 2>&1 && cp .build/release/chaos-server /chaos-server" did not complete successfully: exit code: 1
+#15 unpacking to docker.io/library/zeromcp-chaos-official-swift:latest done
+#15 DONE 0.0s
   [swift] Running 21 chaos attacks...
   [swift] Done.
   [csharp] Building official SDK chaos server...
---------------------
-ERROR: failed to build: failed to solve: process "/bin/sh -c dotnet publish -c Release -o /app" did not complete successfully: exit code: 1
+#18 unpacking to docker.io/library/zeromcp-chaos-official-csharp:latest done
+#18 DONE 0.0s
   [csharp] Running 21 chaos attacks...
   [csharp] Done.
   [ruby] Building official SDK chaos server...
-#12 unpacking to docker.io/library/zeromcp-chaos-official-ruby:latest 2.0s done
-#12 DONE 9.4s
+#12 unpacking to docker.io/library/zeromcp-chaos-official-ruby:latest done
+#12 DONE 0.1s
   [ruby] Running 21 chaos attacks...
