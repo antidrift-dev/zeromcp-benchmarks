@@ -1,0 +1,15 @@
+{
+  "language": "csharp",
+  "servers": [
+    {
+      "label": "official",
+      "command": "/bench/official-server/Official",
+      "args": []
+    },
+    {
+      "label": "zeromcp",
+      "command": "/bench/zeromcp-server/Example",
+      "args": []
+    }
+  ]
+}

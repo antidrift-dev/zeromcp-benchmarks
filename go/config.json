@@ -1,0 +1,15 @@
+{
+  "language": "go",
+  "servers": [
+    {
+      "label": "official",
+      "command": "/bench/official-server",
+      "args": []
+    },
+    {
+      "label": "zeromcp",
+      "command": "/usr/local/bin/zeromcp-go",
+      "args": []
+    }
+  ]
+}
