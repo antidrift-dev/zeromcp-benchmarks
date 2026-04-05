@@ -1,0 +1,12 @@
+{
+  "label": "official-bun",
+  "startup_ms": 51.69,
+  "p50_ms": 0.09,
+  "p95_ms": 0.22,
+  "p99_ms": 1.21,
+  "rps": 7276,
+  "cpu_ms": 210,
+  "cpu_per_req_us": 210,
+  "memory_idle_mb": 96.9,
+  "memory_peak_mb": 121.5
+}

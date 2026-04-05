@@ -1,0 +1,12 @@
+{
+  "label": "official-deno",
+  "startup_ms": 67.42,
+  "p50_ms": 0.14,
+  "p95_ms": 0.22,
+  "p99_ms": 0.45,
+  "rps": 6534,
+  "cpu_ms": 160,
+  "cpu_per_req_us": 160,
+  "memory_idle_mb": 87.9,
+  "memory_peak_mb": 140.4
+}

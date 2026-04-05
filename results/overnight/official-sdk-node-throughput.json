@@ -1,0 +1,12 @@
+{
+  "label": "official-node",
+  "startup_ms": 119.73,
+  "p50_ms": 0.14,
+  "p95_ms": 0.21,
+  "p99_ms": 0.34,
+  "rps": 6499,
+  "cpu_ms": 180,
+  "cpu_per_req_us": 180,
+  "memory_idle_mb": 77.8,
+  "memory_peak_mb": 106.5
+}
