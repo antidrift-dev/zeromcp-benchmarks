@@ -1,102 +1,76 @@
-use rmcp::handler::server::tool::Parameters;
-use rmcp::schemars;
-use rmcp::{ServerHandler, ServiceExt, model::*, tool};
-use serde::Deserialize;
+use rmcp::{
+    ServerHandler, ServiceExt,
+    handler::server::{router::tool::ToolRouter, wrapper::Parameters},
+    model::{ServerCapabilities, ServerInfo},
+    schemars, tool, tool_handler, tool_router,
+    transport::stdio,
+};
 use std::sync::Mutex;
-use tokio::io::stdin;
-use tokio::io::stdout;
 
 static LEAKS: Mutex<Vec<Vec<u8>>> = Mutex::new(Vec::new());
 
-#[derive(Debug, Deserialize, schemars::JsonSchema)]
-struct HelloArgs {
-    name: String,
-}
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
+struct HelloArgs { name: String }
 
-#[derive(Debug, Deserialize, schemars::JsonSchema)]
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
 struct EmptyArgs {}
 
 #[derive(Debug, Clone)]
-struct ChaosServer;
+struct ChaosServer { tool_router: ToolRouter<Self> }
 
-#[tool(tool_box)]
+#[tool_router]
 impl ChaosServer {
+    fn new() -> Self { Self { tool_router: Self::tool_router() } }
+
     #[tool(description = "Say hello")]
-    async fn hello(&self, Parameters(args): Parameters<HelloArgs>) -> Result<CallToolResult, rmcp::Error> {
-        Ok(CallToolResult::success(vec![Content::text(format!(
-            "Hello, {}!",
-            args.name
-        ))]))
+    fn hello(&self, Parameters(HelloArgs { name }): Parameters<HelloArgs>) -> String {
+        format!("Hello, {name}!")
     }
 
     #[tool(description = "Tool that throws")]
-    async fn throw_error(&self, Parameters(_args): Parameters<EmptyArgs>) -> Result<CallToolResult, rmcp::Error> {
-        Err(rmcp::Error::invalid_params(
-            "Intentional chaos: unhandled exception",
-            None,
-        ))
+    fn throw_error(&self, Parameters(_): Parameters<EmptyArgs>) -> Result<String, String> {
+        Err("Intentional chaos: unhandled exception".into())
     }
 
     #[tool(description = "Tool that hangs forever")]
-    async fn hang(&self, Parameters(_args): Parameters<EmptyArgs>) -> Result<CallToolResult, rmcp::Error> {
+    async fn hang(&self, Parameters(_): Parameters<EmptyArgs>) -> String {
         tokio::time::sleep(std::time::Duration::from_secs(86400)).await;
-        Ok(CallToolResult::success(vec![Content::text("unreachable")]))
+        "unreachable".into()
     }
 
     #[tool(description = "Tool that takes 3 seconds")]
-    async fn slow(&self, Parameters(_args): Parameters<EmptyArgs>) -> Result<CallToolResult, rmcp::Error> {
+    async fn slow(&self, Parameters(_): Parameters<EmptyArgs>) -> String {
         tokio::time::sleep(std::time::Duration::from_secs(3)).await;
-        Ok(CallToolResult::success(vec![Content::text(
-            r#"{"status":"ok","delay_ms":3000}"#,
-        )]))
+        r#"{"status":"ok","delay_ms":3000}"#.into()
     }
 
     #[tool(description = "Tool that leaks memory")]
-    async fn leak_memory(&self, Parameters(_args): Parameters<EmptyArgs>) -> Result<CallToolResult, rmcp::Error> {
+    fn leak_memory(&self, Parameters(_): Parameters<EmptyArgs>) -> String {
         let count = {
             let mut leaks = LEAKS.lock().unwrap();
             leaks.push(vec![0u8; 1024 * 1024]);
             leaks.len()
         };
-        Ok(CallToolResult::success(vec![Content::text(format!(
-            r#"{{"leaked_buffers":{},"total_mb":{}}}"#,
-            count, count
-        ))]))
+        format!(r#"{{"leaked_buffers":{count},"total_mb":{count}}}"#)
     }
 
     #[tool(description = "Tool that writes to stdout")]
-    async fn stdout_corrupt(&self, Parameters(_args): Parameters<EmptyArgs>) -> Result<CallToolResult, rmcp::Error> {
+    fn stdout_corrupt(&self, Parameters(_): Parameters<EmptyArgs>) -> String {
         println!("CORRUPTED OUTPUT");
-        Ok(CallToolResult::success(vec![Content::text(
-            r#"{"status":"ok"}"#,
-        )]))
+        r#"{"status":"ok"}"#.into()
     }
 }
 
+#[tool_handler]
 impl ServerHandler for ChaosServer {
     fn get_info(&self) -> ServerInfo {
-        ServerInfo {
-            protocol_version: ProtocolVersion::V_2024_11_05,
-            capabilities: ServerCapabilities {
-                tools: Some(ToolsCapability::default()),
-                ..Default::default()
-            },
-            server_info: Implementation {
-                name: "chaos-rust".into(),
-                version: "0.1.0".into(),
-            },
-            instructions: None,
-        }
+        ServerInfo::new(ServerCapabilities::builder().enable_tools().build())
     }
 }
 
 #[tokio::main]
-async fn main() -> anyhow::Result<()> {
-    let service = ChaosServer
-        .serve((stdin(), stdout()))
-        .await
-        .expect("Failed to start server");
-
-    service.waiting().await?;
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let server = ChaosServer::new().serve(stdio()).await?;
+    server.waiting().await?;
     Ok(())
 }

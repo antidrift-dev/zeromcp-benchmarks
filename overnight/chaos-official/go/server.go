@@ -1,95 +1,84 @@
-// Official MCP Go SDK server with chaos tools for resilience testing.
 package main
 
 import (
 	"context"
 	"fmt"
-	"os"
+	"log"
+	"sync"
 	"time"
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/modelcontextprotocol/go-sdk/server"
 )
 
-var leaks [][]byte
+var (
+	leaks   [][]byte
+	leaksMu sync.Mutex
+)
+
+type HelloArgs struct {
+	Name string `json:"name"`
+}
+
+type EmptyArgs struct{}
 
 func main() {
-	s := server.NewServer(
-		mcp.Implementation{Name: "official-chaos", Version: "1.0.0"},
-		nil,
-	)
+	server := mcp.NewServer(&mcp.Implementation{
+		Name:    "official-chaos",
+		Version: "1.0.0",
+	}, nil)
 
-	s.AddTool(mcp.Tool{
+	mcp.AddTool(server, &mcp.Tool{
 		Name:        "hello",
 		Description: "Say hello",
-		InputSchema: mcp.ToolInputSchema{
-			Type: "object",
-			Properties: map[string]map[string]any{
-				"name": {"type": "string"},
-			},
-			Required: []string{"name"},
-		},
-	}, func(ctx context.Context, req mcp.CallToolParams) (*mcp.CallToolResult, error) {
-		name, _ := req.Arguments["name"].(string)
+	}, func(ctx context.Context, req *mcp.CallToolRequest, args HelloArgs) (*mcp.CallToolResult, any, error) {
 		return &mcp.CallToolResult{
-			Content: []mcp.Content{mcp.TextContent{Type: "text", Text: fmt.Sprintf("Hello, %s!", name)}},
-		}, nil
+			Content: []mcp.Content{&mcp.TextContent{Text: fmt.Sprintf("Hello, %s!", args.Name)}},
+		}, nil, nil
 	})
 
-	s.AddTool(mcp.Tool{
+	mcp.AddTool(server, &mcp.Tool{
 		Name:        "throw_error",
 		Description: "Tool that throws",
-		InputSchema: mcp.ToolInputSchema{Type: "object"},
-	}, func(ctx context.Context, req mcp.CallToolParams) (*mcp.CallToolResult, error) {
-		return nil, fmt.Errorf("Intentional chaos: unhandled exception")
+	}, func(ctx context.Context, req *mcp.CallToolRequest, args EmptyArgs) (*mcp.CallToolResult, any, error) {
+		return nil, nil, fmt.Errorf("Intentional chaos: unhandled exception")
 	})
 
-	s.AddTool(mcp.Tool{
+	mcp.AddTool(server, &mcp.Tool{
 		Name:        "hang",
 		Description: "Tool that hangs forever",
-		InputSchema: mcp.ToolInputSchema{Type: "object"},
-	}, func(ctx context.Context, req mcp.CallToolParams) (*mcp.CallToolResult, error) {
+	}, func(ctx context.Context, req *mcp.CallToolRequest, args EmptyArgs) (*mcp.CallToolResult, any, error) {
 		time.Sleep(86400 * time.Second)
-		return &mcp.CallToolResult{
-			Content: []mcp.Content{mcp.TextContent{Type: "text", Text: "unreachable"}},
-		}, nil
+		return &mcp.CallToolResult{Content: []mcp.Content{&mcp.TextContent{Text: "unreachable"}}}, nil, nil
 	})
 
-	s.AddTool(mcp.Tool{
+	mcp.AddTool(server, &mcp.Tool{
 		Name:        "slow",
 		Description: "Tool that takes 3 seconds",
-		InputSchema: mcp.ToolInputSchema{Type: "object"},
-	}, func(ctx context.Context, req mcp.CallToolParams) (*mcp.CallToolResult, error) {
+	}, func(ctx context.Context, req *mcp.CallToolRequest, args EmptyArgs) (*mcp.CallToolResult, any, error) {
 		time.Sleep(3 * time.Second)
-		return &mcp.CallToolResult{
-			Content: []mcp.Content{mcp.TextContent{Type: "text", Text: `{"status":"ok","delay_ms":3000}`}},
-		}, nil
+		return &mcp.CallToolResult{Content: []mcp.Content{&mcp.TextContent{Text: `{"status":"ok","delay_ms":3000}`}}}, nil, nil
 	})
 
-	s.AddTool(mcp.Tool{
+	mcp.AddTool(server, &mcp.Tool{
 		Name:        "leak_memory",
 		Description: "Tool that leaks memory",
-		InputSchema: mcp.ToolInputSchema{Type: "object"},
-	}, func(ctx context.Context, req mcp.CallToolParams) (*mcp.CallToolResult, error) {
+	}, func(ctx context.Context, req *mcp.CallToolRequest, args EmptyArgs) (*mcp.CallToolResult, any, error) {
+		leaksMu.Lock()
 		leaks = append(leaks, make([]byte, 1024*1024))
-		return &mcp.CallToolResult{
-			Content: []mcp.Content{mcp.TextContent{Type: "text", Text: fmt.Sprintf(`{"leaked_buffers":%d,"total_mb":%d}`, len(leaks), len(leaks))}},
-		}, nil
+		count := len(leaks)
+		leaksMu.Unlock()
+		return &mcp.CallToolResult{Content: []mcp.Content{&mcp.TextContent{Text: fmt.Sprintf(`{"leaked_buffers":%d,"total_mb":%d}`, count, count)}}}, nil, nil
 	})
 
-	s.AddTool(mcp.Tool{
+	mcp.AddTool(server, &mcp.Tool{
 		Name:        "stdout_corrupt",
 		Description: "Tool that writes to stdout",
-		InputSchema: mcp.ToolInputSchema{Type: "object"},
-	}, func(ctx context.Context, req mcp.CallToolParams) (*mcp.CallToolResult, error) {
-		os.Stdout.WriteString("CORRUPTED OUTPUT\n")
-		return &mcp.CallToolResult{
-			Content: []mcp.Content{mcp.TextContent{Type: "text", Text: `{"status":"ok"}`}},
-		}, nil
+	}, func(ctx context.Context, req *mcp.CallToolRequest, args EmptyArgs) (*mcp.CallToolResult, any, error) {
+		fmt.Println("CORRUPTED OUTPUT")
+		return &mcp.CallToolResult{Content: []mcp.Content{&mcp.TextContent{Text: `{"status":"ok"}`}}}, nil, nil
 	})
 
-	if err := server.RunStdio(context.Background(), s); err != nil {
-		fmt.Fprintf(os.Stderr, "server error: %v\n", err)
-		os.Exit(1)
+	if err := server.Run(context.Background(), &mcp.StdioTransport{}); err != nil {
+		log.Fatal(err)
 	}
 }

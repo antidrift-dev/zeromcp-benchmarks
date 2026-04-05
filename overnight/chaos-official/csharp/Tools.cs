@@ -1,9 +1,13 @@
-using ModelContextProtocol.Server;
-using System.ComponentModel;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Text.Json;
+using System.ComponentModel;
+using ModelContextProtocol.Server;
 
 [McpServerToolType]
-public static class ChaosTools
+public sealed class ChaosTools
 {
     private static readonly List<byte[]> Leaks = new();
 

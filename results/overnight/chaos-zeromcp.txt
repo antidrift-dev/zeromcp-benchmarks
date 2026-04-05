@@ -1,0 +1,50 @@
+
+  ZeroMCP Chaos Monkey Suite
+
+  ✓ Node.js — 21 survived, 1 degraded, 0 crashed, 0 corrupted (21/22)
+    ⚠ tool_hangs: degraded — Call a tool that never returns (5s timeout)
+  ✓ Python — 21 survived, 1 degraded, 0 crashed, 0 corrupted (21/22)
+    ⚠ tool_hangs: degraded — Call a tool that never returns (5s timeout)
+  ✓ Go — 21 survived, 1 degraded, 0 crashed, 0 corrupted (21/22)
+    ⚠ tool_hangs: degraded — Call a tool that never returns (5s timeout)
+  ✓ Ruby — 22 survived, 0 degraded, 0 crashed, 0 corrupted (22/22)
+  ✓ Rust — 21 survived, 1 degraded, 0 crashed, 0 corrupted (21/22)
+    ⚠ tool_hangs: degraded — Call a tool that never returns (5s timeout)
+  ✓ PHP — 21 survived, 1 degraded, 0 crashed, 0 corrupted (21/22)
+    ⚠ tool_hangs: degraded — Call a tool that never returns (5s timeout)
+  ✓ Kotlin — 21 survived, 1 degraded, 0 crashed, 0 corrupted (21/22)
+    ⚠ tool_hangs: degraded — Call a tool that never returns (5s timeout)
+  ✓ Java — 21 survived, 1 degraded, 0 crashed, 0 corrupted (21/22)
+    ⚠ tool_hangs: degraded — Call a tool that never returns (5s timeout)
+  ✓ Swift — 21 survived, 1 degraded, 0 crashed, 0 corrupted (21/22)
+    ⚠ tool_hangs: degraded — Call a tool that never returns (5s timeout)
+  ✓ C# — 21 survived, 1 degraded, 0 crashed, 0 corrupted (21/22)
+    ⚠ tool_hangs: degraded — Call a tool that never returns (5s timeout)
+
+  Resilience Scorecard
+
+  | Attack | Node.js | Python | Go | Ruby | Rust | PHP | Kotlin | Java | Swift | C# |
+  |--------|---|---|---|---|---|---|---|---|---|---|
+  | malformed_json | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | truncated_json | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | empty_line | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | missing_id | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | missing_method | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | null_id | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | negative_id | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | duplicate_id | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | pre_init_tool_call | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | double_initialize | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | unknown_method | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | giant_string | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | deeply_nested | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | empty_tool_name | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | null_arguments | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | binary_garbage | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | tool_throws | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | tool_hangs | ⚠ | ⚠ | ⚠ | ✓ | ⚠ | ⚠ | ⚠ | ⚠ | ⚠ | ⚠ |
+  | tool_slow | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | tool_leak_memory | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | tool_stdout_corrupt | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+  | rapid_fire_100 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+
