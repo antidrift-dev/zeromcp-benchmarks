@@ -4,6 +4,8 @@
 # Runs ALL benchmarks across ALL 10 languages. No exceptions.
 # Expected runtime: ~4-6 hours
 
+export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
+
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BENCH_ROOT="$(dirname "$SCRIPT_DIR")"
 RESULTS="$BENCH_ROOT/results/overnight"
