@@ -1,12 +1,12 @@
 FROM maven:3.9-eclipse-temurin-21 AS builder-official
 WORKDIR /build
-COPY benchmarks/java/official/ .
+COPY zeromcp-benchmarks/java/official/ .
 RUN mvn package -q -DskipTests && \
     mvn dependency:copy-dependencies -DoutputDirectory=target/deps -q
 
 FROM maven:3.9-eclipse-temurin-21 AS builder-zeromcp
 WORKDIR /build
-COPY java/ .
+COPY zeromcp/java/ .
 RUN mvn package -q -DskipTests && \
     mvn dependency:copy-dependencies -DoutputDirectory=target/deps -q && \
     mkdir -p /tmp/java-out && \
@@ -27,8 +27,8 @@ COPY --from=builder-zeromcp /build/target/zeromcp-0.1.0.jar /bench/zeromcp/
 COPY --from=builder-zeromcp /build/target/deps/ /bench/zeromcp/
 COPY --from=builder-zeromcp /tmp/java-out/ /bench/zeromcp/
 
-COPY benchmarks/harness.js .
-COPY benchmarks/package.json .
-COPY benchmarks/java/config.json .
+COPY zeromcp-benchmarks/harness.js .
+COPY zeromcp-benchmarks/package.json .
+COPY zeromcp-benchmarks/java/config.json .
 
 CMD ["node", "harness.js", "--config", "config.json"]

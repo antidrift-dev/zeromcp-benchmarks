@@ -6,13 +6,13 @@ WORKDIR /bench
 RUN pip install --no-cache-dir "mcp[cli]"
 
 # ZeroMCP source (no install needed — stdlib only)
-COPY python/ /zeromcp/python/
+COPY zeromcp/python/ /zeromcp/python/
 
 # Benchmark files
-COPY benchmarks/python/official.py .
-COPY benchmarks/harness.js .
-COPY benchmarks/package.json .
-COPY benchmarks/python/config.json .
+COPY zeromcp-benchmarks/python/official.py .
+COPY zeromcp-benchmarks/harness.js .
+COPY zeromcp-benchmarks/package.json .
+COPY zeromcp-benchmarks/python/config.json .
 
 ENV PYTHONUNBUFFERED=1
 CMD ["node", "harness.js", "--config", "config.json"]

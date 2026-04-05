@@ -2,12 +2,12 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS builder
 
 # Build official SDK server
 WORKDIR /build/official
-COPY benchmarks/csharp/official/ .
+COPY zeromcp-benchmarks/csharp/official/ .
 RUN dotnet publish -c Release -o /out/official 2>&1 | tail -3
 
 # Build ZeroMCP server
 WORKDIR /build/zeromcp
-COPY csharp/ .
+COPY zeromcp/csharp/ .
 RUN dotnet publish Example -c Release -o /out/zeromcp 2>&1 | tail -3
 
 # Runtime
@@ -17,8 +17,8 @@ WORKDIR /bench
 
 COPY --from=builder /out/official /bench/official-server/
 COPY --from=builder /out/zeromcp /bench/zeromcp-server/
-COPY benchmarks/harness.js .
-COPY benchmarks/package.json .
-COPY benchmarks/csharp/config.json .
+COPY zeromcp-benchmarks/harness.js .
+COPY zeromcp-benchmarks/package.json .
+COPY zeromcp-benchmarks/csharp/config.json .
 
 CMD ["node", "harness.js", "--config", "config.json"]

@@ -4,15 +4,15 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 WORKDIR /bench
 
 # Official SDK
-COPY benchmarks/php/official/ official/
+COPY zeromcp-benchmarks/php/official/ official/
 RUN cd official && composer install --no-dev 2>/dev/null
 
 # ZeroMCP source
-COPY php/ /zeromcp/php/
+COPY zeromcp/php/ /zeromcp/php/
 
 # Harness
-COPY benchmarks/harness.js .
-COPY benchmarks/package.json .
-COPY benchmarks/php/config.json .
+COPY zeromcp-benchmarks/harness.js .
+COPY zeromcp-benchmarks/package.json .
+COPY zeromcp-benchmarks/php/config.json .
 
 CMD ["node", "harness.js", "--config", "config.json"]

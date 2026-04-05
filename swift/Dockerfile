@@ -1,6 +1,6 @@
 FROM swift:6.0.3-jammy AS builder-official
 WORKDIR /build
-COPY benchmarks/swift/official/ .
+COPY zeromcp-benchmarks/swift/official/ .
 RUN swift build -c release 2>&1 | tail -5; \
     cp .build/release/McpBenchOfficial /official-server 2>/dev/null || \
     cp $(find .build -name McpBenchOfficial -type f | head -1) /official-server 2>/dev/null || \
@@ -8,7 +8,7 @@ RUN swift build -c release 2>&1 | tail -5; \
 
 FROM swift:6.0.3-jammy AS builder-zeromcp
 WORKDIR /build
-COPY swift/ .
+COPY zeromcp/swift/ .
 RUN rm -rf .build && swift build -c release 2>&1 | tail -5; \
     cp .build/release/zeromcp-example /zeromcp-server 2>/dev/null || \
     cp $(find .build -name zeromcp-example -type f | head -1) /zeromcp-server 2>/dev/null || \
@@ -24,8 +24,8 @@ WORKDIR /bench
 
 COPY --from=builder-official /official-server /bench/official-server
 COPY --from=builder-zeromcp /zeromcp-server /bench/zeromcp-server
-COPY benchmarks/harness.js .
-COPY benchmarks/package.json .
-COPY benchmarks/swift/config.json .
+COPY zeromcp-benchmarks/harness.js .
+COPY zeromcp-benchmarks/package.json .
+COPY zeromcp-benchmarks/swift/config.json .
 
 CMD ["node", "harness.js", "--config", "config.json"]
