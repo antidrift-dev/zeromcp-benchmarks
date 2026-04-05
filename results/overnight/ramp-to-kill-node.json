@@ -1,0 +1,1046 @@
+Ramp-to-Kill — Node.js ZeroMCP
+
+  concurrency=1 mix={"hello":100}
+    t=5s rps=500 p50=300μs p99=795μs errors=0 (0%) mem=62.7MB
+    t=10s rps=500 p50=233μs p99=467μs errors=0 (0%) mem=64.8MB
+    t=15s rps=497 p50=210μs p99=389μs errors=0 (0%) mem=64.8MB
+    t=20s rps=499 p50=219μs p99=339μs errors=0 (0%) mem=64.8MB
+    t=25s rps=498 p50=226μs p99=420μs errors=0 (0%) mem=64.8MB
+    t=30s rps=497 p50=221μs p99=464μs errors=0 (0%) mem=64.8MB
+  concurrency=5 mix={"hello":70,"create_invoice":20,"process_data":10}
+    t=5s rps=2334 p50=262μs p99=823μs errors=0 (0%) mem=74.3MB
+    t=10s rps=2383 p50=259μs p99=770μs errors=0 (0%) mem=74.2MB
+    t=15s rps=2453 p50=241μs p99=916μs errors=0 (0%) mem=74.3MB
+    t=20s rps=2481 p50=242μs p99=677μs errors=0 (0%) mem=77.7MB
+    t=25s rps=2475 p50=252μs p99=776μs errors=0 (0%) mem=77.8MB
+    t=30s rps=2487 p50=228μs p99=701μs errors=0 (0%) mem=78MB
+  concurrency=10 mix={"hello":50,"create_invoice":30,"process_data":15,"pipeline":5}
+    t=5s rps=5158 p50=371μs p99=1826μs errors=0 (0%) mem=113.4MB
+    t=10s rps=4822 p50=383μs p99=1997μs errors=0 (0%) mem=114.2MB
+    t=15s rps=4138 p50=379μs p99=2025μs errors=0 (0%) mem=116.6MB
+    t=20s rps=3984 p50=405μs p99=1593μs errors=0 (0%) mem=116.7MB
+    t=25s rps=4038 p50=393μs p99=2274μs errors=0 (0%) mem=116.8MB
+    t=30s rps=4102 p50=367μs p99=1419μs errors=0 (0%) mem=116.8MB
+  concurrency=25 mix={"hello":50,"create_invoice":30,"process_data":15,"pipeline":5}
+    t=5s rps=10049 p50=481μs p99=2039μs errors=0 (0%) mem=118MB
+    t=10s rps=9892 p50=521μs p99=2151μs errors=0 (0%) mem=119.8MB
+    t=15s rps=10323 p50=524μs p99=2076μs errors=0 (0%) mem=119.8MB
+    t=20s rps=10144 p50=544μs p99=2440μs errors=0 (0%) mem=120.1MB
+    t=25s rps=10200 p50=538μs p99=2072μs errors=0 (0%) mem=120.3MB
+    t=30s rps=10562 p50=484μs p99=2275μs errors=0 (0%) mem=120.5MB
+  concurrency=50 mix={"hello":50,"create_invoice":30,"process_data":15,"pipeline":5}
+    t=5s rps=20016 p50=565μs p99=1982μs errors=0 (0%) mem=132.6MB
+    t=10s rps=22036 p50=459μs p99=1735μs errors=0 (0%) mem=138.7MB
+    t=15s rps=26131 p50=370μs p99=1823μs errors=0 (0%) mem=139.3MB
+    t=20s rps=26884 p50=416μs p99=1564μs errors=0 (0%) mem=139.7MB
+    t=25s rps=26918 p50=426μs p99=1438μs errors=0 (0%) mem=140.4MB
+    t=30s rps=27205 p50=438μs p99=1471μs errors=0 (0%) mem=140.4MB
+  concurrency=100 mix={"hello":50,"create_invoice":30,"process_data":15,"pipeline":5}
+    t=5s rps=53342 p50=607μs p99=1469μs errors=0 (0%) mem=144.5MB
+    t=10s rps=52883 p50=598μs p99=1423μs errors=0 (0%) mem=145MB
+    t=15s rps=52291 p50=603μs p99=1602μs errors=0 (0%) mem=145.1MB
+    t=20s rps=52504 p50=597μs p99=1464μs errors=0 (0%) mem=145.3MB
+    t=25s rps=53633 p50=561μs p99=1435μs errors=0 (0%) mem=145.9MB
+    t=30s rps=51841 p50=588μs p99=3177μs errors=0 (0%) mem=146.4MB
+  concurrency=200 mix={"hello":50,"create_invoice":30,"process_data":15,"pipeline":5}
+    t=5s rps=108766 p50=1106μs p99=5346μs errors=0 (0%) mem=152.2MB
+    t=10s rps=116000 p50=1077μs p99=2282μs errors=0 (0%) mem=152.5MB
+    t=15s rps=116231 p50=1078μs p99=2270μs errors=0 (0%) mem=152.6MB
+    t=20s rps=115754 p50=1082μs p99=2282μs errors=0 (0%) mem=153.1MB
+    t=25s rps=115925 p50=1079μs p99=2304μs errors=0 (0%) mem=153.6MB
+    t=30s rps=115034 p50=1089μs p99=2340μs errors=0 (0%) mem=153.6MB
+  concurrency=500 mix={"hello":50,"create_invoice":30,"process_data":15,"pipeline":5}
+    t=5s rps=121311 p50=3439μs p99=6407μs errors=0 (0%) mem=157.6MB
+    t=10s rps=118406 p50=3464μs p99=6405μs errors=0 (0%) mem=160.8MB
+    t=15s rps=117494 p50=3463μs p99=6408μs errors=0 (0%) mem=160.8MB
+    t=20s rps=118783 p50=3446μs p99=6351μs errors=0 (0%) mem=161.2MB
+    t=25s rps=117226 p50=3494μs p99=6527μs errors=0 (0%) mem=161.2MB
+    t=30s rps=115847 p50=3513μs p99=6791μs errors=0 (0%) mem=161.5MB
+{
+  "language": "node",
+  "error_threshold_pct": 0.5,
+  "max_sustained_concurrency": 500,
+  "broke_at_concurrency": "never",
+  "levels": [
+    {
+      "concurrency": 1,
+      "mix": {
+        "hello": 100
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 1,
+          "requests": 2501,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 500,
+          "p50_us": 300,
+          "p95_us": 444,
+          "p99_us": 795,
+          "cpu_ms": 400,
+          "memory_mb": 62.7,
+          "tool_mix": {
+            "hello": 2501
+          }
+        },
+        {
+          "t": 10,
+          "concurrency": 1,
+          "requests": 2499,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 500,
+          "p50_us": 233,
+          "p95_us": 331,
+          "p99_us": 467,
+          "cpu_ms": 350,
+          "memory_mb": 64.8,
+          "tool_mix": {
+            "hello": 2499
+          }
+        },
+        {
+          "t": 15,
+          "concurrency": 1,
+          "requests": 2483,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 497,
+          "p50_us": 210,
+          "p95_us": 283,
+          "p99_us": 389,
+          "cpu_ms": 230,
+          "memory_mb": 64.8,
+          "tool_mix": {
+            "hello": 2483
+          }
+        },
+        {
+          "t": 20,
+          "concurrency": 1,
+          "requests": 2493,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 499,
+          "p50_us": 219,
+          "p95_us": 284,
+          "p99_us": 339,
+          "cpu_ms": 250,
+          "memory_mb": 64.8,
+          "tool_mix": {
+            "hello": 2493
+          }
+        },
+        {
+          "t": 25,
+          "concurrency": 1,
+          "requests": 2489,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 498,
+          "p50_us": 226,
+          "p95_us": 293,
+          "p99_us": 420,
+          "cpu_ms": 250,
+          "memory_mb": 64.8,
+          "tool_mix": {
+            "hello": 2489
+          }
+        },
+        {
+          "t": 30,
+          "concurrency": 1,
+          "requests": 2487,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 497,
+          "p50_us": 221,
+          "p95_us": 308,
+          "p99_us": 464,
+          "cpu_ms": 250,
+          "memory_mb": 64.8,
+          "tool_mix": {
+            "hello": 2487
+          }
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 5,
+      "mix": {
+        "hello": 70,
+        "create_invoice": 20,
+        "process_data": 10
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 5,
+          "requests": 11669,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 2334,
+          "p50_us": 262,
+          "p95_us": 517,
+          "p99_us": 823,
+          "cpu_ms": 690,
+          "memory_mb": 74.3,
+          "tool_mix": {
+            "hello": 8170,
+            "process_data": 1153,
+            "create_invoice": 2346
+          }
+        },
+        {
+          "t": 10,
+          "concurrency": 5,
+          "requests": 11914,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 2383,
+          "p50_us": 259,
+          "p95_us": 497,
+          "p99_us": 770,
+          "cpu_ms": 600,
+          "memory_mb": 74.2,
+          "tool_mix": {
+            "create_invoice": 2434,
+            "hello": 8238,
+            "process_data": 1242
+          }
+        },
+        {
+          "t": 15,
+          "concurrency": 5,
+          "requests": 12265,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 2453,
+          "p50_us": 241,
+          "p95_us": 553,
+          "p99_us": 916,
+          "cpu_ms": 590,
+          "memory_mb": 74.3,
+          "tool_mix": {
+            "hello": 8581,
+            "create_invoice": 2485,
+            "process_data": 1199
+          }
+        },
+        {
+          "t": 20,
+          "concurrency": 5,
+          "requests": 12403,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 2481,
+          "p50_us": 242,
+          "p95_us": 455,
+          "p99_us": 677,
+          "cpu_ms": 550,
+          "memory_mb": 77.7,
+          "tool_mix": {
+            "process_data": 1152,
+            "create_invoice": 2581,
+            "hello": 8670
+          }
+        },
+        {
+          "t": 25,
+          "concurrency": 5,
+          "requests": 12377,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 2475,
+          "p50_us": 252,
+          "p95_us": 479,
+          "p99_us": 776,
+          "cpu_ms": 560,
+          "memory_mb": 77.8,
+          "tool_mix": {
+            "create_invoice": 2495,
+            "hello": 8669,
+            "process_data": 1213
+          }
+        },
+        {
+          "t": 30,
+          "concurrency": 5,
+          "requests": 12433,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 2487,
+          "p50_us": 228,
+          "p95_us": 455,
+          "p99_us": 701,
+          "cpu_ms": 510,
+          "memory_mb": 78,
+          "tool_mix": {
+            "create_invoice": 2595,
+            "hello": 8616,
+            "process_data": 1222
+          }
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 10,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 10,
+          "requests": 25791,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 5158,
+          "p50_us": 371,
+          "p95_us": 1063,
+          "p99_us": 1826,
+          "cpu_ms": 1960,
+          "memory_mb": 113.4,
+          "tool_mix": {
+            "process_data": 3997,
+            "hello": 12750,
+            "pipeline": 1289,
+            "create_invoice": 7755
+          }
+        },
+        {
+          "t": 10,
+          "concurrency": 10,
+          "requests": 24109,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4822,
+          "p50_us": 383,
+          "p95_us": 1045,
+          "p99_us": 1997,
+          "cpu_ms": 1710,
+          "memory_mb": 114.2,
+          "tool_mix": {
+            "hello": 12108,
+            "process_data": 3563,
+            "create_invoice": 7262,
+            "pipeline": 1176
+          }
+        },
+        {
+          "t": 15,
+          "concurrency": 10,
+          "requests": 20691,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4138,
+          "p50_us": 379,
+          "p95_us": 1073,
+          "p99_us": 2025,
+          "cpu_ms": 1630,
+          "memory_mb": 116.6,
+          "tool_mix": {
+            "create_invoice": 6255,
+            "hello": 10320,
+            "pipeline": 967,
+            "process_data": 3149
+          }
+        },
+        {
+          "t": 20,
+          "concurrency": 10,
+          "requests": 19918,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 3984,
+          "p50_us": 405,
+          "p95_us": 1002,
+          "p99_us": 1593,
+          "cpu_ms": 1490,
+          "memory_mb": 116.7,
+          "tool_mix": {
+            "hello": 9920,
+            "process_data": 2992,
+            "create_invoice": 6018,
+            "pipeline": 988
+          }
+        },
+        {
+          "t": 25,
+          "concurrency": 10,
+          "requests": 20189,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4038,
+          "p50_us": 393,
+          "p95_us": 1082,
+          "p99_us": 2274,
+          "cpu_ms": 1570,
+          "memory_mb": 116.8,
+          "tool_mix": {
+            "create_invoice": 5983,
+            "hello": 10162,
+            "pipeline": 1020,
+            "process_data": 3024
+          }
+        },
+        {
+          "t": 30,
+          "concurrency": 10,
+          "requests": 20510,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 4102,
+          "p50_us": 367,
+          "p95_us": 913,
+          "p99_us": 1419,
+          "cpu_ms": 1360,
+          "memory_mb": 116.8,
+          "tool_mix": {
+            "pipeline": 1019,
+            "hello": 10398,
+            "create_invoice": 6038,
+            "process_data": 3055
+          }
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 25,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 25,
+          "requests": 50244,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10049,
+          "p50_us": 481,
+          "p95_us": 1211,
+          "p99_us": 2039,
+          "cpu_ms": 2370,
+          "memory_mb": 118,
+          "tool_mix": {
+            "create_invoice": 15251,
+            "hello": 24955,
+            "pipeline": 2640,
+            "process_data": 7398
+          }
+        },
+        {
+          "t": 10,
+          "concurrency": 25,
+          "requests": 49458,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 9892,
+          "p50_us": 521,
+          "p95_us": 1180,
+          "p99_us": 2151,
+          "cpu_ms": 2170,
+          "memory_mb": 119.8,
+          "tool_mix": {
+            "create_invoice": 14731,
+            "hello": 24857,
+            "process_data": 7399,
+            "pipeline": 2471
+          }
+        },
+        {
+          "t": 15,
+          "concurrency": 25,
+          "requests": 51617,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10323,
+          "p50_us": 524,
+          "p95_us": 1145,
+          "p99_us": 2076,
+          "cpu_ms": 2170,
+          "memory_mb": 119.8,
+          "tool_mix": {
+            "process_data": 7656,
+            "hello": 25862,
+            "create_invoice": 15562,
+            "pipeline": 2537
+          }
+        },
+        {
+          "t": 20,
+          "concurrency": 25,
+          "requests": 50721,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10144,
+          "p50_us": 544,
+          "p95_us": 1212,
+          "p99_us": 2440,
+          "cpu_ms": 2110,
+          "memory_mb": 120.1,
+          "tool_mix": {
+            "process_data": 7711,
+            "hello": 25121,
+            "create_invoice": 15254,
+            "pipeline": 2635
+          }
+        },
+        {
+          "t": 25,
+          "concurrency": 25,
+          "requests": 51001,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10200,
+          "p50_us": 538,
+          "p95_us": 1210,
+          "p99_us": 2072,
+          "cpu_ms": 2140,
+          "memory_mb": 120.3,
+          "tool_mix": {
+            "hello": 25417,
+            "process_data": 7733,
+            "create_invoice": 15318,
+            "pipeline": 2533
+          }
+        },
+        {
+          "t": 30,
+          "concurrency": 25,
+          "requests": 52811,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 10562,
+          "p50_us": 484,
+          "p95_us": 1195,
+          "p99_us": 2275,
+          "cpu_ms": 2060,
+          "memory_mb": 120.5,
+          "tool_mix": {
+            "hello": 26522,
+            "create_invoice": 15795,
+            "pipeline": 2660,
+            "process_data": 7834
+          }
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 50,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 50,
+          "requests": 100080,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 20016,
+          "p50_us": 565,
+          "p95_us": 1176,
+          "p99_us": 1982,
+          "cpu_ms": 2350,
+          "memory_mb": 132.6,
+          "tool_mix": {
+            "pipeline": 5068,
+            "create_invoice": 30160,
+            "hello": 49858,
+            "process_data": 14994
+          }
+        },
+        {
+          "t": 10,
+          "concurrency": 50,
+          "requests": 110181,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 22036,
+          "p50_us": 459,
+          "p95_us": 1064,
+          "p99_us": 1735,
+          "cpu_ms": 2450,
+          "memory_mb": 138.7,
+          "tool_mix": {
+            "create_invoice": 32930,
+            "hello": 54834,
+            "process_data": 16859,
+            "pipeline": 5558
+          }
+        },
+        {
+          "t": 15,
+          "concurrency": 50,
+          "requests": 130655,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 26131,
+          "p50_us": 370,
+          "p95_us": 1139,
+          "p99_us": 1823,
+          "cpu_ms": 2530,
+          "memory_mb": 139.3,
+          "tool_mix": {
+            "hello": 65869,
+            "create_invoice": 38686,
+            "process_data": 19577,
+            "pipeline": 6523
+          }
+        },
+        {
+          "t": 20,
+          "concurrency": 50,
+          "requests": 134420,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 26884,
+          "p50_us": 416,
+          "p95_us": 1010,
+          "p99_us": 1564,
+          "cpu_ms": 2690,
+          "memory_mb": 139.7,
+          "tool_mix": {
+            "process_data": 20391,
+            "create_invoice": 39983,
+            "hello": 67319,
+            "pipeline": 6727
+          }
+        },
+        {
+          "t": 25,
+          "concurrency": 50,
+          "requests": 134588,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 26918,
+          "p50_us": 426,
+          "p95_us": 946,
+          "p99_us": 1438,
+          "cpu_ms": 2630,
+          "memory_mb": 140.4,
+          "tool_mix": {
+            "hello": 67597,
+            "process_data": 20248,
+            "create_invoice": 40195,
+            "pipeline": 6548
+          }
+        },
+        {
+          "t": 30,
+          "concurrency": 50,
+          "requests": 136023,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 27205,
+          "p50_us": 438,
+          "p95_us": 910,
+          "p99_us": 1471,
+          "cpu_ms": 2680,
+          "memory_mb": 140.4,
+          "tool_mix": {
+            "hello": 67978,
+            "process_data": 20446,
+            "create_invoice": 40816,
+            "pipeline": 6783
+          }
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 100,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 100,
+          "requests": 266712,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 53342,
+          "p50_us": 607,
+          "p95_us": 1041,
+          "p99_us": 1469,
+          "cpu_ms": 3180,
+          "memory_mb": 144.5,
+          "tool_mix": {
+            "hello": 133409,
+            "create_invoice": 80099,
+            "pipeline": 13267,
+            "process_data": 39940
+          }
+        },
+        {
+          "t": 10,
+          "concurrency": 100,
+          "requests": 264415,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 52883,
+          "p50_us": 598,
+          "p95_us": 1017,
+          "p99_us": 1423,
+          "cpu_ms": 3340,
+          "memory_mb": 145,
+          "tool_mix": {
+            "hello": 132159,
+            "process_data": 39800,
+            "pipeline": 13022,
+            "create_invoice": 79439
+          }
+        },
+        {
+          "t": 15,
+          "concurrency": 100,
+          "requests": 261456,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 52291,
+          "p50_us": 603,
+          "p95_us": 1106,
+          "p99_us": 1602,
+          "cpu_ms": 3150,
+          "memory_mb": 145.1,
+          "tool_mix": {
+            "process_data": 39023,
+            "hello": 130822,
+            "create_invoice": 78495,
+            "pipeline": 13108
+          }
+        },
+        {
+          "t": 20,
+          "concurrency": 100,
+          "requests": 262519,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 52504,
+          "p50_us": 597,
+          "p95_us": 1061,
+          "p99_us": 1464,
+          "cpu_ms": 3130,
+          "memory_mb": 145.3,
+          "tool_mix": {
+            "create_invoice": 79217,
+            "hello": 131185,
+            "pipeline": 12832,
+            "process_data": 39285
+          }
+        },
+        {
+          "t": 25,
+          "concurrency": 100,
+          "requests": 268167,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 53633,
+          "p50_us": 561,
+          "p95_us": 1047,
+          "p99_us": 1435,
+          "cpu_ms": 3190,
+          "memory_mb": 145.9,
+          "tool_mix": {
+            "hello": 133925,
+            "process_data": 40376,
+            "create_invoice": 80671,
+            "pipeline": 13195
+          }
+        },
+        {
+          "t": 30,
+          "concurrency": 100,
+          "requests": 259203,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 51841,
+          "p50_us": 588,
+          "p95_us": 1303,
+          "p99_us": 3177,
+          "cpu_ms": 3220,
+          "memory_mb": 146.4,
+          "tool_mix": {
+            "hello": 129535,
+            "create_invoice": 78044,
+            "pipeline": 12924,
+            "process_data": 38700
+          }
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 200,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 200,
+          "requests": 543830,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 108766,
+          "p50_us": 1106,
+          "p95_us": 2166,
+          "p99_us": 5346,
+          "cpu_ms": 5500,
+          "memory_mb": 152.2,
+          "tool_mix": {
+            "pipeline": 27435,
+            "process_data": 81930,
+            "create_invoice": 162988,
+            "hello": 271488
+          }
+        },
+        {
+          "t": 10,
+          "concurrency": 200,
+          "requests": 580000,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 116000,
+          "p50_us": 1077,
+          "p95_us": 1841,
+          "p99_us": 2282,
+          "cpu_ms": 5380,
+          "memory_mb": 152.5,
+          "tool_mix": {
+            "hello": 289442,
+            "create_invoice": 174010,
+            "process_data": 87465,
+            "pipeline": 29139
+          }
+        },
+        {
+          "t": 15,
+          "concurrency": 200,
+          "requests": 581153,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 116231,
+          "p50_us": 1078,
+          "p95_us": 1854,
+          "p99_us": 2270,
+          "cpu_ms": 5380,
+          "memory_mb": 152.6,
+          "tool_mix": {
+            "hello": 290542,
+            "create_invoice": 174192,
+            "process_data": 87417,
+            "pipeline": 29046
+          }
+        },
+        {
+          "t": 20,
+          "concurrency": 200,
+          "requests": 578772,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 115754,
+          "p50_us": 1082,
+          "p95_us": 1870,
+          "p99_us": 2282,
+          "cpu_ms": 5370,
+          "memory_mb": 153.1,
+          "tool_mix": {
+            "hello": 289507,
+            "create_invoice": 173533,
+            "process_data": 86610,
+            "pipeline": 29135
+          }
+        },
+        {
+          "t": 25,
+          "concurrency": 200,
+          "requests": 579624,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 115925,
+          "p50_us": 1079,
+          "p95_us": 1886,
+          "p99_us": 2304,
+          "cpu_ms": 5390,
+          "memory_mb": 153.6,
+          "tool_mix": {
+            "process_data": 86849,
+            "hello": 289557,
+            "pipeline": 29109,
+            "create_invoice": 174082
+          }
+        },
+        {
+          "t": 30,
+          "concurrency": 200,
+          "requests": 575169,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 115034,
+          "p50_us": 1089,
+          "p95_us": 1898,
+          "p99_us": 2340,
+          "cpu_ms": 5420,
+          "memory_mb": 153.6,
+          "tool_mix": {
+            "create_invoice": 172263,
+            "hello": 288109,
+            "pipeline": 28818,
+            "process_data": 85894
+          }
+        }
+      ],
+      "broke": false
+    },
+    {
+      "concurrency": 500,
+      "mix": {
+        "hello": 50,
+        "create_invoice": 30,
+        "process_data": 15,
+        "pipeline": 5
+      },
+      "snapshots": [
+        {
+          "t": 5,
+          "concurrency": 500,
+          "requests": 606554,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 121311,
+          "p50_us": 3439,
+          "p95_us": 5051,
+          "p99_us": 6407,
+          "cpu_ms": 5650,
+          "memory_mb": 157.6,
+          "tool_mix": {
+            "create_invoice": 181663,
+            "hello": 304148,
+            "pipeline": 30262,
+            "process_data": 90825
+          }
+        },
+        {
+          "t": 10,
+          "concurrency": 500,
+          "requests": 592029,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 118406,
+          "p50_us": 3464,
+          "p95_us": 5069,
+          "p99_us": 6405,
+          "cpu_ms": 5550,
+          "memory_mb": 160.8,
+          "tool_mix": {
+            "create_invoice": 178150,
+            "hello": 295219,
+            "pipeline": 29829,
+            "process_data": 88772
+          }
+        },
+        {
+          "t": 15,
+          "concurrency": 500,
+          "requests": 587471,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 117494,
+          "p50_us": 3463,
+          "p95_us": 5103,
+          "p99_us": 6408,
+          "cpu_ms": 5570,
+          "memory_mb": 160.8,
+          "tool_mix": {
+            "create_invoice": 176144,
+            "process_data": 88269,
+            "hello": 293349,
+            "pipeline": 29461
+          }
+        },
+        {
+          "t": 20,
+          "concurrency": 500,
+          "requests": 593914,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 118783,
+          "p50_us": 3446,
+          "p95_us": 4974,
+          "p99_us": 6351,
+          "cpu_ms": 5560,
+          "memory_mb": 161.2,
+          "tool_mix": {
+            "hello": 297529,
+            "create_invoice": 178086,
+            "process_data": 88780,
+            "pipeline": 29524
+          }
+        },
+        {
+          "t": 25,
+          "concurrency": 500,
+          "requests": 586130,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 117226,
+          "p50_us": 3494,
+          "p95_us": 5233,
+          "p99_us": 6527,
+          "cpu_ms": 5550,
+          "memory_mb": 161.2,
+          "tool_mix": {
+            "hello": 293942,
+            "process_data": 87619,
+            "create_invoice": 175795,
+            "pipeline": 29122
+          }
+        },
+        {
+          "t": 30,
+          "concurrency": 500,
+          "requests": 579237,
+          "errors": 0,
+          "error_rate_pct": 0,
+          "rps": 115847,
+          "p50_us": 3513,
+          "p95_us": 5253,
+          "p99_us": 6791,
+          "cpu_ms": 5550,
+          "memory_mb": 161.5,
+          "tool_mix": {
+            "hello": 289572,
+            "process_data": 86749,
+            "create_invoice": 174137,
+            "pipeline": 28889
+          }
+        }
+      ],
+      "broke": false
+    }
+  ]
+}
