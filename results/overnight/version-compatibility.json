@@ -11,6 +11,36 @@
     "official_min": "3.10",
     "tested": ["3.9", "3.10", "3.11", "3.12", "3.13"]
   },
+  "go": {
+    "zeromcp_min": "1.22",
+    "official_min": "1.25",
+    "tested": ["1.20", "1.21", "1.22"]
+  },
+  "rust": {
+    "zeromcp_min": "1.78",
+    "official_min": "1.88",
+    "tested": ["1.70", "1.75", "1.76", "1.77", "1.78", "latest"]
+  },
+  "java": {
+    "zeromcp_min": "17",
+    "official_min": "17",
+    "tested": ["17", "21"]
+  },
+  "kotlin": {
+    "zeromcp_min": "2.0 (JVM 21)",
+    "official_min": "2.2 (JVM 21)",
+    "note": "Official SDK compiled with metadata version 2.2, incompatible with Kotlin < 2.2"
+  },
+  "swift": {
+    "zeromcp_min": "5.9",
+    "official_min": "5.9",
+    "note": "Both target macOS 13+"
+  },
+  "csharp": {
+    "zeromcp_min": ".NET 8",
+    "official_min": ".NET 8",
+    "note": "Both target net8.0"
+  },
   "ruby": {
     "zeromcp_min": "3.0",
     "official_min": "3.2",
