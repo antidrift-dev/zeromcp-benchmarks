@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * Load Ramp Benchmark
- * warmup (100 req/s) → ramp (1K, 5K, 10K) → sustain (hold) → break (find ceiling)
- *
- * Fires requests with increasing concurrency until errors appear or throughput plateaus.
+ * Load Ramp Benchmark — All 10 ZeroMCP Languages
+ * Fires requests with increasing concurrency (1, 5, 10, 25, 50, 100) over stdio,
+ * 30 seconds per level, finds where each language breaks.
  */
 
 import { spawn } from 'node:child_process';
@@ -14,6 +13,60 @@ import { readFileSync } from 'node:fs';
 const RAMP_LEVELS = [1, 5, 10, 25, 50, 100]; // concurrent connections
 const DURATION_PER_LEVEL = 30; // seconds per concurrency level
 const INTERVAL = 5; // snapshot every 5 seconds
+
+const SERVERS = [
+  {
+    name: 'nodejs',
+    command: 'node',
+    args: ['/zeromcp/nodejs/bin/mcp.js', 'serve', '/zeromcp/nodejs/examples/tools'],
+  },
+  {
+    name: 'python',
+    command: 'python3',
+    args: ['-m', 'zeromcp', 'serve', '/zeromcp/python/examples/tools'],
+    env: { PYTHONPATH: '/zeromcp/python' },
+  },
+  {
+    name: 'go',
+    command: 'zeromcp-go',
+    args: [],
+  },
+  {
+    name: 'ruby',
+    command: 'ruby',
+    args: ['-I', '/zeromcp/ruby/lib', '/zeromcp/ruby/bin/zeromcp', 'serve', '/zeromcp/ruby/tools'],
+  },
+  {
+    name: 'rust',
+    command: '/zeromcp/rust/target/release/examples/hello',
+    args: [],
+  },
+  {
+    name: 'php',
+    command: 'php',
+    args: ['/zeromcp/php/zeromcp.php', 'serve', '/zeromcp/php/tools'],
+  },
+  {
+    name: 'swift',
+    command: 'zeromcp-swift',
+    args: [],
+  },
+  {
+    name: 'kotlin',
+    command: '/zeromcp/kotlin/example/build/install/example/bin/example',
+    args: [],
+  },
+  {
+    name: 'java',
+    command: 'java',
+    args: ['-Dfile.encoding=UTF-8', '-cp', '/zeromcp/java/target/zeromcp-0.1.0.jar:/zeromcp/java/target/deps/*:/tmp/java-out', 'Main'],
+  },
+  {
+    name: 'csharp',
+    command: '/tmp/csharp-out/Example',
+    args: [],
+  },
+];
 
 function createHandler(proc) {
   const rl = createInterface({ input: proc.stdout });
@@ -62,11 +115,15 @@ function percentile(sorted, p) {
 
 function round(v) { return Math.round(v * 100) / 100; }
 
-async function rampTest(label, command, args) {
-  console.error(`  [${label}] starting...`);
+async function rampTest(server) {
+  const label = server.name;
+  console.error(`\n  [${label}] starting...`);
 
-  const proc = spawn(command, args, { stdio: ['pipe', 'pipe', 'pipe'] });
-  proc.on('error', () => {});
+  const env = { ...process.env, ...(server.env || {}) };
+  const proc = spawn(server.command, server.args, { stdio: ['pipe', 'pipe', 'pipe'], env });
+  proc.on('error', (err) => {
+    console.error(`  [${label}] spawn error: ${err.message}`);
+  });
   proc.stderr.on('data', () => {});
 
   const send = createHandler(proc);
@@ -76,14 +133,19 @@ async function rampTest(label, command, args) {
     await send({ jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2024-11-05', capabilities: {}, clientInfo: { name: 'loadramp', version: '1.0' } } });
     proc.stdin.write(JSON.stringify({ jsonrpc: '2.0', method: 'notifications/initialized' }) + '\n');
     await new Promise(r => setTimeout(r, 200));
-  } catch {
+  } catch (err) {
     proc.kill();
+    console.error(`  [${label}] failed to initialize: ${err.message}`);
     return { label, error: 'Failed to initialize' };
   }
 
   // Warmup
   for (let i = 0; i < 50; i++) {
-    await send({ jsonrpc: '2.0', id: 100 + i, method: 'tools/call', params: { name: 'hello', arguments: { name: 'warmup' } } });
+    try {
+      await send({ jsonrpc: '2.0', id: 100 + i, method: 'tools/call', params: { name: 'hello', arguments: { name: 'warmup' } } });
+    } catch {
+      break;
+    }
   }
 
   const levels = [];
@@ -168,11 +230,21 @@ async function rampTest(label, command, args) {
 }
 
 async function main() {
-  console.error('Load Ramp Benchmark');
-  const results = {};
+  console.error('Load Ramp Benchmark — All Languages\n');
 
-  // ZeroMCP stdio
-  results.zeromcp = await rampTest('zeromcp', 'node', ['/zeromcp/nodejs/bin/mcp.js', 'serve', '/zeromcp/nodejs/examples/tools']);
+  // Allow filtering via env var, e.g. LANGUAGES=nodejs,go
+  const filter = process.env.LANGUAGES
+    ? process.env.LANGUAGES.split(',').map(s => s.trim().toLowerCase())
+    : null;
+
+  const servers = filter
+    ? SERVERS.filter(s => filter.includes(s.name))
+    : SERVERS;
+
+  const results = {};
+  for (const server of servers) {
+    results[server.name] = await rampTest(server);
+  }
 
   console.log(JSON.stringify(results, null, 2));
 }
