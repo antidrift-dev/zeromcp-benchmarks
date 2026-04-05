@@ -9,7 +9,11 @@ RUN cd nodejs && npm install && npm run build
 FROM public.ecr.aws/lambda/nodejs:22
 WORKDIR /var/task
 
-COPY --from=builder /build/nodejs /zeromcp/nodejs
+COPY --from=builder /build/nodejs/dist ./zeromcp/dist/
+COPY --from=builder /build/nodejs/package.json ./zeromcp/
+COPY --from=builder /build/nodejs/node_modules ./zeromcp/node_modules/
+COPY zeromcp/nodejs/examples/tools ./tools/
 COPY zeromcp-benchmarks/runtimes/lambda/handler.mjs .
+RUN echo '{"type":"module"}' > package.json
 
 CMD ["handler.handler"]

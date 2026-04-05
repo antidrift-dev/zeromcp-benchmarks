@@ -1,17 +1,17 @@
 /**
  * AWS Lambda handler wrapper for ZeroMCP.
- * Simulates MCP over Lambda invocations instead of stdio.
  * Each Lambda invocation is one JSON-RPC request/response cycle.
+ * Tools are loaded once on cold start, cached for warm invocations.
  */
 
-import { ToolScanner } from '/zeromcp/nodejs/dist/scanner.js';
-import { toJsonSchema, validate } from '/zeromcp/nodejs/dist/schema.js';
+import { ToolScanner } from './zeromcp/dist/scanner.js';
+import { toJsonSchema, validate } from './zeromcp/dist/schema.js';
 
 let tools = null;
 
 async function initTools() {
   if (tools) return tools;
-  const scanner = new ToolScanner({ tools: ['/zeromcp/nodejs/examples/tools'] });
+  const scanner = new ToolScanner({ tools: ['./tools'] });
   await scanner.scan();
   tools = scanner.tools;
   return tools;
@@ -20,11 +20,13 @@ async function initTools() {
 export async function handler(event) {
   const allTools = await initTools();
 
-  const request = typeof event === 'string' ? JSON.parse(event) : event;
+  const request = typeof event === 'string' ? JSON.parse(event) : (event.body ? JSON.parse(event.body) : event);
   const { id, method, params } = request;
 
+  let result;
+
   if (method === 'initialize') {
-    return {
+    result = {
       jsonrpc: '2.0', id,
       result: {
         protocolVersion: '2024-11-05',
@@ -32,40 +34,38 @@ export async function handler(event) {
         serverInfo: { name: 'zeromcp-lambda', version: '0.1.0' },
       },
     };
-  }
-
-  if (method === 'tools/list') {
+  } else if (method === 'tools/list') {
     const list = [];
     for (const [name, tool] of allTools) {
       list.push({ name, description: tool.description, inputSchema: toJsonSchema(tool.input) });
     }
-    return { jsonrpc: '2.0', id, result: { tools: list } };
-  }
-
-  if (method === 'tools/call') {
+    result = { jsonrpc: '2.0', id, result: { tools: list } };
+  } else if (method === 'tools/call') {
     const name = params?.name ?? '';
     const args = params?.arguments ?? {};
     const tool = allTools.get(name);
     if (!tool) {
-      return { jsonrpc: '2.0', id, result: { content: [{ type: 'text', text: `Unknown tool: ${name}` }], isError: true } };
+      result = { jsonrpc: '2.0', id, result: { content: [{ type: 'text', text: `Unknown tool: ${name}` }], isError: true } };
+    } else {
+      const schema = toJsonSchema(tool.input);
+      const errors = validate(args, schema);
+      if (errors.length > 0) {
+        result = { jsonrpc: '2.0', id, result: { content: [{ type: 'text', text: `Validation errors:\n${errors.join('\n')}` }], isError: true } };
+      } else {
+        try {
+          const r = await tool.execute(args);
+          const text = typeof r === 'string' ? r : JSON.stringify(r);
+          result = { jsonrpc: '2.0', id, result: { content: [{ type: 'text', text }] } };
+        } catch (err) {
+          result = { jsonrpc: '2.0', id, result: { content: [{ type: 'text', text: `Error: ${err.message}` }], isError: true } };
+        }
+      }
     }
-    const schema = toJsonSchema(tool.input);
-    const errors = validate(args, schema);
-    if (errors.length > 0) {
-      return { jsonrpc: '2.0', id, result: { content: [{ type: 'text', text: `Validation errors:\n${errors.join('\n')}` }], isError: true } };
-    }
-    try {
-      const result = await tool.execute(args);
-      const text = typeof result === 'string' ? result : JSON.stringify(result);
-      return { jsonrpc: '2.0', id, result: { content: [{ type: 'text', text }] } };
-    } catch (err) {
-      return { jsonrpc: '2.0', id, result: { content: [{ type: 'text', text: `Error: ${err.message}` }], isError: true } };
-    }
+  } else if (method === 'ping') {
+    result = { jsonrpc: '2.0', id, result: {} };
+  } else {
+    result = { jsonrpc: '2.0', id, error: { code: -32601, message: `Method not found: ${method}` } };
   }
 
-  if (method === 'ping') {
-    return { jsonrpc: '2.0', id, result: {} };
-  }
-
-  return { jsonrpc: '2.0', id, error: { code: -32601, message: `Method not found: ${method}` } };
+  return result;
 }
