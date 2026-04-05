@@ -1,0 +1,27 @@
+{
+  "language": "node-bun",
+  "node": {
+    "label": "node",
+    "startup_ms": 47.49,
+    "p50_ms": 0.09,
+    "p95_ms": 0.16,
+    "p99_ms": 0.3,
+    "rps": 9738,
+    "cpu_ms": 70,
+    "cpu_per_req_us": 70,
+    "memory_idle_mb": 50.2,
+    "memory_peak_mb": 58.8
+  },
+  "bun": {
+    "label": "bun",
+    "startup_ms": 24.4,
+    "p50_ms": 0.07,
+    "p95_ms": 0.11,
+    "p99_ms": 0.96,
+    "rps": 12040,
+    "cpu_ms": 100,
+    "cpu_per_req_us": 100,
+    "memory_idle_mb": 48,
+    "memory_peak_mb": 72.7
+  }
+}

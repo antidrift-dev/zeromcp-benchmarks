@@ -1,0 +1,27 @@
+{
+  "language": "node-deno",
+  "node": {
+    "label": "node",
+    "startup_ms": 50.41,
+    "p50_ms": 0.1,
+    "p95_ms": 0.24,
+    "p99_ms": 0.38,
+    "rps": 8126,
+    "cpu_ms": 70,
+    "cpu_per_req_us": 70,
+    "memory_idle_mb": 50.1,
+    "memory_peak_mb": 58.8
+  },
+  "deno": {
+    "label": "deno",
+    "startup_ms": 34.46,
+    "p50_ms": 0.09,
+    "p95_ms": 0.14,
+    "p99_ms": 0.21,
+    "rps": 11101,
+    "cpu_ms": 80,
+    "cpu_per_req_us": 80,
+    "memory_idle_mb": 67.4,
+    "memory_peak_mb": 81.1
+  }
+}

@@ -1,0 +1,8 @@
+audited 3 packages in 0.144s
+found 0 vulnerabilities
+
+
+> zeromcp@0.1.0 build /app
+> tsc
+
+{"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2024-11-05","capabilities":{"tools":{"listChanged":true}},"serverInfo":{"name":"zeromcp","version":"0.1.0"}}}
