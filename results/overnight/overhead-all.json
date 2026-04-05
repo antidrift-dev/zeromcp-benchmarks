@@ -1,0 +1,1344 @@
+Overhead Measurement — All Languages (stdio)
+
+
+=== nodejs ===
+  [nodejs-echo] benchmarking for 60s...
+    t=10s rps=19610 p50=0.05ms mem=50.9MB
+    t=20s rps=19762 p50=0.05ms mem=50.9MB
+    t=30s rps=19859 p50=0.05ms mem=50.9MB
+    t=40s rps=20133 p50=0.05ms mem=52.5MB
+    t=50s rps=19481 p50=0.05ms mem=52.5MB
+    t=60s rps=19647 p50=0.05ms mem=52.5MB
+  [nodejs-zeromcp] benchmarking for 60s...
+    t=10s rps=18177 p50=0.05ms mem=65.2MB
+    t=20s rps=18516 p50=0.05ms mem=65.2MB
+    t=30s rps=18453 p50=0.05ms mem=66MB
+    t=40s rps=18342 p50=0.05ms mem=69MB
+    t=50s rps=18216 p50=0.05ms mem=69MB
+    t=60s rps=17660 p50=0.05ms mem=69MB
+  overhead: latency +0ms (0%), rps -7.7%
+
+=== python ===
+  [python-echo] benchmarking for 60s...
+    t=10s rps=20823 p50=0.05ms mem=51.1MB
+    t=20s rps=19636 p50=0.05ms mem=51.1MB
+    t=30s rps=16474 p50=0.05ms mem=51.1MB
+    t=40s rps=18061 p50=0.05ms mem=51.1MB
+    t=50s rps=19111 p50=0.05ms mem=52.8MB
+    t=60s rps=18687 p50=0.05ms mem=52.9MB
+  [python-zeromcp] benchmarking for 60s...
+    t=10s rps=14606 p50=0.07ms mem=21.7MB
+    t=20s rps=14695 p50=0.07ms mem=21.7MB
+    t=30s rps=14763 p50=0.07ms mem=21.7MB
+    t=40s rps=14583 p50=0.07ms mem=21.7MB
+    t=50s rps=11461 p50=0.08ms mem=21.7MB
+    t=60s rps=12837 p50=0.07ms mem=21.7MB
+  overhead: latency +0.02ms (43.33%), rps -26.46%
+
+=== go ===
+  [go-echo] benchmarking for 60s...
+    t=10s rps=18831 p50=0.05ms mem=51.7MB
+    t=20s rps=18428 p50=0.05ms mem=51.7MB
+    t=30s rps=19765 p50=0.05ms mem=51.7MB
+    t=40s rps=20469 p50=0.05ms mem=51.7MB
+    t=50s rps=19661 p50=0.05ms mem=53.4MB
+    t=60s rps=19448 p50=0.05ms mem=53.4MB
+  [go-zeromcp] benchmarking for 60s...
+    t=10s rps=18088 p50=0.05ms mem=28.1MB
+    t=20s rps=17846 p50=0.05ms mem=28.1MB
+    t=30s rps=17874 p50=0.05ms mem=28.3MB
+    t=40s rps=17841 p50=0.05ms mem=28.3MB
+    t=50s rps=17523 p50=0.05ms mem=28.3MB
+    t=60s rps=17346 p50=0.05ms mem=28.6MB
+  overhead: latency +0ms (0%), rps -8.65%
+
+=== ruby ===
+  [ruby-echo] benchmarking for 60s...
+    t=10s rps=18613 p50=0.05ms mem=51.5MB
+    t=20s rps=18024 p50=0.05ms mem=51.5MB
+    t=30s rps=17430 p50=0.05ms mem=51.5MB
+    t=40s rps=19294 p50=0.05ms mem=51.5MB
+    t=50s rps=18784 p50=0.05ms mem=53.2MB
+    t=60s rps=18610 p50=0.05ms mem=53.2MB
+  [ruby-zeromcp] benchmarking for 60s...
+    t=10s rps=15359 p50=0.06ms mem=16MB
+    t=20s rps=15300 p50=0.06ms mem=16MB
+    t=30s rps=15138 p50=0.06ms mem=16MB
+    t=40s rps=15318 p50=0.06ms mem=16MB
+    t=50s rps=15721 p50=0.06ms mem=16MB
+    t=60s rps=15636 p50=0.06ms mem=16MB
+  overhead: latency +0.01ms (20%), rps -16.51%
+
+=== rust ===
+  [rust-echo] benchmarking for 60s...
+    t=10s rps=19720 p50=0.05ms mem=51.8MB
+    t=20s rps=19331 p50=0.05ms mem=51.8MB
+    t=30s rps=19834 p50=0.05ms mem=51.8MB
+    t=40s rps=19876 p50=0.05ms mem=53.5MB
+    t=50s rps=19545 p50=0.05ms mem=53.5MB
+    t=60s rps=19456 p50=0.05ms mem=53.5MB
+  [rust-zeromcp] benchmarking for 60s...
+    t=10s rps=9613 p50=0.1ms mem=2.6MB
+    t=20s rps=9785 p50=0.1ms mem=2.6MB
+    t=30s rps=9639 p50=0.1ms mem=2.6MB
+    t=40s rps=9589 p50=0.1ms mem=2.6MB
+    t=50s rps=9605 p50=0.1ms mem=2.6MB
+    t=60s rps=9709 p50=0.1ms mem=2.6MB
+  overhead: latency +0.05ms (100%), rps -50.8%
+
+=== php ===
+  [php-echo] benchmarking for 60s...
+    t=10s rps=19805 p50=0.05ms mem=52.1MB
+    t=20s rps=19734 p50=0.05ms mem=52.1MB
+    t=30s rps=19620 p50=0.05ms mem=52.1MB
+    t=40s rps=19294 p50=0.05ms mem=53.7MB
+    t=50s rps=19541 p50=0.05ms mem=53.7MB
+    t=60s rps=19698 p50=0.05ms mem=53.7MB
+  [php-zeromcp] benchmarking for 60s...
+    t=10s rps=21102 p50=0.05ms mem=19MB
+    t=20s rps=20388 p50=0.05ms mem=19MB
+    t=30s rps=21133 p50=0.05ms mem=19MB
+    t=40s rps=21211 p50=0.05ms mem=19MB
+    t=50s rps=20682 p50=0.05ms mem=19MB
+    t=60s rps=20326 p50=0.05ms mem=19MB
+  overhead: latency +0ms (0%), rps --6.08%
+
+=== swift ===
+  [swift-echo] benchmarking for 60s...
+    t=10s rps=18668 p50=0.05ms mem=51.7MB
+    t=20s rps=19059 p50=0.05ms mem=51.7MB
+    t=30s rps=19147 p50=0.05ms mem=51.7MB
+    t=40s rps=19341 p50=0.05ms mem=51.7MB
+    t=50s rps=18583 p50=0.05ms mem=53.4MB
+    t=60s rps=19104 p50=0.05ms mem=53.4MB
+  [swift-zeromcp] benchmarking for 60s...
+    t=10s rps=6462 p50=0.15ms mem=63.8MB
+    t=20s rps=6615 p50=0.15ms mem=109.3MB
+    t=30s rps=6348 p50=0.15ms mem=153MB
+    t=40s rps=5890 p50=0.16ms mem=165.5MB
+    t=50s rps=5903 p50=0.16ms mem=176.8MB
+    t=60s rps=5906 p50=0.16ms mem=187.1MB
+  overhead: latency +0.11ms (210%), rps -67.41%
+
+=== kotlin ===
+  [kotlin-echo] benchmarking for 60s...
+    t=10s rps=19751 p50=0.05ms mem=52.1MB
+    t=20s rps=19641 p50=0.05ms mem=52.1MB
+    t=30s rps=20640 p50=0.05ms mem=52.1MB
+    t=40s rps=19339 p50=0.05ms mem=53.7MB
+    t=50s rps=19549 p50=0.05ms mem=53.8MB
+    t=60s rps=19381 p50=0.05ms mem=53.8MB
+  [kotlin-zeromcp] benchmarking for 60s...
+    t=10s rps=18604 p50=0.05ms mem=148.4MB
+    t=20s rps=18924 p50=0.05ms mem=149.3MB
+    t=30s rps=18883 p50=0.05ms mem=149.3MB
+    t=40s rps=18656 p50=0.05ms mem=149.3MB
+    t=50s rps=18410 p50=0.05ms mem=150.4MB
+    t=60s rps=18839 p50=0.05ms mem=150.4MB
+  overhead: latency +0ms (0%), rps -5.06%
+
+=== java ===
+  [java-echo] benchmarking for 60s...
+    t=10s rps=19826 p50=0.05ms mem=50MB
+    t=20s rps=19634 p50=0.05ms mem=50MB
+    t=30s rps=19501 p50=0.05ms mem=50MB
+    t=40s rps=19499 p50=0.05ms mem=51.7MB
+    t=50s rps=19482 p50=0.05ms mem=51.7MB
+    t=60s rps=19759 p50=0.05ms mem=51.7MB
+  [java-zeromcp] benchmarking for 60s...
+    t=10s rps=12452 p50=0.08ms mem=142.5MB
+    t=20s rps=12410 p50=0.08ms mem=143.1MB
+    t=30s rps=12541 p50=0.08ms mem=143.1MB
+    t=40s rps=12638 p50=0.08ms mem=143.1MB
+    t=50s rps=12631 p50=0.08ms mem=143.1MB
+    t=60s rps=12538 p50=0.08ms mem=143.1MB
+  overhead: latency +0.03ms (60%), rps -36.1%
+
+=== csharp ===
+  [csharp-echo] benchmarking for 60s...
+    t=10s rps=19622 p50=0.05ms mem=52.6MB
+    t=20s rps=19660 p50=0.05ms mem=52.6MB
+    t=30s rps=19592 p50=0.05ms mem=52.6MB
+    t=40s rps=19437 p50=0.05ms mem=54.3MB
+    t=50s rps=19243 p50=0.05ms mem=54.3MB
+    t=60s rps=19988 p50=0.05ms mem=54.3MB
+  [csharp-zeromcp] benchmarking for 60s...
+    t=10s rps=19321 p50=0.05ms mem=79MB
+    t=20s rps=19279 p50=0.05ms mem=113.4MB
+    t=30s rps=18951 p50=0.05ms mem=143.8MB
+    t=40s rps=20000 p50=0.05ms mem=161.6MB
+    t=50s rps=19861 p50=0.05ms mem=193.3MB
+    t=60s rps=20182 p50=0.05ms mem=221.3MB
+  overhead: latency +0ms (0%), rps --0.04%
+{
+  "nodejs": {
+    "bare_echo": {
+      "label": "nodejs-echo",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 19610,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 50.9
+        },
+        {
+          "t": 20,
+          "rps": 19762,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 50.9
+        },
+        {
+          "t": 30,
+          "rps": 19859,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 50.9
+        },
+        {
+          "t": 40,
+          "rps": 20133,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 52.5
+        },
+        {
+          "t": 50,
+          "rps": 19481,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 52.5
+        },
+        {
+          "t": 60,
+          "rps": 19647,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 52.5
+        }
+      ]
+    },
+    "zeromcp": {
+      "label": "nodejs-zeromcp",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 18177,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 65.2
+        },
+        {
+          "t": 20,
+          "rps": 18516,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 65.2
+        },
+        {
+          "t": 30,
+          "rps": 18453,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 66
+        },
+        {
+          "t": 40,
+          "rps": 18342,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 69
+        },
+        {
+          "t": 50,
+          "rps": 18216,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 69
+        },
+        {
+          "t": 60,
+          "rps": 17660,
+          "p50_ms": 0.05,
+          "p95_ms": 0.07,
+          "p99_ms": 0.09,
+          "memory_mb": 69
+        }
+      ]
+    },
+    "overhead": {
+      "echo_avg_rps": 19748.67,
+      "mcp_avg_rps": 18227.33,
+      "rps_reduction_pct": 7.7,
+      "echo_avg_p50_ms": 0.05,
+      "mcp_avg_p50_ms": 0.05,
+      "latency_increase_ms": 0,
+      "latency_increase_pct": 0
+    }
+  },
+  "python": {
+    "bare_echo": {
+      "label": "python-echo",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 20823,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 51.1
+        },
+        {
+          "t": 20,
+          "rps": 19636,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 51.1
+        },
+        {
+          "t": 30,
+          "rps": 16474,
+          "p50_ms": 0.05,
+          "p95_ms": 0.09,
+          "p99_ms": 0.2,
+          "memory_mb": 51.1
+        },
+        {
+          "t": 40,
+          "rps": 18061,
+          "p50_ms": 0.05,
+          "p95_ms": 0.07,
+          "p99_ms": 0.13,
+          "memory_mb": 51.1
+        },
+        {
+          "t": 50,
+          "rps": 19111,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 52.8
+        },
+        {
+          "t": 60,
+          "rps": 18687,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 52.9
+        }
+      ]
+    },
+    "zeromcp": {
+      "label": "python-zeromcp",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 14606,
+          "p50_ms": 0.07,
+          "p95_ms": 0.08,
+          "p99_ms": 0.09,
+          "memory_mb": 21.7
+        },
+        {
+          "t": 20,
+          "rps": 14695,
+          "p50_ms": 0.07,
+          "p95_ms": 0.08,
+          "p99_ms": 0.09,
+          "memory_mb": 21.7
+        },
+        {
+          "t": 30,
+          "rps": 14763,
+          "p50_ms": 0.07,
+          "p95_ms": 0.08,
+          "p99_ms": 0.09,
+          "memory_mb": 21.7
+        },
+        {
+          "t": 40,
+          "rps": 14583,
+          "p50_ms": 0.07,
+          "p95_ms": 0.08,
+          "p99_ms": 0.09,
+          "memory_mb": 21.7
+        },
+        {
+          "t": 50,
+          "rps": 11461,
+          "p50_ms": 0.08,
+          "p95_ms": 0.13,
+          "p99_ms": 0.31,
+          "memory_mb": 21.7
+        },
+        {
+          "t": 60,
+          "rps": 12837,
+          "p50_ms": 0.07,
+          "p95_ms": 0.11,
+          "p99_ms": 0.18,
+          "memory_mb": 21.7
+        }
+      ]
+    },
+    "overhead": {
+      "echo_avg_rps": 18798.67,
+      "mcp_avg_rps": 13824.17,
+      "rps_reduction_pct": 26.46,
+      "echo_avg_p50_ms": 0.05,
+      "mcp_avg_p50_ms": 0.07,
+      "latency_increase_ms": 0.02,
+      "latency_increase_pct": 43.33
+    }
+  },
+  "go": {
+    "bare_echo": {
+      "label": "go-echo",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 18831,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 51.7
+        },
+        {
+          "t": 20,
+          "rps": 18428,
+          "p50_ms": 0.05,
+          "p95_ms": 0.07,
+          "p99_ms": 0.09,
+          "memory_mb": 51.7
+        },
+        {
+          "t": 30,
+          "rps": 19765,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.06,
+          "memory_mb": 51.7
+        },
+        {
+          "t": 40,
+          "rps": 20469,
+          "p50_ms": 0.05,
+          "p95_ms": 0.07,
+          "p99_ms": 0.1,
+          "memory_mb": 51.7
+        },
+        {
+          "t": 50,
+          "rps": 19661,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 53.4
+        },
+        {
+          "t": 60,
+          "rps": 19448,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 53.4
+        }
+      ]
+    },
+    "zeromcp": {
+      "label": "go-zeromcp",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 18088,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 28.1
+        },
+        {
+          "t": 20,
+          "rps": 17846,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 28.1
+        },
+        {
+          "t": 30,
+          "rps": 17874,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 28.3
+        },
+        {
+          "t": 40,
+          "rps": 17841,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.09,
+          "memory_mb": 28.3
+        },
+        {
+          "t": 50,
+          "rps": 17523,
+          "p50_ms": 0.05,
+          "p95_ms": 0.07,
+          "p99_ms": 0.09,
+          "memory_mb": 28.3
+        },
+        {
+          "t": 60,
+          "rps": 17346,
+          "p50_ms": 0.05,
+          "p95_ms": 0.07,
+          "p99_ms": 0.09,
+          "memory_mb": 28.6
+        }
+      ]
+    },
+    "overhead": {
+      "echo_avg_rps": 19433.67,
+      "mcp_avg_rps": 17753,
+      "rps_reduction_pct": 8.65,
+      "echo_avg_p50_ms": 0.05,
+      "mcp_avg_p50_ms": 0.05,
+      "latency_increase_ms": 0,
+      "latency_increase_pct": 0
+    }
+  },
+  "ruby": {
+    "bare_echo": {
+      "label": "ruby-echo",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 18613,
+          "p50_ms": 0.05,
+          "p95_ms": 0.07,
+          "p99_ms": 0.1,
+          "memory_mb": 51.5
+        },
+        {
+          "t": 20,
+          "rps": 18024,
+          "p50_ms": 0.05,
+          "p95_ms": 0.07,
+          "p99_ms": 0.14,
+          "memory_mb": 51.5
+        },
+        {
+          "t": 30,
+          "rps": 17430,
+          "p50_ms": 0.05,
+          "p95_ms": 0.07,
+          "p99_ms": 0.14,
+          "memory_mb": 51.5
+        },
+        {
+          "t": 40,
+          "rps": 19294,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 51.5
+        },
+        {
+          "t": 50,
+          "rps": 18784,
+          "p50_ms": 0.05,
+          "p95_ms": 0.07,
+          "p99_ms": 0.1,
+          "memory_mb": 53.2
+        },
+        {
+          "t": 60,
+          "rps": 18610,
+          "p50_ms": 0.05,
+          "p95_ms": 0.07,
+          "p99_ms": 0.09,
+          "memory_mb": 53.2
+        }
+      ]
+    },
+    "zeromcp": {
+      "label": "ruby-zeromcp",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 15359,
+          "p50_ms": 0.06,
+          "p95_ms": 0.08,
+          "p99_ms": 0.12,
+          "memory_mb": 16
+        },
+        {
+          "t": 20,
+          "rps": 15300,
+          "p50_ms": 0.06,
+          "p95_ms": 0.08,
+          "p99_ms": 0.13,
+          "memory_mb": 16
+        },
+        {
+          "t": 30,
+          "rps": 15138,
+          "p50_ms": 0.06,
+          "p95_ms": 0.08,
+          "p99_ms": 0.14,
+          "memory_mb": 16
+        },
+        {
+          "t": 40,
+          "rps": 15318,
+          "p50_ms": 0.06,
+          "p95_ms": 0.08,
+          "p99_ms": 0.12,
+          "memory_mb": 16
+        },
+        {
+          "t": 50,
+          "rps": 15721,
+          "p50_ms": 0.06,
+          "p95_ms": 0.08,
+          "p99_ms": 0.11,
+          "memory_mb": 16
+        },
+        {
+          "t": 60,
+          "rps": 15636,
+          "p50_ms": 0.06,
+          "p95_ms": 0.08,
+          "p99_ms": 0.11,
+          "memory_mb": 16
+        }
+      ]
+    },
+    "overhead": {
+      "echo_avg_rps": 18459.17,
+      "mcp_avg_rps": 15412,
+      "rps_reduction_pct": 16.51,
+      "echo_avg_p50_ms": 0.05,
+      "mcp_avg_p50_ms": 0.06,
+      "latency_increase_ms": 0.01,
+      "latency_increase_pct": 20
+    }
+  },
+  "rust": {
+    "bare_echo": {
+      "label": "rust-echo",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 19720,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 51.8
+        },
+        {
+          "t": 20,
+          "rps": 19331,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.09,
+          "memory_mb": 51.8
+        },
+        {
+          "t": 30,
+          "rps": 19834,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 51.8
+        },
+        {
+          "t": 40,
+          "rps": 19876,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 53.5
+        },
+        {
+          "t": 50,
+          "rps": 19545,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 53.5
+        },
+        {
+          "t": 60,
+          "rps": 19456,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 53.5
+        }
+      ]
+    },
+    "zeromcp": {
+      "label": "rust-zeromcp",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 9613,
+          "p50_ms": 0.1,
+          "p95_ms": 0.12,
+          "p99_ms": 0.15,
+          "memory_mb": 2.6
+        },
+        {
+          "t": 20,
+          "rps": 9785,
+          "p50_ms": 0.1,
+          "p95_ms": 0.11,
+          "p99_ms": 0.14,
+          "memory_mb": 2.6
+        },
+        {
+          "t": 30,
+          "rps": 9639,
+          "p50_ms": 0.1,
+          "p95_ms": 0.12,
+          "p99_ms": 0.14,
+          "memory_mb": 2.6
+        },
+        {
+          "t": 40,
+          "rps": 9589,
+          "p50_ms": 0.1,
+          "p95_ms": 0.12,
+          "p99_ms": 0.15,
+          "memory_mb": 2.6
+        },
+        {
+          "t": 50,
+          "rps": 9605,
+          "p50_ms": 0.1,
+          "p95_ms": 0.12,
+          "p99_ms": 0.16,
+          "memory_mb": 2.6
+        },
+        {
+          "t": 60,
+          "rps": 9709,
+          "p50_ms": 0.1,
+          "p95_ms": 0.11,
+          "p99_ms": 0.14,
+          "memory_mb": 2.6
+        }
+      ]
+    },
+    "overhead": {
+      "echo_avg_rps": 19627,
+      "mcp_avg_rps": 9656.67,
+      "rps_reduction_pct": 50.8,
+      "echo_avg_p50_ms": 0.05,
+      "mcp_avg_p50_ms": 0.1,
+      "latency_increase_ms": 0.05,
+      "latency_increase_pct": 100
+    }
+  },
+  "php": {
+    "bare_echo": {
+      "label": "php-echo",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 19805,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 52.1
+        },
+        {
+          "t": 20,
+          "rps": 19734,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 52.1
+        },
+        {
+          "t": 30,
+          "rps": 19620,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 52.1
+        },
+        {
+          "t": 40,
+          "rps": 19294,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 53.7
+        },
+        {
+          "t": 50,
+          "rps": 19541,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 53.7
+        },
+        {
+          "t": 60,
+          "rps": 19698,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 53.7
+        }
+      ]
+    },
+    "zeromcp": {
+      "label": "php-zeromcp",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 21102,
+          "p50_ms": 0.05,
+          "p95_ms": 0.05,
+          "p99_ms": 0.06,
+          "memory_mb": 19
+        },
+        {
+          "t": 20,
+          "rps": 20388,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 19
+        },
+        {
+          "t": 30,
+          "rps": 21133,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 19
+        },
+        {
+          "t": 40,
+          "rps": 21211,
+          "p50_ms": 0.05,
+          "p95_ms": 0.05,
+          "p99_ms": 0.06,
+          "memory_mb": 19
+        },
+        {
+          "t": 50,
+          "rps": 20682,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.06,
+          "memory_mb": 19
+        },
+        {
+          "t": 60,
+          "rps": 20326,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 19
+        }
+      ]
+    },
+    "overhead": {
+      "echo_avg_rps": 19615.33,
+      "mcp_avg_rps": 20807,
+      "rps_reduction_pct": -6.08,
+      "echo_avg_p50_ms": 0.05,
+      "mcp_avg_p50_ms": 0.05,
+      "latency_increase_ms": 0,
+      "latency_increase_pct": 0
+    }
+  },
+  "swift": {
+    "bare_echo": {
+      "label": "swift-echo",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 18668,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.09,
+          "memory_mb": 51.7
+        },
+        {
+          "t": 20,
+          "rps": 19059,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.09,
+          "memory_mb": 51.7
+        },
+        {
+          "t": 30,
+          "rps": 19147,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.09,
+          "memory_mb": 51.7
+        },
+        {
+          "t": 40,
+          "rps": 19341,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.09,
+          "memory_mb": 51.7
+        },
+        {
+          "t": 50,
+          "rps": 18583,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.1,
+          "memory_mb": 53.4
+        },
+        {
+          "t": 60,
+          "rps": 19104,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.09,
+          "memory_mb": 53.4
+        }
+      ]
+    },
+    "zeromcp": {
+      "label": "swift-zeromcp",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 6462,
+          "p50_ms": 0.15,
+          "p95_ms": 0.18,
+          "p99_ms": 0.24,
+          "memory_mb": 63.8
+        },
+        {
+          "t": 20,
+          "rps": 6615,
+          "p50_ms": 0.15,
+          "p95_ms": 0.18,
+          "p99_ms": 0.21,
+          "memory_mb": 109.3
+        },
+        {
+          "t": 30,
+          "rps": 6348,
+          "p50_ms": 0.15,
+          "p95_ms": 0.19,
+          "p99_ms": 0.24,
+          "memory_mb": 153
+        },
+        {
+          "t": 40,
+          "rps": 5890,
+          "p50_ms": 0.16,
+          "p95_ms": 0.21,
+          "p99_ms": 0.31,
+          "memory_mb": 165.5
+        },
+        {
+          "t": 50,
+          "rps": 5903,
+          "p50_ms": 0.16,
+          "p95_ms": 0.21,
+          "p99_ms": 0.26,
+          "memory_mb": 176.8
+        },
+        {
+          "t": 60,
+          "rps": 5906,
+          "p50_ms": 0.16,
+          "p95_ms": 0.21,
+          "p99_ms": 0.26,
+          "memory_mb": 187.1
+        }
+      ]
+    },
+    "overhead": {
+      "echo_avg_rps": 18983.67,
+      "mcp_avg_rps": 6187.33,
+      "rps_reduction_pct": 67.41,
+      "echo_avg_p50_ms": 0.05,
+      "mcp_avg_p50_ms": 0.16,
+      "latency_increase_ms": 0.11,
+      "latency_increase_pct": 210
+    }
+  },
+  "kotlin": {
+    "bare_echo": {
+      "label": "kotlin-echo",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 19751,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 52.1
+        },
+        {
+          "t": 20,
+          "rps": 19641,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 52.1
+        },
+        {
+          "t": 30,
+          "rps": 20640,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 52.1
+        },
+        {
+          "t": 40,
+          "rps": 19339,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 53.7
+        },
+        {
+          "t": 50,
+          "rps": 19549,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 53.8
+        },
+        {
+          "t": 60,
+          "rps": 19381,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.09,
+          "memory_mb": 53.8
+        }
+      ]
+    },
+    "zeromcp": {
+      "label": "kotlin-zeromcp",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 18604,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 148.4
+        },
+        {
+          "t": 20,
+          "rps": 18924,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 149.3
+        },
+        {
+          "t": 30,
+          "rps": 18883,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 149.3
+        },
+        {
+          "t": 40,
+          "rps": 18656,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 149.3
+        },
+        {
+          "t": 50,
+          "rps": 18410,
+          "p50_ms": 0.05,
+          "p95_ms": 0.07,
+          "p99_ms": 0.1,
+          "memory_mb": 150.4
+        },
+        {
+          "t": 60,
+          "rps": 18839,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 150.4
+        }
+      ]
+    },
+    "overhead": {
+      "echo_avg_rps": 19716.83,
+      "mcp_avg_rps": 18719.33,
+      "rps_reduction_pct": 5.06,
+      "echo_avg_p50_ms": 0.05,
+      "mcp_avg_p50_ms": 0.05,
+      "latency_increase_ms": 0,
+      "latency_increase_pct": 0
+    }
+  },
+  "java": {
+    "bare_echo": {
+      "label": "java-echo",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 19826,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 50
+        },
+        {
+          "t": 20,
+          "rps": 19634,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 50
+        },
+        {
+          "t": 30,
+          "rps": 19501,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 50
+        },
+        {
+          "t": 40,
+          "rps": 19499,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 51.7
+        },
+        {
+          "t": 50,
+          "rps": 19482,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 51.7
+        },
+        {
+          "t": 60,
+          "rps": 19759,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 51.7
+        }
+      ]
+    },
+    "zeromcp": {
+      "label": "java-zeromcp",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 12452,
+          "p50_ms": 0.08,
+          "p95_ms": 0.1,
+          "p99_ms": 0.11,
+          "memory_mb": 142.5
+        },
+        {
+          "t": 20,
+          "rps": 12410,
+          "p50_ms": 0.08,
+          "p95_ms": 0.09,
+          "p99_ms": 0.12,
+          "memory_mb": 143.1
+        },
+        {
+          "t": 30,
+          "rps": 12541,
+          "p50_ms": 0.08,
+          "p95_ms": 0.09,
+          "p99_ms": 0.11,
+          "memory_mb": 143.1
+        },
+        {
+          "t": 40,
+          "rps": 12638,
+          "p50_ms": 0.08,
+          "p95_ms": 0.09,
+          "p99_ms": 0.11,
+          "memory_mb": 143.1
+        },
+        {
+          "t": 50,
+          "rps": 12631,
+          "p50_ms": 0.08,
+          "p95_ms": 0.09,
+          "p99_ms": 0.11,
+          "memory_mb": 143.1
+        },
+        {
+          "t": 60,
+          "rps": 12538,
+          "p50_ms": 0.08,
+          "p95_ms": 0.09,
+          "p99_ms": 0.11,
+          "memory_mb": 143.1
+        }
+      ]
+    },
+    "overhead": {
+      "echo_avg_rps": 19616.83,
+      "mcp_avg_rps": 12535,
+      "rps_reduction_pct": 36.1,
+      "echo_avg_p50_ms": 0.05,
+      "mcp_avg_p50_ms": 0.08,
+      "latency_increase_ms": 0.03,
+      "latency_increase_pct": 60
+    }
+  },
+  "csharp": {
+    "bare_echo": {
+      "label": "csharp-echo",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 19622,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 52.6
+        },
+        {
+          "t": 20,
+          "rps": 19660,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 52.6
+        },
+        {
+          "t": 30,
+          "rps": 19592,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 52.6
+        },
+        {
+          "t": 40,
+          "rps": 19437,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 54.3
+        },
+        {
+          "t": 50,
+          "rps": 19243,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 54.3
+        },
+        {
+          "t": 60,
+          "rps": 19988,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.07,
+          "memory_mb": 54.3
+        }
+      ]
+    },
+    "zeromcp": {
+      "label": "csharp-zeromcp",
+      "snapshots": [
+        {
+          "t": 10,
+          "rps": 19321,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 79
+        },
+        {
+          "t": 20,
+          "rps": 19279,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.08,
+          "memory_mb": 113.4
+        },
+        {
+          "t": 30,
+          "rps": 18951,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.09,
+          "memory_mb": 143.8
+        },
+        {
+          "t": 40,
+          "rps": 20000,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.1,
+          "memory_mb": 161.6
+        },
+        {
+          "t": 50,
+          "rps": 19861,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.1,
+          "memory_mb": 193.3
+        },
+        {
+          "t": 60,
+          "rps": 20182,
+          "p50_ms": 0.05,
+          "p95_ms": 0.06,
+          "p99_ms": 0.1,
+          "memory_mb": 221.3
+        }
+      ]
+    },
+    "overhead": {
+      "echo_avg_rps": 19590.33,
+      "mcp_avg_rps": 19599,
+      "rps_reduction_pct": -0.04,
+      "echo_avg_p50_ms": 0.05,
+      "mcp_avg_p50_ms": 0.05,
+      "latency_increase_ms": 0,
+      "latency_increase_pct": 0
+    }
+  }
+}
