@@ -1,87 +1,57 @@
 <?php
-/**
- * Official MCP PHP SDK server with chaos tools for resilience testing.
- */
-
 require __DIR__ . '/vendor/autoload.php';
 
-use Mcp\Server\Server;
-use Mcp\Types\Tool;
-use Mcp\Types\CallToolResult;
-use Mcp\Types\TextContent;
+use Mcp\Server;
+use Mcp\Server\Transport\StdioTransport;
+use Mcp\Capability\Registry;
+use Mcp\Schema\Tool;
 
 $leaks = [];
 
+$registry = new Registry();
+
+$registry->registerTool(
+    new Tool(name: 'hello', description: 'Say hello', inputSchema: ['type' => 'object', 'properties' => ['name' => ['type' => 'string']]], annotations: null),
+    function (object $params): string { return "Hello, " . ($params->name ?? 'world') . "!"; }
+);
+
+$registry->registerTool(
+    new Tool(name: 'throw_error', description: 'Tool that throws', inputSchema: ['type' => 'object', 'properties' => []], annotations: null),
+    function (object $params): string { throw new \RuntimeException('Intentional chaos'); }
+);
+
+$registry->registerTool(
+    new Tool(name: 'hang', description: 'Tool that hangs forever', inputSchema: ['type' => 'object', 'properties' => []], annotations: null),
+    function (object $params): string { sleep(86400); return 'unreachable'; }
+);
+
+$registry->registerTool(
+    new Tool(name: 'slow', description: 'Tool that takes 3 seconds', inputSchema: ['type' => 'object', 'properties' => []], annotations: null),
+    function (object $params): string { sleep(3); return json_encode(['status' => 'ok', 'delay_ms' => 3000]); }
+);
+
+$registry->registerTool(
+    new Tool(name: 'leak_memory', description: 'Tool that leaks memory', inputSchema: ['type' => 'object', 'properties' => []], annotations: null),
+    function (object $params): string {
+        global $leaks;
+        $leaks[] = str_repeat("\x00", 1024 * 1024);
+        return json_encode(['leaked_buffers' => count($leaks), 'total_mb' => count($leaks)]);
+    }
+);
+
+$registry->registerTool(
+    new Tool(name: 'stdout_corrupt', description: 'Tool that writes to stdout', inputSchema: ['type' => 'object', 'properties' => []], annotations: null),
+    function (object $params): string {
+        fwrite(STDOUT, "CORRUPTED OUTPUT\n");
+        fflush(STDOUT);
+        return json_encode(['status' => 'ok']);
+    }
+);
+
 $server = Server::builder()
-    ->addTool(
-        Tool::create('hello', 'Say hello')
-            ->setInputSchema([
-                'type' => 'object',
-                'properties' => ['name' => ['type' => 'string']],
-                'required' => ['name'],
-            ]),
-        function (object $params) {
-            $name = $params->name ?? 'world';
-            $content = new TextContent("Hello, {$name}!");
-            $result = new CallToolResult();
-            $result->content = [$content];
-            return $result;
-        }
-    )
-    ->addTool(
-        Tool::create('throw_error', 'Tool that throws')
-            ->setInputSchema(['type' => 'object', 'properties' => new \stdClass()]),
-        function (object $params) {
-            throw new \RuntimeException('Intentional chaos: unhandled exception');
-        }
-    )
-    ->addTool(
-        Tool::create('hang', 'Tool that hangs forever')
-            ->setInputSchema(['type' => 'object', 'properties' => new \stdClass()]),
-        function (object $params) {
-            sleep(86400);
-            $content = new TextContent('unreachable');
-            $result = new CallToolResult();
-            $result->content = [$content];
-            return $result;
-        }
-    )
-    ->addTool(
-        Tool::create('slow', 'Tool that takes 3 seconds')
-            ->setInputSchema(['type' => 'object', 'properties' => new \stdClass()]),
-        function (object $params) {
-            sleep(3);
-            $content = new TextContent('{"status":"ok","delay_ms":3000}');
-            $result = new CallToolResult();
-            $result->content = [$content];
-            return $result;
-        }
-    )
-    ->addTool(
-        Tool::create('leak_memory', 'Tool that leaks memory')
-            ->setInputSchema(['type' => 'object', 'properties' => new \stdClass()]),
-        function (object $params) {
-            global $leaks;
-            $leaks[] = str_repeat("\x00", 1024 * 1024);
-            $count = count($leaks);
-            $content = new TextContent("{\"leaked_buffers\":{$count},\"total_mb\":{$count}}");
-            $result = new CallToolResult();
-            $result->content = [$content];
-            return $result;
-        }
-    )
-    ->addTool(
-        Tool::create('stdout_corrupt', 'Tool that writes to stdout')
-            ->setInputSchema(['type' => 'object', 'properties' => new \stdClass()]),
-        function (object $params) {
-            fwrite(STDOUT, "CORRUPTED OUTPUT\n");
-            fflush(STDOUT);
-            $content = new TextContent('{"status":"ok"}');
-            $result = new CallToolResult();
-            $result->content = [$content];
-            return $result;
-        }
-    )
+    ->setServerInfo('official-chaos', '1.0.0')
+    ->setRegistry($registry)
     ->build();
 
-$server->connect('stdio');
+$transport = new StdioTransport();
+$server->run($transport);

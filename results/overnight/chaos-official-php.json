@@ -2,91 +2,91 @@
   "sdk": "official",
   "language": "php",
   "total": 21,
-  "survived": 0,
+  "survived": 1,
   "degraded": 0,
-  "crashed": 21,
-  "corrupted": 0,
-  "score": "0/21",
+  "crashed": 1,
+  "corrupted": 19,
+  "score": "1/21",
   "results": [
     {
       "attack": "malformed_json",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "truncated_json",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "empty_line",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "missing_id",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "missing_method",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "null_id",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "negative_id",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "duplicate_id",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "double_initialize",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "unknown_method",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "giant_string",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "deeply_nested",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "empty_tool_name",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "null_arguments",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "binary_garbage",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "tool_throws",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "tool_hangs",
-      "score": "crashed"
+      "score": "survived"
     },
     {
       "attack": "tool_slow",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "tool_leak_memory",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "tool_stdout_corrupt",
-      "score": "crashed"
+      "score": "corrupted"
     },
     {
       "attack": "rapid_fire_100",
