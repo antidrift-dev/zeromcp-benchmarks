@@ -1,0 +1,23 @@
+{
+  "type": "http-frameworks-python",
+  "frameworks": [
+    {
+      "label": "flask",
+      "command": "python",
+      "args": ["server-flask.py"],
+      "description": "Flask (sync WSGI, threaded)"
+    },
+    {
+      "label": "fastapi",
+      "command": "python",
+      "args": ["server-fastapi.py"],
+      "description": "FastAPI (async ASGI via uvicorn)"
+    },
+    {
+      "label": "starlette",
+      "command": "python",
+      "args": ["server-starlette.py"],
+      "description": "Starlette (async ASGI via uvicorn)"
+    }
+  ]
+}

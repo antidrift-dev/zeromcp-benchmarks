@@ -64,14 +64,29 @@ echo ""
 # --- Phase 2: HTTP Framework benchmarks (5 min each) ---
 echo "=== Phase 2: HTTP Framework Benchmarks ==="
 
-echo "Building HTTP frameworks image..."
-docker build -t zeromcp-bench-http \
-  -f "$BENCH_ROOT/runtimes/http-frameworks/Dockerfile" "$PARENT" 2>&1 | tail -3
-
-echo "Running HTTP frameworks (bare, Express, Fastify, Hono × 5 min each = ~20 min)..."
-docker run --rm -e DURATION=300 -e INTERVAL=10 zeromcp-bench-http \
+# Node.js: bare http, Express, Fastify, Hono
+echo "  Building Node.js HTTP frameworks..."
+docker build -t zeromcp-bench-http-node \
+  -f "$BENCH_ROOT/runtimes/http-frameworks/Dockerfile" "$PARENT" 2>&1 | tail -2
+echo "  Running Node.js frameworks (4 × 5 min = ~20 min)..."
+docker run --rm -e DURATION=300 -e INTERVAL=10 zeromcp-bench-http-node \
   2>/dev/null > "$RESULTS/http-frameworks-node.json"
 echo "  Done."
+
+# All other languages
+for lang in python go rust java kotlin swift csharp ruby php; do
+  DF="$BENCH_ROOT/runtimes/http-frameworks/$lang/Dockerfile"
+  if [ ! -f "$DF" ]; then
+    echo "  $lang: skipped (no Dockerfile)"
+    continue
+  fi
+  echo "  Building $lang HTTP frameworks..."
+  docker build -t "zeromcp-bench-http-$lang" -f "$DF" "$PARENT" 2>&1 | tail -2
+  echo "  Running $lang frameworks (5 min each)..."
+  docker run --rm -e DURATION=300 -e INTERVAL=10 "zeromcp-bench-http-$lang" \
+    2>/dev/null > "$RESULTS/http-frameworks-$lang.json" || true
+  echo "  Done."
+done
 
 echo ""
 

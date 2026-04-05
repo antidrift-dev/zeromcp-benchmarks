@@ -1,0 +1,47 @@
+require 'json'
+require 'zeromcp'
+
+#
+# ZeroMCP over pure Rack -- HTTP benchmark server (no framework).
+#
+
+server = ZeroMcp::Server.new
+
+hello_tool = ZeroMcp::Tool.new(
+  name: 'hello',
+  description: 'Say hello',
+  input: { 'name' => { 'type' => 'string', 'description' => 'Name to greet' } }
+) { |args, _ctx| "Hello, #{args['name']}!" }
+
+add_tool = ZeroMcp::Tool.new(
+  name: 'add',
+  description: 'Add two numbers',
+  input: {
+    'a' => { 'type' => 'number', 'description' => 'First number' },
+    'b' => { 'type' => 'number', 'description' => 'Second number' }
+  }
+) { |args, _ctx| args['a'].to_f + args['b'].to_f }
+
+server.instance_variable_set(:@tools, { 'hello' => hello_tool, 'add' => add_tool })
+
+app = Proc.new do |env|
+  if env['REQUEST_METHOD'] == 'GET' && env['PATH_INFO'] == '/health'
+    ['200', { 'Content-Type' => 'application/json' }, ['{"status":"ok"}']]
+  elsif env['REQUEST_METHOD'] == 'POST' && env['PATH_INFO'] == '/mcp'
+    body = JSON.parse(env['rack.input'].read)
+    response = server.handle_request(body)
+    if response
+      ['200', { 'Content-Type' => 'application/json' }, [response.to_json]]
+    else
+      ['204', {}, ['']]
+    end
+  else
+    ['404', { 'Content-Type' => 'text/plain' }, ['Not Found']]
+  end
+end
+
+port = (ENV['PORT'] || 3000).to_i
+$stderr.puts "rack on :#{port}"
+
+require 'webrick'
+Rack::Handler::WEBrick.run(app, Port: port, Host: '0.0.0.0', Logger: WEBrick::Log.new('/dev/null'), AccessLog: [])

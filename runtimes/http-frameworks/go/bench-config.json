@@ -1,0 +1,23 @@
+{
+  "type": "http-frameworks-go",
+  "frameworks": [
+    {
+      "label": "net-http",
+      "command": "./server-nethttp",
+      "args": [],
+      "description": "Go net/http (stdlib)"
+    },
+    {
+      "label": "gin",
+      "command": "./server-gin",
+      "args": [],
+      "description": "Gin HTTP framework"
+    },
+    {
+      "label": "chi",
+      "command": "./server-chi",
+      "args": [],
+      "description": "Chi lightweight router"
+    }
+  ]
+}

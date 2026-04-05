@@ -1,0 +1,17 @@
+{
+  "type": "http-frameworks-rust",
+  "frameworks": [
+    {
+      "label": "actix-web",
+      "command": "./server-actix",
+      "args": [],
+      "description": "Actix-web (actor-based async)"
+    },
+    {
+      "label": "axum",
+      "command": "./server-axum",
+      "args": [],
+      "description": "Axum (tower-based async)"
+    }
+  ]
+}

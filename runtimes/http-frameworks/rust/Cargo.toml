@@ -1,0 +1,24 @@
+[package]
+name = "zeromcp-bench-http"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "server-actix"
+path = "server-actix.rs"
+
+[[bin]]
+name = "server-axum"
+path = "server-axum.rs"
+
+[dependencies]
+zeromcp = { path = "/zeromcp/rust" }
+serde_json = "1"
+serde = { version = "1", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+
+# Actix
+actix-web = "4"
+
+# Axum
+axum = "0.7"

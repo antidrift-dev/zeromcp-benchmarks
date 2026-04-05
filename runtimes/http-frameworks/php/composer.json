@@ -1,0 +1,22 @@
+{
+  "name": "antidrift/bench-slim",
+  "description": "ZeroMCP Slim HTTP benchmark",
+  "type": "project",
+  "require": {
+    "php": ">=8.1",
+    "slim/slim": "^4.14",
+    "slim/psr7": "^1.7",
+    "antidrift/zeromcp": "*"
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../../../zeromcp-lib"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "": "."
+    }
+  }
+}
