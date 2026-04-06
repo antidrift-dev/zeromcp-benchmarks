@@ -1,0 +1,11 @@
+{
+  "type": "http-frameworks-ruby",
+  "sinatra": {
+    "label": "sinatra",
+    "error": "Server failed to start"
+  },
+  "rack": {
+    "label": "rack",
+    "error": "Server failed to start"
+  }
+}

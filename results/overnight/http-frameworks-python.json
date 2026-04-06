@@ -1,0 +1,15 @@
+{
+  "type": "http-frameworks-python",
+  "flask": {
+    "label": "flask",
+    "error": "Server failed to start"
+  },
+  "fastapi": {
+    "label": "fastapi",
+    "error": "Server failed to start"
+  },
+  "starlette": {
+    "label": "starlette",
+    "error": "Server failed to start"
+  }
+}

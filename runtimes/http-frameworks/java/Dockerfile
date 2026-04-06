@@ -18,7 +18,7 @@ COPY --from=builder-zeromcp /build/target/deps/gson-2.11.0.jar /build/lib/
 
 # Copy bench project
 COPY zeromcp-benchmarks/runtimes/http-frameworks/java/pom.xml .
-COPY zeromcp-benchmarks/runtimes/http-frameworks/java/server-javalin.java .
+COPY zeromcp-benchmarks/runtimes/http-frameworks/java/server-javalin.java ServerJavalin.java
 
 RUN mvn package -q -DskipTests && \
     mvn dependency:copy-dependencies -DoutputDirectory=target/deps -q

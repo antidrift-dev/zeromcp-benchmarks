@@ -1,37 +1,35 @@
-# Build context: antidrift/ (parent of both zeromcp and zeromcp-benchmarks)
-# docker build -t zeromcp-bench-http-go -f zeromcp-benchmarks/runtimes/http-frameworks/go/Dockerfile .
-
-# --- Build stage ---
+# Build context: antidrift/
 FROM golang:1.22 AS builder
 
-WORKDIR /build
-
-# Copy ZeroMCP Go source
+# Copy ZeroMCP Go source as the base module
 COPY zeromcp/go/ /zeromcp/go/
+WORKDIR /zeromcp/go
 
-# Copy benchmark Go sources
-COPY zeromcp-benchmarks/runtimes/http-frameworks/go/go.mod .
-COPY zeromcp-benchmarks/runtimes/http-frameworks/go/server-nethttp.go .
-COPY zeromcp-benchmarks/runtimes/http-frameworks/go/server-gin.go .
-COPY zeromcp-benchmarks/runtimes/http-frameworks/go/server-chi.go .
+# Copy benchmark server files into the module (strip build ignore tag)
+COPY zeromcp-benchmarks/runtimes/http-frameworks/go/server-nethttp.go /tmp/
+COPY zeromcp-benchmarks/runtimes/http-frameworks/go/server-gin.go /tmp/
+COPY zeromcp-benchmarks/runtimes/http-frameworks/go/server-chi.go /tmp/
+RUN mkdir -p cmd/bench-nethttp cmd/bench-gin cmd/bench-chi && \
+    sed '/^\/\/go:build/d' /tmp/server-nethttp.go > cmd/bench-nethttp/main.go && \
+    sed '/^\/\/go:build/d' /tmp/server-gin.go > cmd/bench-gin/main.go && \
+    sed '/^\/\/go:build/d' /tmp/server-chi.go > cmd/bench-chi/main.go
 
-# Download dependencies and build all three servers
-RUN go mod tidy
-RUN go build -o server-nethttp server-nethttp.go
-RUN go build -o server-gin server-gin.go
-RUN go build -o server-chi server-chi.go
+# Get framework dependencies and build
+RUN go get github.com/gin-gonic/gin@v1.10.0 github.com/go-chi/chi/v5@v5.1.0 && \
+    go mod tidy && \
+    go build -o /server-nethttp ./cmd/bench-nethttp/ && \
+    go build -o /server-gin ./cmd/bench-gin/ && \
+    go build -o /server-chi ./cmd/bench-chi/
 
-# --- Runtime stage ---
+# Runtime
 FROM node:22-slim
-
+RUN apt-get update && apt-get install -y procps && rm -rf /var/lib/apt/lists/*
 WORKDIR /bench
 
-# Copy compiled Go binaries
-COPY --from=builder /build/server-nethttp .
-COPY --from=builder /build/server-gin .
-COPY --from=builder /build/server-chi .
-
-# Copy bench harness
+COPY --from=builder /server-nethttp .
+COPY --from=builder /server-gin .
+COPY --from=builder /server-chi .
 COPY zeromcp-benchmarks/runtimes/http-frameworks/go/bench-go.mjs .
+COPY zeromcp-benchmarks/package.json .
 
 CMD ["node", "bench-go.mjs"]

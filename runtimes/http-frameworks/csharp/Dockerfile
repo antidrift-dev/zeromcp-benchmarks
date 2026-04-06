@@ -5,8 +5,9 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS builder
 WORKDIR /build
 
-# Copy ZeroMCP C# library
-COPY zeromcp/csharp/ZeroMcp/ /build/zeromcp-lib/
+# Copy ZeroMCP C# library (exclude build artifacts)
+COPY zeromcp/csharp/ZeroMcp/*.cs /build/zeromcp-lib/
+COPY zeromcp/csharp/ZeroMcp/ZeroMcp.csproj /build/zeromcp-lib/
 
 # Copy bench project
 COPY zeromcp-benchmarks/runtimes/http-frameworks/csharp/bench-aspnet.csproj .

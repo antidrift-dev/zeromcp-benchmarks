@@ -1,0 +1,7 @@
+{
+  "type": "http-frameworks-kotlin",
+  "ktor": {
+    "label": "ktor",
+    "error": "Server failed to start"
+  }
+}

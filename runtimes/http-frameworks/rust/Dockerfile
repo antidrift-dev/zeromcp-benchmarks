@@ -2,7 +2,7 @@
 # docker build -t zeromcp-bench-http-rust -f zeromcp-benchmarks/runtimes/http-frameworks/rust/Dockerfile .
 
 # --- Build stage ---
-FROM rust:1.78 AS builder
+FROM rust:latest AS builder
 
 WORKDIR /build
 

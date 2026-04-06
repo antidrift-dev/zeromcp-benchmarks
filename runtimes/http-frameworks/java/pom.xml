@@ -42,9 +42,6 @@
 
     <build>
         <sourceDirectory>.</sourceDirectory>
-        <includes>
-            <include>server-javalin.java</include>
-        </includes>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
