@@ -2,14 +2,12 @@
  * Official MCP Java SDK server — hello + add tools over stdio.
  */
 
-import io.modelcontextprotocol.sdk.McpServer;
-import io.modelcontextprotocol.sdk.McpServerFeatures.SyncToolSpecification;
+import io.modelcontextprotocol.server.McpServer;
+import io.modelcontextprotocol.server.McpSyncServer;
 import io.modelcontextprotocol.server.transport.StdioServerTransportProvider;
-import io.modelcontextprotocol.spec.McpSchema.CallToolResult;
-import io.modelcontextprotocol.spec.McpSchema.TextContent;
-import io.modelcontextprotocol.spec.McpSchema.Tool;
-import io.modelcontextprotocol.spec.McpSchema.ServerCapabilities;
-import io.modelcontextprotocol.spec.McpJsonDefaults;
+import io.modelcontextprotocol.json.McpJsonDefaults;
+import io.modelcontextprotocol.spec.McpSchema;
+import io.modelcontextprotocol.spec.McpSchema.*;
 
 import java.util.List;
 import java.util.Map;
@@ -21,26 +19,22 @@ public class Server {
         var helloTool = Tool.builder()
             .name("hello")
             .description("Say hello")
-            .inputSchema(Tool.JsonSchema.builder()
-                .type("object")
-                .properties(Map.of("name", Map.of("type", "string")))
-                .required(List.of("name"))
-                .build())
+            .inputSchema(new McpSchema.JsonSchema("object",
+                Map.of("name", Map.of("type", "string")),
+                List.of("name"), null, null, null))
             .build();
 
         var addTool = Tool.builder()
             .name("add")
             .description("Add two numbers")
-            .inputSchema(Tool.JsonSchema.builder()
-                .type("object")
-                .properties(Map.of(
+            .inputSchema(new McpSchema.JsonSchema("object",
+                Map.of(
                     "a", Map.of("type", "number"),
-                    "b", Map.of("type", "number")))
-                .required(List.of("a", "b"))
-                .build())
+                    "b", Map.of("type", "number")),
+                List.of("a", "b"), null, null, null))
             .build();
 
-        McpServer.sync(transport)
+        McpSyncServer server = McpServer.sync(transport)
             .serverInfo("official-java", "1.0.0")
             .capabilities(ServerCapabilities.builder().tools(true).build())
             .toolCall(helloTool, (exchange, request) -> {
@@ -62,5 +56,7 @@ public class Server {
                     .build();
             })
             .build();
+
+        try { Thread.currentThread().join(); } catch (InterruptedException e) {}
     }
 }

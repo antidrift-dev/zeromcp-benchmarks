@@ -5,46 +5,38 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Mcp\Server\Server;
-use Mcp\Types\Tool;
-use Mcp\Types\CallToolResult;
-use Mcp\Types\TextContent;
+use Mcp\Server;
 
 $server = Server::builder()
+    ->setServerInfo('official-php', '1.0.0')
     ->addTool(
-        Tool::create('hello', 'Say hello')
-            ->setInputSchema([
-                'type' => 'object',
-                'properties' => ['name' => ['type' => 'string']],
-                'required' => ['name'],
-            ]),
-        function (object $params) {
-            $name = $params->name ?? 'world';
-            $content = new TextContent("Hello, {$name}!");
-            $result = new CallToolResult();
-            $result->content = [$content];
-            return $result;
-        }
+        handler: function (string $name): string {
+            return "Hello, {$name}!";
+        },
+        name: 'hello',
+        description: 'Say hello',
+        inputSchema: [
+            'type' => 'object',
+            'properties' => ['name' => ['type' => 'string']],
+            'required' => ['name'],
+        ]
     )
     ->addTool(
-        Tool::create('add', 'Add two numbers')
-            ->setInputSchema([
-                'type' => 'object',
-                'properties' => [
-                    'a' => ['type' => 'number'],
-                    'b' => ['type' => 'number'],
-                ],
-                'required' => ['a', 'b'],
-            ]),
-        function (object $params) {
-            $a = $params->a ?? 0;
-            $b = $params->b ?? 0;
-            $content = new TextContent(strval($a + $b));
-            $result = new CallToolResult();
-            $result->content = [$content];
-            return $result;
-        }
+        handler: function (float $a, float $b): string {
+            return strval($a + $b);
+        },
+        name: 'add',
+        description: 'Add two numbers',
+        inputSchema: [
+            'type' => 'object',
+            'properties' => [
+                'a' => ['type' => 'number'],
+                'b' => ['type' => 'number'],
+            ],
+            'required' => ['a', 'b'],
+        ]
     )
     ->build();
 
-$server->connect('stdio');
+$transport = new \Mcp\Server\Transport\StdioTransport();
+$server->run($transport);

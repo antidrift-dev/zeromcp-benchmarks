@@ -33,6 +33,7 @@ server.Tool("add", "Add two numbers",
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "3000";
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.SetMinimumLevel(LogLevel.Warning);
 builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 var app = builder.Build();
 

@@ -2,6 +2,7 @@
 
 import asyncio
 import os
+from contextlib import asynccontextmanager
 
 from starlette.applications import Starlette
 from starlette.responses import JSONResponse
@@ -13,13 +14,15 @@ handler = None
 tool_count = 0
 
 
-async def startup():
+@asynccontextmanager
+async def lifespan(app):
     global handler, tool_count
     handler = await create_handler({"tools": ["./tools"]})
     resp = await handler({
         "jsonrpc": "2.0", "id": 0, "method": "tools/list"
     })
     tool_count = len(resp.get("result", {}).get("tools", []))
+    yield
 
 
 async def health(request):
@@ -39,7 +42,7 @@ app = Starlette(
         Route("/health", health, methods=["GET"]),
         Route("/mcp", mcp, methods=["POST"]),
     ],
-    on_startup=[startup],
+    lifespan=lifespan,
 )
 
 if __name__ == "__main__":

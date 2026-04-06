@@ -3,56 +3,48 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/modelcontextprotocol/go-sdk/server"
 )
 
 func main() {
-	s := server.NewServer(
-		mcp.Implementation{Name: "official-go", Version: "1.0.0"},
-		nil,
-	)
+	s := mcp.NewServer(&mcp.Implementation{Name: "official-go", Version: "1.0.0"}, nil)
 
-	s.AddTool(mcp.Tool{
+	s.AddTool(&mcp.Tool{
 		Name:        "hello",
 		Description: "Say hello",
-		InputSchema: mcp.ToolInputSchema{
-			Type: "object",
-			Properties: map[string]map[string]any{
-				"name": {"type": "string"},
-			},
-			Required: []string{"name"},
-		},
-	}, func(ctx context.Context, req mcp.CallToolParams) (*mcp.CallToolResult, error) {
-		name, _ := req.Arguments["name"].(string)
+		InputSchema: json.RawMessage(`{"type":"object","properties":{"name":{"type":"string"}},"required":["name"]}`),
+	}, func(ctx context.Context, req *mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		var args struct{ Name string }
+		if err := json.Unmarshal(req.Params.Arguments, &args); err != nil {
+			return nil, err
+		}
 		return &mcp.CallToolResult{
-			Content: []mcp.Content{mcp.TextContent{Type: "text", Text: fmt.Sprintf("Hello, %s!", name)}},
+			Content: []mcp.Content{&mcp.TextContent{Text: fmt.Sprintf("Hello, %s!", args.Name)}},
 		}, nil
 	})
 
-	s.AddTool(mcp.Tool{
+	s.AddTool(&mcp.Tool{
 		Name:        "add",
 		Description: "Add two numbers",
-		InputSchema: mcp.ToolInputSchema{
-			Type: "object",
-			Properties: map[string]map[string]any{
-				"a": {"type": "number"},
-				"b": {"type": "number"},
-			},
-			Required: []string{"a", "b"},
-		},
-	}, func(ctx context.Context, req mcp.CallToolParams) (*mcp.CallToolResult, error) {
-		a, _ := req.Arguments["a"].(float64)
-		b, _ := req.Arguments["b"].(float64)
+		InputSchema: json.RawMessage(`{"type":"object","properties":{"a":{"type":"number"},"b":{"type":"number"}},"required":["a","b"]}`),
+	}, func(ctx context.Context, req *mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		var args struct {
+			A float64
+			B float64
+		}
+		if err := json.Unmarshal(req.Params.Arguments, &args); err != nil {
+			return nil, err
+		}
 		return &mcp.CallToolResult{
-			Content: []mcp.Content{mcp.TextContent{Type: "text", Text: fmt.Sprintf("%g", a+b)}},
+			Content: []mcp.Content{&mcp.TextContent{Text: fmt.Sprintf("%g", args.A+args.B)}},
 		}, nil
 	})
 
-	if err := server.RunStdio(context.Background(), s); err != nil {
+	if err := s.Run(context.Background(), &mcp.StdioTransport{}); err != nil {
 		fmt.Fprintf(os.Stderr, "server error: %v\n", err)
 		os.Exit(1)
 	}

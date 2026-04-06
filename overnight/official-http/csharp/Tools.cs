@@ -2,7 +2,7 @@ using ModelContextProtocol.Server;
 using System.ComponentModel;
 
 [McpServerToolType]
-public static class BenchTools
+public class BenchTools
 {
     [McpServerTool(Name = "hello"), Description("Say hello")]
     public static string Hello(string name)

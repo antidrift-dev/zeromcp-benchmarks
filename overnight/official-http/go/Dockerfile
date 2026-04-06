@@ -5,7 +5,7 @@ COPY zeromcp-benchmarks/overnight/official-http/go/server.go .
 RUN go mod init official-go && \
     go get github.com/modelcontextprotocol/go-sdk@latest && \
     go mod tidy && \
-    CGO_ENABLED=0 go build -o /official-server server.go
+    CGO_ENABLED=0 GOFLAGS=-buildvcs=false go build -o /official-server server.go
 
 FROM node:22-slim
 WORKDIR /bench

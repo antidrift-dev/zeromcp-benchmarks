@@ -19,7 +19,9 @@ RUN swift build -c release 2>&1
 
 # --- Stage 2: Runtime ---
 FROM swift:5.9-jammy-slim
-RUN apt-get update && apt-get install -y nodejs npm procps && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y curl procps && rm -rf /var/lib/apt/lists/* && \
+    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    apt-get install -y nodejs && rm -rf /var/lib/apt/lists/*
 WORKDIR /bench
 
 COPY --from=builder /build/.build/release/ServerVapor /bench/server-vapor

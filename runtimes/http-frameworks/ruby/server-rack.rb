@@ -43,5 +43,16 @@ end
 port = (ENV['PORT'] || 3000).to_i
 $stderr.puts "rack on :#{port}"
 
-require 'webrick'
-Rack::Handler::WEBrick.run(app, Port: port, Host: '0.0.0.0', Logger: WEBrick::Log.new('/dev/null'), AccessLog: [])
+require 'puma'
+
+launcher = Puma::Launcher.new(
+  Puma::Configuration.new do |config|
+    config.app app
+    config.bind "tcp://0.0.0.0:#{port}"
+    config.threads 0, 5
+    config.workers 0
+    config.log_requests false
+    config.quiet
+  end
+)
+launcher.run
