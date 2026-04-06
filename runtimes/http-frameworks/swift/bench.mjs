@@ -44,7 +44,7 @@ async function waitForPort(port, timeout = 30000) {
   const start = Date.now();
   while (Date.now() - start < timeout) {
     try {
-      const res = await fetch(`http://localhost:${port}/health`);
+      const res = await fetch(`http://127.0.0.1:${port}/health`);
       if (res.ok) return true;
     } catch {}
     await new Promise(r => setTimeout(r, 200));
@@ -55,7 +55,7 @@ async function waitForPort(port, timeout = 30000) {
 async function mcpRequest(id, method, params) {
   const body = { jsonrpc: '2.0', id, method };
   if (params) body.params = params;
-  const res = await fetch(`http://localhost:${PORT}/mcp`, {
+  const res = await fetch(`http://127.0.0.1:${PORT}/mcp`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -70,8 +70,11 @@ async function benchmarkFramework(label, command, args) {
     stdio: ['pipe', 'pipe', 'pipe'],
     env: { ...process.env, PORT: String(PORT) },
   });
-  proc.on('error', () => {});
-  proc.stderr.on('data', () => {});
+  proc.on('error', (e) => console.error(`  [${label}] spawn error: ${e.message}`));
+  proc.stderr.on('data', (d) => {
+    const msg = d.toString().trim();
+    if (msg) console.error(`  [${label}] ${msg}`);
+  });
 
   const ready = await waitForPort(PORT, 30000);
   if (!ready) {
@@ -143,7 +146,7 @@ async function main() {
     {
       label: 'vapor',
       command: '/bench/server-vapor',
-      args: ['serve', '--hostname', '0.0.0.0', '--port', String(PORT)],
+      args: [],
     },
   ];
 

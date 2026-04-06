@@ -28,7 +28,7 @@ kotlin {
 }
 
 application {
-    mainClass.set("ServerKtorKt")
+    mainClass.set("Server_ktorKt")
 }
 
 tasks.named<JavaExec>("run") {

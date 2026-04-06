@@ -2,6 +2,37 @@
   "type": "http-frameworks-kotlin",
   "ktor": {
     "label": "ktor",
-    "error": "Server failed to start"
+    "snapshots": [
+      {
+        "t": 10,
+        "requests": 35904,
+        "rps": 3590,
+        "p50_ms": 0.24,
+        "p95_ms": 0.47,
+        "p99_ms": 0.96,
+        "cpu_ms": 9450,
+        "memory_mb": 230.3
+      },
+      {
+        "t": 20,
+        "requests": 41557,
+        "rps": 4156,
+        "p50_ms": 0.23,
+        "p95_ms": 0.26,
+        "p99_ms": 0.69,
+        "cpu_ms": 5140,
+        "memory_mb": 238.2
+      },
+      {
+        "t": 30,
+        "requests": 41483,
+        "rps": 4148,
+        "p50_ms": 0.23,
+        "p95_ms": 0.27,
+        "p99_ms": 0.71,
+        "cpu_ms": 5090,
+        "memory_mb": 238.4
+      }
+    ]
   }
 }

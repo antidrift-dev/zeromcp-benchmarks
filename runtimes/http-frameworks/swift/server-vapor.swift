@@ -36,6 +36,7 @@ struct ServerVapor {
         defer { app.shutdown() }
 
         let port = Int(ProcessInfo.processInfo.environment["PORT"] ?? "3000") ?? 3000
+        app.http.server.configuration.hostname = "0.0.0.0"
         app.http.server.configuration.port = port
 
         app.get("health") { req -> Response in

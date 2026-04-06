@@ -10,7 +10,18 @@ use ZeroMcp\Tool;
 
 /**
  * ZeroMCP over Slim -- HTTP benchmark server.
+ *
+ * Designed to run behind PHP's built-in server:
+ *   php -S 0.0.0.0:3000 server-slim.php
  */
+
+// Let PHP's built-in server handle static files
+if (PHP_SAPI === 'cli-server') {
+    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    if ($uri !== '/' && file_exists(__DIR__ . $uri)) {
+        return false;
+    }
+}
 
 $server = new ZeroMcpServer();
 
@@ -57,8 +68,5 @@ $app->post('/mcp', function (Request $request, Response $response) use ($server)
     }
     return $response->withStatus(204);
 });
-
-$port = getenv('PORT') ?: '3000';
-fwrite(STDERR, "slim on :$port\n");
 
 $app->run();

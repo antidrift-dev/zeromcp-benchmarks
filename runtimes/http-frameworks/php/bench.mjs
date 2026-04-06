@@ -70,8 +70,11 @@ async function benchmarkFramework(label, command, args) {
     stdio: ['pipe', 'pipe', 'pipe'],
     env: { ...process.env, PORT: String(PORT) },
   });
-  proc.on('error', () => {});
-  proc.stderr.on('data', () => {});
+  proc.on('error', (e) => console.error(`  [${label}] spawn error: ${e.message}`));
+  proc.stderr.on('data', (d) => {
+    const msg = d.toString().trim();
+    if (msg) console.error(`  [${label}] ${msg}`);
+  });
 
   const ready = await waitForPort(PORT, 30000);
   if (!ready) {
