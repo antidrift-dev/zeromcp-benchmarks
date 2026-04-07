@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "fastmcp": "^3.35.0",
+    "zod": "^3.24.0"
+  }
+}

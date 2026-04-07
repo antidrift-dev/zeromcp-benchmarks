@@ -15,7 +15,7 @@ fn create_server() -> Server {
         Tool {
             description: "Say hello to someone".to_string(),
             input: Input::new().required_desc("name", "string", "Who to greet"),
-            permissions: Permissions::default(),
+            permissions: Permissions::default(), cached_schema: Default::default(),
             execute: Box::new(|args: Value, _ctx: Ctx| {
                 Box::pin(async move {
                     let name = args["name"].as_str().unwrap_or("world");
@@ -32,7 +32,7 @@ fn create_server() -> Server {
             input: Input::new()
                 .required_desc("a", "number", "First number")
                 .required_desc("b", "number", "Second number"),
-            permissions: Permissions::default(),
+            permissions: Permissions::default(), cached_schema: Default::default(),
             execute: Box::new(|args: Value, _ctx: Ctx| {
                 Box::pin(async move {
                     let a = args["a"].as_f64().unwrap_or(0.0);
@@ -50,7 +50,7 @@ fn create_server() -> Server {
             input: Input::new()
                 .required_desc("customer", "string", "Customer name")
                 .required_desc("amount", "number", "Invoice amount"),
-            permissions: Permissions::default(),
+            permissions: Permissions::default(), cached_schema: Default::default(),
             execute: Box::new(|args: Value, _ctx: Ctx| {
                 Box::pin(async move {
                     let customer = args["customer"].as_str().unwrap_or("unknown");

@@ -1,0 +1,159 @@
+Third-party MCP Framework HTTP Benchmark
+  Duration: 300s, Interval: 10s
+  Frameworks: fastmcp-node, fastmcp-python, mcp-framework-node, fast-mcp-ruby, zeromcp-mrexodia, mcp-go-mark3labs, spring-ai-mcp, quarkus-mcp
+
+
+=== fastmcp-node ===
+  Starting container...
+  Container start failed
+
+=== fastmcp-python ===
+  Starting container...
+  Container start failed
+
+=== mcp-framework-node ===
+  Starting container...
+  Initialized (session: e61c16d0-8b49-4adf-970c-6dc182761043)
+  Warming up...
+  Running for 300s...
+    t=11s  rps=2438  p50=0.38ms  p99=1.02ms  mem=141.4MB  cpu=0.03%
+    t=21s  rps=2310  p50=0.36ms  p99=0.99ms  mem=141.1MB  cpu=0.02%
+    t=31s  rps=2308  p50=0.36ms  p99=1.01ms  mem=141.2MB  cpu=0.01%
+    t=41s  rps=2289  p50=0.36ms  p99=1.01ms  mem=141.1MB  cpu=0.03%
+    t=51s  rps=2286  p50=0.37ms  p99=1ms  mem=141.1MB  cpu=0.03%
+    t=61s  rps=2299  p50=0.36ms  p99=1.02ms  mem=141.2MB  cpu=0.03%
+    t=71s  rps=2317  p50=0.36ms  p99=1.01ms  mem=141.4MB  cpu=0.03%
+    t=81s  rps=2296  p50=0.36ms  p99=1.01ms  mem=141.4MB  cpu=0.04%
+    t=91s  rps=2305  p50=0.36ms  p99=0.99ms  mem=141MB  cpu=0.03%
+    t=101s  rps=2327  p50=0.36ms  p99=1ms  mem=141.6MB  cpu=0.05%
+    t=111s  rps=2319  p50=0.36ms  p99=1ms  mem=141.4MB  cpu=0.03%
+    t=121s  rps=2258  p50=0.37ms  p99=1.02ms  mem=140.6MB  cpu=0.06%
+    t=131s  rps=2286  p50=0.37ms  p99=0.99ms  mem=140.9MB  cpu=0.03%
+    t=141s  rps=2297  p50=0.36ms  p99=0.96ms  mem=140.8MB  cpu=0.03%
+    t=151s  rps=2278  p50=0.37ms  p99=0.94ms  mem=140.6MB  cpu=0.01%
+    t=161s  rps=2306  p50=0.36ms  p99=0.97ms  mem=140.1MB  cpu=0.03%
+    t=171s  rps=2290  p50=0.37ms  p99=0.99ms  mem=140.5MB  cpu=0.03%
+    t=181s  rps=2329  p50=0.36ms  p99=1.01ms  mem=140.3MB  cpu=0.03%
+    t=191s  rps=2318  p50=0.36ms  p99=0.97ms  mem=141.1MB  cpu=0.02%
+    t=201s  rps=2277  p50=0.36ms  p99=0.97ms  mem=140.4MB  cpu=0.03%
+    t=211s  rps=2269  p50=0.37ms  p99=1.03ms  mem=140.3MB  cpu=0.02%
+    t=221s  rps=2336  p50=0.36ms  p99=0.96ms  mem=140.8MB  cpu=0.03%
+    t=231s  rps=2358  p50=0.35ms  p99=0.97ms  mem=140.8MB  cpu=0.03%
+    t=241s  rps=2302  p50=0.36ms  p99=0.93ms  mem=140.7MB  cpu=0.03%
+    t=251s  rps=2281  p50=0.37ms  p99=0.99ms  mem=140.7MB  cpu=0.04%
+    t=261s  rps=2286  p50=0.37ms  p99=1.01ms  mem=141MB  cpu=0.02%
+    t=271s  rps=2265  p50=0.37ms  p99=1.01ms  mem=140.4MB  cpu=0.01%
+    t=281s  rps=2326  p50=0.36ms  p99=0.99ms  mem=140.5MB  cpu=0.02%
+    t=291s  rps=2286  p50=0.37ms  p99=0.99ms  mem=140.5MB  cpu=0.03%
+    t=301s  rps=2270  p50=0.37ms  p99=1.02ms  mem=140.4MB  cpu=0.02%
+  DONE: avg=2304 rps, p50=0.36ms, p99=0.99ms, mem=140.1-141.6MB, cpu=0.03%
+
+=== fast-mcp-ruby ===
+  Starting container...
+  Initialized (session: none)
+  Warming up...
+  Running for 300s...
+    t=11s  rps=4161  p50=0.22ms  p99=0.58ms  mem=43.77MB  cpu=0.03%
+    t=21s  rps=3796  p50=0.22ms  p99=0.56ms  mem=43.97MB  cpu=0.01%
+    t=31s  rps=3687  p50=0.23ms  p99=0.65ms  mem=43.72MB  cpu=0.02%
+    t=41s  rps=3670  p50=0.23ms  p99=0.59ms  mem=43.53MB  cpu=0.02%
+    t=51s  rps=3831  p50=0.22ms  p99=0.54ms  mem=43.7MB  cpu=0.02%
+    t=61s  rps=3697  p50=0.23ms  p99=0.59ms  mem=43.69MB  cpu=0.02%
+    t=71s  rps=3682  p50=0.23ms  p99=0.62ms  mem=44.14MB  cpu=0.02%
+    t=81s  rps=3666  p50=0.23ms  p99=0.62ms  mem=44.21MB  cpu=0.02%
+    t=91s  rps=3817  p50=0.22ms  p99=0.59ms  mem=44.06MB  cpu=0.02%
+    t=101s  rps=3720  p50=0.22ms  p99=0.63ms  mem=44.34MB  cpu=0.02%
+    t=111s  rps=3619  p50=0.23ms  p99=0.66ms  mem=44.51MB  cpu=0.01%
+    t=121s  rps=3670  p50=0.23ms  p99=0.59ms  mem=44.77MB  cpu=0.01%
+    t=131s  rps=3720  p50=0.22ms  p99=0.57ms  mem=44.68MB  cpu=0.02%
+    t=141s  rps=3718  p50=0.22ms  p99=0.58ms  mem=45.48MB  cpu=0.02%
+    t=151s  rps=3697  p50=0.23ms  p99=0.55ms  mem=46.42MB  cpu=0.02%
+    t=161s  rps=3740  p50=0.22ms  p99=0.55ms  mem=46.41MB  cpu=0.02%
+    t=171s  rps=3793  p50=0.22ms  p99=0.53ms  mem=46.42MB  cpu=0.02%
+    t=181s  rps=3695  p50=0.23ms  p99=0.55ms  mem=46.66MB  cpu=0.02%
+    t=191s  rps=3619  p50=0.23ms  p99=0.56ms  mem=47.05MB  cpu=0.02%
+    t=201s  rps=3586  p50=0.23ms  p99=0.62ms  mem=46.95MB  cpu=0.02%
+    t=211s  rps=3677  p50=0.23ms  p99=0.59ms  mem=47.23MB  cpu=0%
+    t=221s  rps=3819  p50=0.22ms  p99=0.54ms  mem=47.06MB  cpu=0.01%
+    t=231s  rps=3764  p50=0.22ms  p99=0.56ms  mem=47.4MB  cpu=0.01%
+    t=241s  rps=3775  p50=0.22ms  p99=0.57ms  mem=47.14MB  cpu=0.01%
+    t=251s  rps=3777  p50=0.22ms  p99=0.54ms  mem=47.09MB  cpu=0.01%
+    t=261s  rps=3683  p50=0.23ms  p99=0.57ms  mem=47.05MB  cpu=0.01%
+    t=271s  rps=3667  p50=0.23ms  p99=0.55ms  mem=47.68MB  cpu=0.01%
+    t=281s  rps=3745  p50=0.22ms  p99=0.54ms  mem=47.69MB  cpu=0.01%
+    t=291s  rps=3736  p50=0.23ms  p99=0.51ms  mem=47.78MB  cpu=0.03%
+    t=301s  rps=3702  p50=0.23ms  p99=0.52ms  mem=47.29MB  cpu=0.01%
+  DONE: avg=3731 rps, p50=0.23ms, p99=0.57ms, mem=43.53-47.78MB, cpu=0.02%
+
+=== zeromcp-mrexodia ===
+  Starting container...
+  Initialized (session: none)
+  Warming up...
+  Running for 300s...
+    t=11s  rps=2008  p50=0.46ms  p99=1.26ms  mem=12.73MB  cpu=0.04%
+    t=21s  rps=1765  p50=0.46ms  p99=1.21ms  mem=12.43MB  cpu=0.03%
+    t=31s  rps=1827  p50=0.45ms  p99=1.28ms  mem=12.55MB  cpu=0.03%
+    t=41s  rps=1831  p50=0.45ms  p99=1.2ms  mem=12.62MB  cpu=0.05%
+    t=51s  rps=1869  p50=0.45ms  p99=1.09ms  mem=12.93MB  cpu=0.03%
+    t=61s  rps=1842  p50=0.45ms  p99=1.22ms  mem=12.64MB  cpu=0.03%
+    t=71s  rps=1848  p50=0.45ms  p99=1.25ms  mem=12.82MB  cpu=0.03%
+    t=81s  rps=1844  p50=0.45ms  p99=1.26ms  mem=12.43MB  cpu=0.03%
+    t=91s  rps=1820  p50=0.46ms  p99=1.22ms  mem=12.8MB  cpu=0.03%
+    t=101s  rps=1829  p50=0.45ms  p99=1.24ms  mem=12.86MB  cpu=0.02%
+    t=111s  rps=1830  p50=0.45ms  p99=1.25ms  mem=12.52MB  cpu=0.03%
+    t=121s  rps=1830  p50=0.45ms  p99=1.21ms  mem=12.65MB  cpu=0.03%
+    t=131s  rps=1826  p50=0.45ms  p99=1.24ms  mem=12.54MB  cpu=0.32%
+    t=141s  rps=1834  p50=0.45ms  p99=1.25ms  mem=12.42MB  cpu=0.03%
+    t=151s  rps=1824  p50=0.45ms  p99=1.23ms  mem=12.75MB  cpu=0.03%
+    t=161s  rps=1779  p50=0.45ms  p99=1.26ms  mem=12.82MB  cpu=0.06%
+    t=171s  rps=1808  p50=0.46ms  p99=1.25ms  mem=12.84MB  cpu=0.03%
+    t=181s  rps=1831  p50=0.45ms  p99=1.2ms  mem=12.77MB  cpu=0.02%
+    t=191s  rps=1811  p50=0.46ms  p99=1.22ms  mem=12.79MB  cpu=0.03%
+    t=201s  rps=1789  p50=0.46ms  p99=1.29ms  mem=12.43MB  cpu=0.05%
+    t=211s  rps=1773  p50=0.46ms  p99=1.28ms  mem=12.92MB  cpu=0.02%
+    t=221s  rps=1837  p50=0.45ms  p99=1.24ms  mem=13.04MB  cpu=0.02%
+    t=231s  rps=1785  p50=0.45ms  p99=1.31ms  mem=12.65MB  cpu=0.02%
+    t=241s  rps=1787  p50=0.45ms  p99=1.31ms  mem=13.08MB  cpu=0.03%
+    t=251s  rps=1803  p50=0.45ms  p99=1.21ms  mem=12.78MB  cpu=0.03%
+    t=261s  rps=1813  p50=0.45ms  p99=1.23ms  mem=12.42MB  cpu=0.02%
+    t=271s  rps=1838  p50=0.45ms  p99=1.22ms  mem=12.88MB  cpu=0.03%
+    t=281s  rps=1834  p50=0.45ms  p99=1.21ms  mem=12.71MB  cpu=0.03%
+    t=308s  rps=1198  p50=0.45ms  p99=1.2ms  mem=12.42MB  cpu=0.03%
+  DONE: avg=1804 rps, p50=0.45ms, p99=1.24ms, mem=12.42-13.08MB, cpu=0.04%
+
+=== mcp-go-mark3labs ===
+  Starting container...
+  Initialized (session: mcp-session-e6dca59d-b062-40df-8037-047f61003793)
+  Warming up...
+  Running for 300s...
+    t=11s  rps=3662  p50=0.18ms  p99=1.97ms  mem=13.53MB  cpu=0%
+    t=21s  rps=4940  p50=0.17ms  p99=0.46ms  mem=12.64MB  cpu=0%
+    t=31s  rps=4971  p50=0.17ms  p99=0.37ms  mem=13.25MB  cpu=0%
+    t=41s  rps=4927  p50=0.17ms  p99=0.4ms  mem=13.29MB  cpu=0%
+    t=51s  rps=4924  p50=0.17ms  p99=0.4ms  mem=14.26MB  cpu=0%
+    t=957s  rps=1771  p50=0.17ms  p99=0.42ms  mem=11.55MB  cpu=0%
+  DONE: avg=4199 rps, p50=0.17ms, p99=0.67ms, mem=11.55-14.26MB, cpu=0%
+
+=== spring-ai-mcp ===
+  Starting container...
+  Initialized (session: none)
+  Warming up...
+  Running for 300s...
+    t=11s  rps=2137  p50=0.37ms  p99=2.17ms  mem=259.2MB  cpu=0.24%
+    t=21s  rps=2618  p50=0.32ms  p99=0.79ms  mem=283.6MB  cpu=0.2%
+    t=31s  rps=2650  p50=0.31ms  p99=0.83ms  mem=283.2MB  cpu=0.23%
+    t=41s  rps=2678  p50=0.31ms  p99=0.79ms  mem=283.5MB  cpu=0.19%
+    t=51s  rps=2682  p50=0.3ms  p99=0.79ms  mem=283.5MB  cpu=0.2%
+    t=61s  rps=2623  p50=0.31ms  p99=0.8ms  mem=283.8MB  cpu=0.22%
+    t=71s  rps=2628  p50=0.32ms  p99=0.78ms  mem=283.6MB  cpu=0.18%
+    t=1046s  rps=1484  p50=0.32ms  p99=0.8ms  mem=283.8MB  cpu=0.3%
+  DONE: avg=2438 rps, p50=0.32ms, p99=0.97ms, mem=259.2-283.8MB, cpu=0.22%
+
+=== quarkus-mcp ===
+  Starting container...
+  Container start failed
+--- fastmcp rerun results (5 min sustained) ---
+=== fastmcp-node ===
+  DONE: avg=250 rps, p50=3.57ms, p99=5.94ms, mem=138.6-157MB, cpu=0.02%
+=== fastmcp-python ===
+  DONE: avg=967 rps, p50=0.8ms, p99=1.3ms, mem=62.89-63.68MB, cpu=0.26%
