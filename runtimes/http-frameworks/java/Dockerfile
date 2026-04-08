@@ -13,7 +13,7 @@ FROM maven:3.9-eclipse-temurin-21 AS builder-javalin
 WORKDIR /build
 
 # Copy ZeroMCP jar as local dependency
-COPY --from=builder-zeromcp /build/target/zeromcp-0.1.0.jar /build/lib/zeromcp-0.1.0.jar
+COPY --from=builder-zeromcp /build/target/zeromcp-0.1.1.jar /build/lib/zeromcp-0.1.1.jar
 COPY --from=builder-zeromcp /build/target/deps/gson-2.11.0.jar /build/lib/
 
 # Copy bench project

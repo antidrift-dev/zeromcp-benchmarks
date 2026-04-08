@@ -12,7 +12,7 @@ FROM gradle:8.10-jdk21 AS builder-ktor
 WORKDIR /build
 
 # Copy ZeroMCP jar
-COPY --from=builder-zeromcp /build/build/libs/zeromcp-0.1.0.jar /build/lib/zeromcp.jar
+COPY --from=builder-zeromcp /build/build/libs/zeromcp-0.1.1.jar /build/lib/zeromcp.jar
 
 # Copy bench project
 COPY zeromcp-benchmarks/runtimes/http-frameworks/kotlin/build.gradle.kts .

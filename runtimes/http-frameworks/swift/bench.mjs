@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * Vapor HTTP Framework Time-Series Benchmark
+ * Vapor HTTP Framework Time-Series Benchmark — Mixed Workload
+ * Exercises tools/call, resources/read, resources/list, prompts/get,
+ * prompts/list, tools/list, initialize, and ping.
  */
 
 import { spawn } from 'node:child_process';
@@ -11,6 +13,29 @@ const DURATION = parseInt(process.env.DURATION || '300');
 const INTERVAL = parseInt(process.env.INTERVAL || '10');
 const WARMUP = 50;
 const PORT = 3000;
+
+// Weighted method mix (approximate percentages from mixed-workload-node results)
+const METHOD_MIX = [
+  { weight: 65, method: 'tools/call',      params: { name: 'hello', arguments: { name: 'bench' } } },
+  { weight: 10, method: 'resources/read',   params: { uri: 'resource:///data.json' } },
+  { weight: 5,  method: 'resources/list',   params: {} },
+  { weight: 10, method: 'tools/list',       params: {} },
+  { weight: 5,  method: 'prompts/get',      params: { name: 'greet', arguments: { name: 'Alice', tone: 'formal' } } },
+  { weight: 2,  method: 'initialize',       params: { protocolVersion: '2024-11-05', capabilities: {}, clientInfo: { name: 'bench', version: '1.0' } } },
+  { weight: 3,  method: 'ping',             params: undefined },
+];
+
+const TOTAL_WEIGHT = METHOD_MIX.reduce((s, m) => s + m.weight, 0);
+
+function pickMethod() {
+  const r = Math.random() * TOTAL_WEIGHT;
+  let cumulative = 0;
+  for (const m of METHOD_MIX) {
+    cumulative += m.weight;
+    if (r < cumulative) return m;
+  }
+  return METHOD_MIX[0];
+}
 
 function percentile(sorted, p) {
   if (!sorted.length) return 0;
@@ -63,6 +88,13 @@ async function mcpRequest(id, method, params) {
   return res.json();
 }
 
+function isError(resp) {
+  if (!resp) return true;
+  if (resp.error) return true;
+  if (resp.result?.isError) return true;
+  return false;
+}
+
 async function benchmarkFramework(label, command, args) {
   console.error(`  [${label}] starting...`);
 
@@ -87,26 +119,34 @@ async function benchmarkFramework(label, command, args) {
     clientInfo: { name: 'bench', version: '1.0' },
   });
 
+  // Warmup with mixed methods
   for (let i = 0; i < WARMUP; i++) {
-    await mcpRequest(100 + i, 'tools/call', { name: 'hello', arguments: { name: 'warmup' } });
+    const m = pickMethod();
+    await mcpRequest(100 + i, m.method, m.params);
   }
 
   const snapshots = [];
   let latencies = [];
+  let errors = 0;
+  let methodCounts = {};
   let cpuBefore = getCpuMs(proc.pid);
   const tierStart = performance.now();
   let nextSnapshotMs = INTERVAL * 1000;
   let requestId = 0;
 
-  console.error(`  [${label}] running for ${DURATION}s...`);
+  console.error(`  [${label}] running mixed workload for ${DURATION}s...`);
 
   while (performance.now() - tierStart < DURATION * 1000) {
+    const m = pickMethod();
     const t0 = performance.now();
     try {
-      await mcpRequest(1000 + requestId++, 'tools/call', { name: 'hello', arguments: { name: 'bench' } });
+      const resp = await mcpRequest(1000 + requestId++, m.method, m.params);
       latencies.push(performance.now() - t0);
+      methodCounts[m.method] = (methodCounts[m.method] || 0) + 1;
+      if (isError(resp)) errors++;
     } catch {
       latencies.push(performance.now() - t0);
+      errors++;
     }
 
     const elapsed = performance.now() - tierStart;
@@ -118,6 +158,7 @@ async function benchmarkFramework(label, command, args) {
       snapshots.push({
         t: Math.round(elapsed / 1000),
         requests: latencies.length,
+        errors,
         rps: Math.round(latencies.length / INTERVAL),
         p50_ms: round(percentile(sorted, 50)),
         p95_ms: round(percentile(sorted, 95)),
@@ -127,9 +168,10 @@ async function benchmarkFramework(label, command, args) {
       });
 
       const s = snapshots[snapshots.length - 1];
-      console.error(`    t=${s.t}s  rps=${s.rps}  p50=${s.p50_ms}ms  mem=${s.memory_mb}MB`);
+      console.error(`    t=${s.t}s  rps=${s.rps}  p50=${s.p50_ms}ms  errors=${s.errors}  mem=${s.memory_mb}MB`);
 
       latencies = [];
+      errors = 0;
       cpuBefore = cpuNow;
       nextSnapshotMs += INTERVAL * 1000;
     }
@@ -138,7 +180,8 @@ async function benchmarkFramework(label, command, args) {
   proc.kill();
   await new Promise(r => setTimeout(r, 500));
 
-  return { label, snapshots };
+  const totalErrors = snapshots.reduce((s, x) => s + x.errors, 0);
+  return { label, snapshots, method_counts: methodCounts, total_errors: totalErrors };
 }
 
 async function main() {
@@ -150,10 +193,10 @@ async function main() {
     },
   ];
 
-  console.error(`HTTP Framework Time-Series Benchmark (Swift)`);
+  console.error(`HTTP Framework Mixed Workload Benchmark (Swift)`);
   console.error(`  Duration: ${DURATION}s, Interval: ${INTERVAL}s\n`);
 
-  const results = { type: 'http-frameworks-swift' };
+  const results = { type: 'http-frameworks-swift-mixed' };
 
   for (const fw of frameworks) {
     results[fw.label] = await benchmarkFramework(fw.label, fw.command, fw.args);

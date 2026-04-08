@@ -16,6 +16,13 @@ use ZeroMcp\Tool;
  *   php -S 0.0.0.0:3000 server-slim.php
  */
 
+// PHP's cli-server SAPI does not define STDIN/STDOUT/STDERR constants.
+// The ZeroMCP library writes diagnostic messages to STDERR, so we must
+// provide the constant before calling any library code.
+if (!defined('STDERR')) {
+    define('STDERR', fopen('php://stderr', 'w'));
+}
+
 // Let PHP's built-in server handle static files
 if (PHP_SAPI === 'cli-server') {
     $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
