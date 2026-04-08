@@ -31,6 +31,36 @@ server.Tool("add", "Add two numbers",
         return Task.FromResult<object>(a + b);
     });
 
+server.Resource("data", "resource:///data.json", "Static data", "application/json",
+    () => Task.FromResult("{\"key\":\"value\",\"count\":42}"));
+
+server.Resource("dynamic", "resource:///dynamic", "Dynamic", "application/json",
+    () => Task.FromResult("{\"dynamic\":true}"));
+
+server.Prompt("greet", "Greeting",
+    arguments: new List<PromptArgument>
+    {
+        new PromptArgument { Name = "name", Description = "Name to greet", Required = true },
+        new PromptArgument { Name = "tone", Description = "Tone of greeting", Required = false }
+    },
+    renderFunc: args =>
+    {
+        var name = args.TryGetValue("name", out var n) ? n : "world";
+        var tone = args.TryGetValue("tone", out var t) ? t : "friendly";
+        return Task.FromResult(new List<Dictionary<string, object>>
+        {
+            new Dictionary<string, object>
+            {
+                ["role"] = "user",
+                ["content"] = new Dictionary<string, string>
+                {
+                    ["type"] = "text",
+                    ["text"] = $"Give a {tone} greeting to {name}."
+                }
+            }
+        });
+    });
+
 var port = Environment.GetEnvironmentVariable("PORT") ?? "3000";
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.SetMinimumLevel(LogLevel.Warning);

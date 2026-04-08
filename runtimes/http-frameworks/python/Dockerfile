@@ -14,8 +14,10 @@ RUN pip install --no-cache-dir flask fastapi uvicorn starlette
 # Copy ZeroMCP Python source (no install, use PYTHONPATH)
 COPY zeromcp/python/ /zeromcp/python/
 
-# Copy tools
+# Copy tools, resources, prompts
 COPY zeromcp/python/examples/tools/ ./tools/
+COPY zeromcp/tests/conformance/test-resources-python/ ./resources/
+COPY zeromcp/tests/conformance/test-prompts-python/ ./prompts/
 
 # Copy server files
 COPY zeromcp-benchmarks/runtimes/http-frameworks/python/server-flask.py .

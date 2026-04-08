@@ -17,7 +17,7 @@ app = FastAPI()
 @app.on_event("startup")
 async def startup():
     global handler, tool_count
-    handler = await create_handler({"tools": ["./tools"]})
+    handler = await create_handler({"tools": ["./tools"], "resources": ["./resources"], "prompts": ["./prompts"]})
     resp = await handler({
         "jsonrpc": "2.0", "id": 0, "method": "tools/list"
     })

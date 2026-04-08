@@ -31,6 +31,42 @@ struct ServerVapor {
             return a + b
         }
 
+        server.resource("data", ResourceDefinition(
+            uri: "resource:///data.json",
+            name: "data",
+            description: "Static JSON data",
+            mimeType: "application/json",
+            read: { #"{"key":"value","count":42}"# }
+        ))
+
+        server.resource("dynamic", ResourceDefinition(
+            uri: "resource:///dynamic",
+            name: "dynamic",
+            description: "Dynamic resource",
+            mimeType: "application/json",
+            read: { #"{"dynamic":true}"# }
+        ))
+
+        server.prompt("greet", PromptDefinition(
+            name: "greet",
+            description: "Generate a greeting message",
+            arguments: [
+                PromptArgument(name: "name", description: "Name to greet", required: true),
+                PromptArgument(name: "tone", description: "Tone of greeting (e.g. formal, casual)", required: false)
+            ],
+            render: { args in
+                let name = args["name"] as? String ?? "world"
+                let tone = args["tone"] as? String ?? ""
+                let greeting: String
+                if !tone.isEmpty {
+                    greeting = "Hello, \(name)! (tone: \(tone))"
+                } else {
+                    greeting = "Hello, \(name)!"
+                }
+                return [["role": "user", "content": ["type": "text", "text": greeting]]]
+            }
+        ))
+
         let env = try Environment.detect()
         let app = Application(env)
         defer { app.shutdown() }

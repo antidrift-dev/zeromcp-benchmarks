@@ -45,7 +45,7 @@ mcp_server.register_tool(HelloTool)
 mcp_server.register_tool(AddTool)
 
 # Wrap base app with MCP Rack transport
-mcp_app = mcp_server.start_rack(base_app)
+mcp_app = mcp_server.start_rack(base_app, localhost_only: false)
 
 port = (ENV["PORT"] || 3000).to_i
 $stderr.puts "fast-mcp-ruby on :#{port}"

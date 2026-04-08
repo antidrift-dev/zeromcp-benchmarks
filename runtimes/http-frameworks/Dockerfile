@@ -9,8 +9,10 @@ COPY zeromcp/nodejs/ ./zeromcp-src/
 RUN cd zeromcp-src && npm install && npm run build
 RUN cp -r zeromcp-src/dist zeromcp/ && cp zeromcp-src/package.json zeromcp/
 
-# Copy tools
+# Copy tools, resources, prompts
 COPY zeromcp/nodejs/examples/tools ./tools/
+COPY zeromcp/nodejs/examples/resources ./resources/
+COPY zeromcp/nodejs/examples/prompts ./prompts/
 
 # Install HTTP framework deps
 COPY zeromcp-benchmarks/runtimes/http-frameworks/package.json .

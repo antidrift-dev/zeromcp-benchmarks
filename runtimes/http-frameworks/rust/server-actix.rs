@@ -5,7 +5,7 @@
 use actix_web::{web, App, HttpServer, HttpResponse};
 use serde_json::{json, Value};
 use std::sync::Arc;
-use zeromcp::{Ctx, Input, Permissions, Server, Tool};
+use zeromcp::{Ctx, Input, Permissions, Prompt, PromptArgument, PromptContent, PromptMessage, Resource, Server, Tool};
 
 fn create_server() -> Server {
     let mut server = Server::new();
@@ -66,13 +66,65 @@ fn create_server() -> Server {
         },
     );
 
+    // ---- Resources ----
+
+    server.resource(Resource {
+        uri: "resource:///data.json".to_string(),
+        name: "data".to_string(),
+        description: "Static JSON data".to_string(),
+        mime_type: "application/json".to_string(),
+        read: Box::new(|| {
+            Box::pin(async { Ok(r#"{"key":"value","count":42}"#.to_string()) })
+        }),
+    });
+
+    server.resource(Resource {
+        uri: "resource:///dynamic".to_string(),
+        name: "dynamic".to_string(),
+        description: "Dynamic resource".to_string(),
+        mime_type: "application/json".to_string(),
+        read: Box::new(|| {
+            Box::pin(async { Ok(r#"{"dynamic":true}"#.to_string()) })
+        }),
+    });
+
+    // ---- Prompts ----
+
+    server.prompt(Prompt {
+        name: "greet".to_string(),
+        description: Some("Generate a greeting message".to_string()),
+        arguments: Some(vec![
+            PromptArgument {
+                name: "name".to_string(),
+                description: Some("Name of the person to greet".to_string()),
+                required: Some(true),
+            },
+            PromptArgument {
+                name: "tone".to_string(),
+                description: Some("Tone of the greeting".to_string()),
+                required: Some(false),
+            },
+        ]),
+        render: Box::new(|args: Value| {
+            Box::pin(async move {
+                let name = args["name"].as_str().unwrap_or("world");
+                let tone = args["tone"].as_str().unwrap_or("friendly");
+                Ok(vec![PromptMessage {
+                    role: "user".to_string(),
+                    content: PromptContent::Text {
+                        text: format!("Please greet {name} in a {tone} tone."),
+                    },
+                }])
+            })
+        }),
+    });
+
     server
 }
 
 async fn health(data: web::Data<Arc<Server>>) -> HttpResponse {
-    // We know we registered 3 tools
     let _ = data;
-    HttpResponse::Ok().json(json!({"status": "ok", "tools": 3}))
+    HttpResponse::Ok().json(json!({"status": "ok", "tools": 3, "resources": 2, "prompts": 1}))
 }
 
 async fn mcp(

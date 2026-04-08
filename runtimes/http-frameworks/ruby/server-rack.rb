@@ -5,7 +5,13 @@ require 'zeromcp'
 # ZeroMCP over pure Rack -- HTTP benchmark server (no framework).
 #
 
-server = ZeroMcp::Server.new
+config = ZeroMcp::Config.new(
+  tools_dir: './tools',
+  resources_dir: './resources',
+  prompts_dir: './prompts'
+)
+server = ZeroMcp::Server.new(config)
+server.load_tools
 
 hello_tool = ZeroMcp::Tool.new(
   name: 'hello',
@@ -22,7 +28,8 @@ add_tool = ZeroMcp::Tool.new(
   }
 ) { |args, _ctx| args['a'].to_f + args['b'].to_f }
 
-server.instance_variable_set(:@tools, { 'hello' => hello_tool, 'add' => add_tool })
+# Merge inline tools with any file-scanned tools
+server.instance_variable_get(:@tools).merge!('hello' => hello_tool, 'add' => add_tool)
 
 app = Proc.new do |env|
   if env['REQUEST_METHOD'] == 'GET' && env['PATH_INFO'] == '/health'

@@ -15,6 +15,8 @@ import (
 func main() {
 	server := zeromcp.NewServer()
 	registerTools(server)
+	registerResources(server)
+	registerPrompts(server)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -104,6 +106,47 @@ func registerTools(s *zeromcp.Server) {
 				"customer": customer,
 				"amount":   amount,
 				"status":   "created",
+			}, nil
+		},
+	})
+}
+
+func registerResources(s *zeromcp.Server) {
+	s.Resource("data", zeromcp.ResourceDef{
+		URI:         "resource:///data.json",
+		Description: "Static JSON data",
+		MimeType:    "application/json",
+		Read: func() (string, error) {
+			return `{"key":"value","count":42}`, nil
+		},
+	})
+
+	s.Resource("dynamic", zeromcp.ResourceDef{
+		URI:         "resource:///dynamic",
+		Description: "Dynamic resource",
+		MimeType:    "application/json",
+		Read: func() (string, error) {
+			return `{"dynamic":true}`, nil
+		},
+	})
+}
+
+func registerPrompts(s *zeromcp.Server) {
+	s.Prompt("greet", zeromcp.PromptDef{
+		Description: "Generate a greeting message",
+		Arguments: []zeromcp.PromptArgument{
+			{Name: "name", Description: "Name to greet", Required: true},
+			{Name: "tone", Description: "Tone of greeting (e.g. formal, casual)"},
+		},
+		Render: func(args map[string]any) ([]zeromcp.PromptMessage, error) {
+			name, _ := args["name"].(string)
+			tone, _ := args["tone"].(string)
+			greeting := fmt.Sprintf("Hello, %s!", name)
+			if tone != "" {
+				greeting = fmt.Sprintf("Hello, %s! (tone: %s)", name, tone)
+			}
+			return []zeromcp.PromptMessage{
+				{Role: "user", Content: map[string]any{"type": "text", "text": greeting}},
 			}, nil
 		},
 	})

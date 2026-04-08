@@ -17,7 +17,7 @@ tool_count = 0
 @asynccontextmanager
 async def lifespan(app):
     global handler, tool_count
-    handler = await create_handler({"tools": ["./tools"]})
+    handler = await create_handler({"tools": ["./tools"], "resources": ["./resources"], "prompts": ["./prompts"]})
     resp = await handler({
         "jsonrpc": "2.0", "id": 0, "method": "tools/list"
     })

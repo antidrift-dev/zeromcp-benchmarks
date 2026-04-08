@@ -13,6 +13,10 @@ COPY zeromcp-benchmarks/runtimes/http-frameworks/ruby/Gemfile .
 COPY zeromcp-benchmarks/runtimes/http-frameworks/ruby/server-sinatra.rb .
 COPY zeromcp-benchmarks/runtimes/http-frameworks/ruby/server-rack.rb .
 
+# Copy resource and prompt test fixtures
+COPY zeromcp/tests/conformance/test-resources-ruby/ ./resources/
+COPY zeromcp/tests/conformance/test-prompts-ruby/ ./prompts/
+
 # Fix Gemfile path to local zeromcp
 RUN sed -i "s|path: '../../../zeromcp-lib'|path: '/bench/zeromcp-lib'|" Gemfile
 

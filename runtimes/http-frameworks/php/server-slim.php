@@ -5,6 +5,7 @@ require __DIR__ . '/vendor/autoload.php';
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
+use ZeroMcp\Config;
 use ZeroMcp\Server as ZeroMcpServer;
 use ZeroMcp\Tool;
 
@@ -23,7 +24,14 @@ if (PHP_SAPI === 'cli-server') {
     }
 }
 
-$server = new ZeroMcpServer();
+$config = new Config([
+    'tools' => [],
+    'resources' => [__DIR__ . '/resources'],
+    'prompts' => [__DIR__ . '/prompts'],
+]);
+
+$server = new ZeroMcpServer($config);
+$server->loadTools();
 
 // Register tools inline
 $helloTool = new Tool(
@@ -47,10 +55,11 @@ $addTool = new Tool(
     }
 );
 
-// Inject tools directly (server uses $this->tools internally)
+// Inject tools (appending to any file-scanned tools)
 $ref = new ReflectionProperty($server, 'tools');
 $ref->setAccessible(true);
-$ref->setValue($server, ['hello' => $helloTool, 'add' => $addTool]);
+$existing = $ref->getValue($server);
+$ref->setValue($server, array_merge($existing, ['hello' => $helloTool, 'add' => $addTool]));
 
 $app = AppFactory::create();
 

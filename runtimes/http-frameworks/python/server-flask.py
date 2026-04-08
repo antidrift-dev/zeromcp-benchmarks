@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify
 from zeromcp.server import create_handler
 
 loop = asyncio.new_event_loop()
-handler = loop.run_until_complete(create_handler({"tools": ["./tools"]}))
+handler = loop.run_until_complete(create_handler({"tools": ["./tools"], "resources": ["./resources"], "prompts": ["./prompts"]}))
 
 # Count tools by sending a tools/list request
 _list_resp = loop.run_until_complete(handler({

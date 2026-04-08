@@ -6,10 +6,15 @@ require 'zeromcp'
 # ZeroMCP over Sinatra -- HTTP benchmark server.
 #
 
-# Build server and register tools inline (no scanner/tool files)
-server = ZeroMcp::Server.new
+# Build server with resource and prompt directories configured
+config = ZeroMcp::Config.new(
+  tools_dir: './tools',
+  resources_dir: './resources',
+  prompts_dir: './prompts'
+)
+server = ZeroMcp::Server.new(config)
+server.load_tools
 
-# Manually register tools since we're not using file-based scanning
 hello_tool = ZeroMcp::Tool.new(
   name: 'hello',
   description: 'Say hello',
@@ -25,8 +30,8 @@ add_tool = ZeroMcp::Tool.new(
   }
 ) { |args, _ctx| args['a'].to_f + args['b'].to_f }
 
-# Inject tools via instance variable (server uses @tools internally)
-server.instance_variable_set(:@tools, { 'hello' => hello_tool, 'add' => add_tool })
+# Merge inline tools with any file-scanned tools
+server.instance_variable_get(:@tools).merge!('hello' => hello_tool, 'add' => add_tool)
 
 set :port, (ENV['PORT'] || 3000).to_i
 set :bind, '0.0.0.0'

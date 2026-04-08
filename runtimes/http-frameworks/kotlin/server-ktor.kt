@@ -21,6 +21,34 @@ fun main() {
         execute { args, _ -> "Hello, ${args.getString("name")}!" }
     }
 
+    server.resource("data") {
+        uri = "resource:///data.json"
+        mimeType = "application/json"
+        read { """{"key":"value","count":42}""" }
+    }
+
+    server.resource("dynamic") {
+        uri = "resource:///dynamic"
+        mimeType = "application/json"
+        read { """{"dynamic":true}""" }
+    }
+
+    server.prompt("greet") {
+        description = "Greeting"
+        arguments {
+            required("name")
+            optional("tone", "formal or casual")
+        }
+        render { args ->
+            listOf(
+                PromptMessage(
+                    role = "user",
+                    content = PromptContent(text = "Greet ${args.getString("name")} in a ${args.getString("tone") ?: "casual"} tone")
+                )
+            )
+        }
+    }
+
     server.tool("add") {
         description = "Add two numbers"
         input {

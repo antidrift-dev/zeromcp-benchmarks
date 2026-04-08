@@ -19,6 +19,10 @@ COPY zeromcp-benchmarks/runtimes/http-frameworks/php/server-slim.php .
 # Fix composer.json path to local zeromcp
 RUN sed -i 's|../../../zeromcp-lib|/bench/zeromcp-lib|' composer.json
 
+# Copy test resources and prompts
+COPY zeromcp/tests/conformance/test-resources-php/ ./resources/
+COPY zeromcp/tests/conformance/test-prompts-php/ ./prompts/
+
 RUN composer install --no-dev --optimize-autoloader
 
 # Copy bench harness
