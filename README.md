@@ -26,7 +26,16 @@ Each language has its own `Dockerfile` that builds both the official SDK server 
 
 ## Results
 
-Results are in `results/`. Run `node report.js` to generate a summary.
+Write-ups, with charts and tables, are in [`writeups/`](writeups/):
+
+- [Overview: every test we've run](writeups/README.md)
+- [Chaos resilience, level 1](writeups/chaos-resilience.md)
+- [Chaos resilience, level 2](writeups/chaos-resilience-2.md)
+- [Express vs Fastify vs Hono](writeups/express-vs-fastify-vs-hono.md)
+- [Node.js vs Bun vs Deno](writeups/node-vs-bun-vs-deno.md)
+- [Version compatibility](writeups/version-compatibility.md)
+
+Raw results are in `results/`. Run `node report.js` to generate a summary.
 
 ## Requires
 
